@@ -1,0 +1,100 @@
+﻿let sym1 = Symbol()
+undefined
+
+sym1
+Symbol()
+
+let sym2 = Symbol()
+undefined
+
+sym2
+Symbol()
+
+sym1 == sym2
+false
+
+sym1 === sym2
+false
+
+let sym3 = Symbol('name')
+undefined
+
+sym3
+Symbol(name)
+
+let sym4 = Symbol('name')
+undefined
+
+sym3 == sym4
+false
+
+sym3 === sym4
+false
+
+
+---
+객체에대한 이해하기
+
+let obj = { name: 'green', age: 30, }
+undefined
+
+obj
+{name: 'green', age: 30}
+
+obj.name			--> 이렇게도 불러올 수 있고
+'green'
+
+obj['name']		--> 대괄호 표기법으로도 불러올 수 있음	
+'green'
+
+obj.name1 = "blue"	--> 이렇게 추가도 가능
+'blue'			     그런데 이렇게 하면 name1이 있는데 추가하면 덮어씌워져서..(개발자가 여러명이거나 하면)
+			     문제가 됨  -> Symbol : 고유한 객체
+obj
+{name: 'green', age: 30, name1: 'blue'}
+
+let id = Symbol("id");
+undefined
+
+obj[id] = 10
+10
+
+obj
+{name: 'green', age: 30, name1: 'blue', Symbol(id): 10}
+
+-----------------------------------
+
+Date객체
+
+let now = new Date()
+undefined
+
+now
+Thu May 19 2022 14:35:02 GMT+0900 (한국 표준시)
+
+now.getFullYear()
+2022
+
+now.getMonth()+1
+5
+
+now.getDay()
+4
+
+now.getDate()
+19
+
+now.getHours()
+14
+
+now.getMinutes()
+35
+
+now.getSeconds()
+2
+
+let date1970 = new Date(0)
+undefined
+
+date1970
+Thu Jan 01 1970 09:00:00 GMT+0900 (한국 표준시)

@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="wrap">
+        <ul>
+            <li>menu1</li>
+            <li>menu2</li>
+            <li>menu3</li>
+            <li>menu4</li>
+        </ul>
+    </div>
+    <script>
+        let ul = document.querySelector('ul');
+        console.log(ul.parentElement);
+        console.log(ul.children);        //HTMLCollection 형태로 됨
+        console.log(ul.children[1]);
+        console.log(ul.firstElementChild);
+        ul.lastElementChild.style.background = 'tomato';
+        ul.parentElement.style.background = 'pink';
+        let lis = document.querySelectorAll('li');
+        lis[1].previousElementSibling.style.fontSize = '50px';   //인덱스1번 list의 이전꺼를 스타일 바꿔줌
+        lis[1].nextElementSibling.style.fontSize = '20px';
+        let newLi = document.createElement('li');
+        newLi.innerHTML = "새로운 li";
+        // ul.append(newLi);   //제일앞에 추가 append / 제일 뒤에 추가 prepend   -->ul 안에 생기는거
+        // ul.before(newLi);  //노드 이전에 넣어줌 before / 노드 이후에 넣어줌 after   ((형제요소를 추가해 주는거))   --> ul 바깥에 생김
+        ul.insertBefore(newLi,lis[2]);  //lis[2]여기에 위치하는 애의 이전에 newLi 얘를 추가해줌
+
+    </script>
+</body>
+</html>

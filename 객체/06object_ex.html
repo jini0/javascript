@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        //1. 다음의 표를 객체로 만들어라
+        let bookinformation = {
+            이름: 'Nature of Code',
+            가격: '30,000원',
+            저자: 'Deniel Shifman',
+            ISBM: 978896841901,
+            페이지: 620,
+        }
+        console.log(bookinformation);
+        //2. 데이터를 객체 배열로 만들어라
+        let units = [];
+        //생성자함수
+        function Unit(이름, 미네랄, 가스, 보급품){
+            this.이름 = 이름;
+            this.미네랄 = 미네랄;
+            this.가스 = 가스;
+            this.보급품 = 보급품;
+            //그냥 객체를 만들어서 해도 됨!! 
+            //위에는 생성자함수로 해본거!
+        }
+        units.push(new Unit('일벌레',50,0,1));
+        units.push(new Unit('여왕',150,0,2));
+        units.push(new Unit('바퀴',75,25,2));
+        units.push(new Unit('히드라리스크',100,50,2));
+        units.push(new Unit('타락귀',150,100,2));
+        // let units = [{이름: '일벌레', 미네랄:50, 가스:0, 보급품:1},
+        // {이름: '여왕', 미네랄:150, 가스:0, 보급품:2},
+        // {이름: '바퀴', 미네랄:75, 가스:25, 보급품:2},
+        // {이름: '히드라리스크', 미네랄:100, 가스:50, 보급품:2},
+        // {이름: '타락귀', 미네랄:150, 가스:100, 보급품:2}]
+        //이렇게 객체를 만들어서 해도 된다는 의미!!!
+        console.log(units);
+
+    </script>
+</body>
+</html>

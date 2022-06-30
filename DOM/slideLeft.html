@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        li { list-style: none; }
+        #divView {
+            width: 600px;
+            height: 400px;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%,-50%);
+            overflow: hidden;
+        }
+        #divs {
+            position: absolute;
+            top: 0;
+            left: 0;
+            /* left: -100%; 하면 2번째 사진이 나오고 -200%하면 3번째 사진 -300%하면 4번째 사진 */
+            /* 부모요소 기준으로 자동으로 됨 */
+            width: 100%;
+            height: 100%;
+            transition: 0.5s;
+            /* 바뀌는 애한테 트렌지션 */
+        }
+        .imgdiv {
+            position: absolute;
+            top: 0;
+        }
+        /* css가 아니라 자바스크립트로 반복문으로 만들어주기 */
+        /* .imgdiv:nth-child(1) {
+            left: 0;
+        } */
+        /* .imgdiv:nth-child(2) {
+            left: 100%;
+            %퍼센트의 기준은 부모요소임!!!
+            부모요소가 divs로 divView와 크기가 같음(600*400) 그걸 기준으로 0->100% 이렇게 되어 옆으로 이동~ 
+        } */
+        /* .imgdiv:nth-child(3) {
+            left: 200%;
+        } */
+        /* .imgdiv:nth-child(4) {
+            left: 300%;
+        }  */
+        /* 그림에 이전 다음 버튼 만들기 */
+        .btn {
+            width: 60px;
+            height: 60px;
+            background: tomato;
+            color: #fff;
+            border-radius: 50%;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%,-50%);
+            text-align: center;
+            line-height: 60px;
+        }
+        #prev {
+            margin-left: -250px;
+        }
+        #next {
+            margin-left: 250px;
+        }
+        #indi {
+            position: absolute;
+            bottom: 0;
+            /* background: lightblue; */
+            width: 100%;
+            text-align: center;
+            padding: 10px;
+        }
+        #indi span {
+            /* 자바스크립트로 span만들어줄거라서 이것도 스타일 주기 */
+            display: inline-block;
+            width: 10px;
+            height: 10px;
+            background: tomato;
+            border-radius: 50%;
+            margin: 0 6px;
+            font-size: 0;
+        }
+        /* 클래스를 주고 자바스크립트 통해서 클래스를 붙여줄거임 */
+        #indi span.on {
+            background: black;
+        }
+    </style>
+</head>
+<body>
+    <div id="divView">
+        <div id="divs">
+            <div class="imgdiv"><img src="../images/img_lights1.jpg" alt=""></div>
+            <div class="imgdiv"><img src="../images/img_lights2.jpg" alt=""></div>
+            <div class="imgdiv"><img src="../images/img_lights3.jpg" alt=""></div>
+            <div class="imgdiv"><img src="../images/img_lights4.jpg" alt=""></div>
+            <!-- 이렇게 두개를 추가해줘도 아무런 문제없음 -->
+            <!-- 마크업 추가해줘도 class 같이 주면 .querySelectorAll로 줬기 때문에 다 받음! -->
+            <!-- <div class="imgdiv"><img src="../images/img_lights1.jpg" alt=""></div>
+            <div class="imgdiv"><img src="../images/img_lights2.jpg" alt=""></div> -->
+        </div>
+        <div id="prev" class="btn">이전</div>
+        <div id="next" class="btn">다음</div>
+        <div id="indi"></div>
+        <!-- #indi는 그냥 마크업만 하고 안에 span은 자바스크립트로 넣어줄거임 -->
+        <!-- indi div 안에 있는 점 4개들 각각에 addEventListner로 주지않고
+        전체 div를 event 줄거임!!! -->
+    </div>
+    <script>
+        const imgDivs = document.querySelectorAll('.imgdiv');
+                            //querySelectorAll로 하면 '노드리스트'로 나옴 -> 유사배열(배열처럼~~!!(배열과 비슷하다는 점))
+                            //   --> 배열처럼 index로 받을 수 있다는 말! 배열처럼 length도 쓸 수 있음
+        const next = document.querySelector('#next');
+        const prev = document.querySelector('#prev');
+        const indiDiv = document.querySelector('#indi');
+        let divLeft = 0;  
+        let current = 0;   
+        let indiStr = "";            //빈문자열 변수 만들어주기
+
+        //setInterval을 담을 변수   
+        let timer;         
+        // forEach : 콜백함수(배열의 값, 배열의 인덱스, 배열) 
+        imgDivs.forEach((imgdiv,index)=>{
+                        //차례차례 값과 해당 index를 가져옴
+            // imgdiv.style.left = 100*index + '%';
+            //                             //결합연산자 써서~ /이게 싫으면 백틱 써서!!
+            imgdiv.style.left = `${index*100}%`;
+                                //제일 처음 인덱스가 0 이니까 -> 처음애는 0 / 두번째 인덱스는 1이니까 -> 100% / 세번째 인덱스는 2니까 ->200% / 네번째 인덱스는 3이니까 -> 300%
+            indiStr = indiStr + `<span>${index}</span>`     // index번호는 0-1-2-3!!               
+        })
+        // document.querySelector('#indi').innerHTML = indiStr;
+        //위에 변수로 담아서 간단하게 적어주기
+        indiDiv.innerHTML = indiStr;
+        let indi = document.querySelectorAll('#indi span');   //indi 안에 있는 span  / span4개라서 querySelectorAll로 해줘야함
+        indi[0].classList.add('on')
+        console.log(indi);                  //마크업으로 한 애가 아니라서 잘 불려지는지 확인하려고 콘솔에 넣기!
+
+        //인디케이터 이벤트 연결
+        indiDiv.addEventListener('click',function(e){
+                                //클릭할 때 실행되는 콜백함수임 (함수의 매개변수 자리에 함수가 오는것: 콜백함수)
+                                        //e: 이벤트객체 ( 이름은 상관 없음!! e대신 a해도 되고 등등)
+            let targetNum = Number(e.target.innerHTML);   //->  string타입이라 Number로 바꿔줘야해서 위에 Number로 감싸기 
+            moveDiv(targetNum);
+            // console.log(targetNum);       // targetNum 여기 안에 있는건 string타입 (Number(X))       ->  string타입이라 Number로 바꿔줘야해서 위에 Number로 감싸기           
+            // console.log(e);             //점을 클릭하면 콘솔에 event가 막 뜸
+        })
+        //이전, 다음 버튼 이벤트 연결
+        prev.addEventListener('mouseenter',function(){
+            stopIt();
+        })
+        prev.addEventListener('mouseleave',function(){
+            startIt();
+        })
+        prev.addEventListener('click',function(){
+            //현재의 이전값을 구함
+            // let 안의값은 그냥 현재의 이전값을 구하는거 - 실행하려면 moveDiv!
+            let prevNum = current==0 ? imgDivs.length-1 : current - 1;
+            // let prevNum = current==0 ? 3 : current - 1;
+                                        //imgDivs.length 배열의 길이는 4개의 이미지!! (img_lights1 /img_lights2 /img_lights3 /img_lights4)
+                                        //4-1=3 3번 인덱스!!!                     index    0          1           2            3
+                                        //imgDivs.length-1로 해주면 배열이 늘어나도 문제 없어서!!
+            //실제로 움직이려면 moveDiv로 호출해야 움직임
+            moveDiv(prevNum);                            
+        })
+        next.addEventListener('mouseenter',function(){
+            stopIt();
+        })
+        next.addEventListener('mouseleave',function(){
+            startIt();
+        })
+        next.addEventListener('click',function(){
+            //현재의 다음값을 구함
+            let nextNum = current==3 ? 0 : current + 1;
+            //다음값으로 이동
+            //실제로 움직이려면 moveDiv로 호출해야 움직임
+            moveDiv(nextNum);                            
+        })
+
+        // setInterval(함수,시간)
+        // setInterval(function(){
+        //     //3초마다 이미지전환
+        //     //dom요소 divs의 left값이 0%, -100%, -200%, -300%, 0, -100%, -200%, ...반복
+        //     // divLeft * 100
+        //     // divLeft = divLeft - 1;
+        //     //이렇게만 하면 계속 divLeft가 -가 되어서~!! 0으로 돌아가진않음 -> 삼항연산자로 divLeft가 -3이 되면 다시 0으로 되게하기!!!
+        //     divLeft = divLeft === -3 ? 0 : divLeft - 1;
+        //     document.querySelector('#divs').style.left = `${divLeft * 100}%`;
+        // },3000)
+
+
+
+        //함수로 하나 빼보기!!
+        // setInterval(function(){
+        //     divLeft = divLeft === -3 ? 0 : divLeft - 1;
+        //     moveDiv(divLeft);
+        // },3000)
+        //div를 이동시키는 함수
+        // function moveDiv(left){
+        //         //위의 movediv(divLeft)니까 여기 left자리에 divLeft가 들어가짐~ 
+        //     document.querySelector('#divs').style.left = `${left * 100}%`;
+        //                                                 //divLeft가 들어가짐
+        // }
+
+
+        // moveDiv(매개변수)   : 매개변수 자리에 값을 받음    ->여기선 left값
+        function moveDiv(left){
+            document.querySelector('#divs').style.left = `${-(left * 100)}%`;
+                                                        //밑에 -를 +로 바꿔줘서 여기엔 -붙여주기!!()소괄호 해도 되고 안해도됨
+            current = left;             //현재 어떤 화면을 보고 있는지 ->current를 쓰면 알 수 있음
+            console.log(current);      //콘솔에 찍어보면 1-2-3-0-1-2-3-0-1-2...반복
+            //current : 내가 지금 몇번째 사진을 보고 있는지!!!     
+
+            //화면이 변경될때마다 변경된 화면은 블랙으로 아닌 화면은 토마토색으로 되게!!!
+            indi.forEach(ind=>{
+                ind.classList.remove('on');
+            })                         
+            indi[current].classList.add('on');
+        }
+        //메모장 설명(5.11)참고
+        //자동이미지 전환 실행함수(setInterval)
+        function startIt(){
+            timer = setInterval(function(){
+            //3초마다 이미지전환
+            //dom요소 divs의 left값이 0%, -100%, -200%, -300%, 0, -100%, -200%, ...반복
+            // divLeft = divLeft === -3 ? 0 : divLeft - 1;
+            // moveDiv(divLeft);
+            // },3000)
+
+            //위에처럼 -마이너스 값을 안주고 0,1,2,3 이렇게 주려고! 바꾸기
+            divLeft = current === imgDivs.length-1 ? 0 : divLeft + 1;
+                                    //배열의 길이로 하면 길이는 총 4개니까 ->4-1=3 !!  // 3(마지막사진)이면 current=0이고 아니면 +1해줘라!
+            moveDiv(divLeft);       //moveDiv 해줘야 이동함!!
+            },3000)
+        }
+        //자동이미지 전환 멈춤함수(clearInterval)
+        function stopIt(){
+            clearInterval(timer);
+        }
+        startIt();  //얘는 startIt을 불러줘야 실행이 됨
+    </script>
+</body>
+</html>

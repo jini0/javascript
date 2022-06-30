@@ -1,0 +1,292 @@
+*employee테이블 생성하기
++-------+--------+--------+------------+------------+----------+--------+--------+
+| perno | pname  | job    | hiredate   | firedate   | sal      | bonus  | deptno |
++-------+--------+--------+------------+------------+----------+--------+--------+
+|     1 | 박청규 | 사원   | 2010-03-02 | 2012-08-31 |   880000 |   NULL |     10 |
+|     2 | 강원일 | 팀장   | 2010-08-02 | NULL       |  2000000 | 200000 |     10 |
+|     3 | 이봉수 | 부장   | 2010-01-02 | 2012-02-28 |  3000000 | 300000 |     10 |
+|     4 | 허태훈 | 과장   | 2010-05-02 | NULL       |  1800000 | 100000 |     10 |
+|     5 | 윤주옹 | 사원   | 2011-12-01 | NULL       |  1500000 |   NULL |     10 |
+|     6 | 김태환 | 대리   | 2010-08-01 | 2012-04-30 |  1700000 |   NULL |     20 |
+|     7 | 배현직 | 본부장 | 2010-01-02 | NULL       |  2500000 | 200000 |     20 |
+|     8 | 전민철 | 이사   | 2010-01-02 | NULL       |  5000000 | 500000 |     30 |
+|     9 | 심승진 | CEO    | 2010-01-02 | NULL       | 10000000 |   NULL |     30 |
+|    10 | 강대원 | 과장   | 2010-04-02 | 2012-08-31 |  2200000 | 200000 |     30 |
+|    11 | 유성원 | 대리   | 2010-02-01 | NULL       |  1600000 |   NULL |     30 |
+|    12 | 안재연 | 과장   | 2012-02-01 | NULL       |  2000000 | 200000 |     40 |
+|    13 | 김진수 | 사원   | 2012-03-02 | NULL       |   880000 |   NULL |     40 |
+|    14 | 김성하 | 사원   | 2012-04-01 | NULL       |  1000000 |   NULL |     40 |
+|    15 | 황철원 | 대리   | 2011-12-01 | NULL       |  1500000 | 150000 |     40 |
+|    16 | 엄효인 | 사원   | 2011-12-15 | NULL       |  1200000 |   NULL |     40 |
++-------+--------+--------+------------+------------+----------+--------+--------+
+
+Q.
+employee 표에서,
+문제01)이름이 김씨인 사람의 모든 컬럼을 검색
+select * from employee		  //모든 컬럼이라서 *별표
+where pname like "김%";
+
+mysql> select * from employee
+    -> where pname like "김%";
++-------+--------+------+------------+------------+---------+-------+--------+
+| perno | pname  | job  | hiredate   | firedate   | sal     | bonus | deptno |
++-------+--------+------+------------+------------+---------+-------+--------+
+|     6 | 김태환 | 대리 | 2010-08-01 | 2012-04-30 | 1700000 |  NULL |     20 |
+|    13 | 김진수 | 사원 | 2012-03-02 | NULL       |  880000 |  NULL |     40 |
+|    14 | 김성하 | 사원 | 2012-04-01 | NULL       | 1000000 |  NULL |     40 |
++-------+--------+------+------------+------------+---------+-------+--------+
+3 rows in set (0.00 sec)
+
+
+내가>
+create table employee(
+	perno int primary key auto_increment,
+	pname varchar(50) not null,
+	job varchar(30) not null,
+	hiredate varchar(50) not null,
+	firedate varchar(20) null,
+	sal int not null,
+	bonus int null,
+	deptno int not null
+);
+
+insert into employee(perno, pname, job, hiredate, firedate, sal, deptno)
+values(1, '박청규' , '사원' , '2010-03-02', '2012-08-31', 880000, 10);
+
+insert into employee(perno, pname, job, hiredate, sal, bonus, deptno)
+values(2, '강원일' , '팀장' , '2010-08-02', 2000000, 200000, 10);
+
+insert into employee(perno, pname, job, hiredate, firedate, sal, bonus, deptno)
+values(3, '이봉수' , '부장' , '2010-01-02', '2012-02-28', 3000000, 300000, 10);
+
+insert into employee(perno, pname, job, hiredate, sal, bonus, deptno)
+values(4, '허태훈' , '과장' , '2010-05-02', 1800000, 100000, 10);
+
+insert into employee(perno, pname, job, hiredate, sal, deptno)
+values(5, '윤주옹' , '사원' , '2011-12-01', 1500000, 10);
+
+insert into employee(perno, pname, job, hiredate, firedate, sal, deptno)
+values(6, '김태환' , '대리' , '2010-08-01', '2012-04-30', 1700000, 20);
+
+insert into employee(perno, pname, job, hiredate, sal, bonus, deptno)
+values(7, '배현직' , '본부장' , '2010-01-02', 2500000, 200000, 20);
+
+insert into employee(perno, pname, job, hiredate, sal, bonus, deptno)
+values(8, '전민철' , '이사' , '2010-01-02', 5000000, 500000, 30);
+
+insert into employee(perno, pname, job, hiredate, sal, deptno)
+values(9, '심승진' , 'CEO' , '2010-01-02', 10000000, 30);
+
+insert into employee(perno, pname, job, hiredate, firedate, sal, bonus, deptno)
+values(10, '강대원' , '과장' , '2010-04-02', '2012-08-31', 2200000, 200000, 30);
+
+insert into employee(perno, pname, job, hiredate, sal, deptno)
+values(11, '유성원' , '대리' , '2010-02-01', 1600000, 30);
+
+insert into employee(perno, pname, job, hiredate, sal, bonus, deptno)
+values(12, '안재연' , '과장' , '2012-02-01', 2000000, 200000, 40);
+
+insert into employee(perno, pname, job, hiredate, sal, deptno)
+values(13, '김진수' , '사원' , '2012-03-02', 880000, 40);
+
+insert into employee(perno, pname, job, hiredate, sal, deptno)
+values(14, '김성하' , '사원' , '2012-04-01', 1000000, 40);
+
+insert into employee(perno, pname, job, hiredate, sal, bonus, deptno)
+values(15, '황철원' , '대리' , '2011-12-01', 1500000, 150000, 40);
+
+insert into employee(perno, pname, job, hiredate, sal, deptno)
+values(16, '엄효인' , '사원' , '2011-12-15', 1200000, 40);
+
+-------
+선생님 하신거>
+create table employee(
+	perno int primary key auto_increment,
+	pname varchar(10) not null,
+	job varchar(10) not null,
+	hiredate varchar(10) not null,
+	firedate varchar(10),
+	sal int not null,
+	bonus int,
+	deptno int not null
+);
+insert into employee(pname, job, hiredate, firedate, sal, bounus, deptno)
+values('박청규','사원','2010-03-02','2012-08-31',880000,NULL,10);
+					//int는 따옴표로 안감싸도됨
+					//NULL값은 그냥 null이라고 넣어주면됨
+insert into employee(pname, job, hiredate, firedate, sal, bounus, deptno)
+values('강원일','팀장','2010-08-02',NULL,2000000,200000,10);
+
+insert into employee(pname, job, hiredate, firedate, sal, bonus, deptno)
+values('이봉수','부장','2010-01-02','2012-02-28',3000000,300000,10);
+
+insert into employee(pname, job, hiredate, firedate, sal, bonus, deptno)
+values('허태훈','과장','2010-05-02',NULL,1800000,100000,10);
+
+insert into employee(pname, job, hiredate, firedate, sal, bonus, deptno)
+values('윤주옹','사원','2011-12-01',NULL,1500000,NULL,10);
+
+?
+insert into employee(pname, job, hiredate, firedate, sal, bonus, deptno)
+values('김태환','대리','2010-08-01','2012-04-30',1700000,NULL,20);
+
+insert into employee(pname, job, hiredate, firedate, sal, bonus, deptno)
+values('배현직','본부장','2010-01-02',NULL,2500000,200000,20);
+
+insert into employee(pname, job, hiredate, firedate, sal, bonus, deptno)
+values('전민철','이사','2010-01-02',NULL,5000000,500000,30);
+
+insert into employee(pname, job, hiredate, firedate, sal, bonus, deptno)
+values('심승진','CEO','2010-01-02',NULL,10000000,NULL,30);
+
+insert into employee(pname, job, hiredate, firedate, sal, bonus, deptno)
+values('강대원','과장','2010-04-02','2012-08-31',2200000,200000,30);
+
+?
+
+insert into employee(pname, job, hiredate, firedate, sal, bonus, deptno)
+values('유성원','대리','2012-02-01',NULL,1600000,NULL,30);
+
+insert into employee(pname, job, hiredate, firedate, sal, bonus, deptno)
+values('안재연','과장','2012-02-01',NULL,2000000,200000,40);
+
+insert into employee(pname, job, hiredate, firedate, sal, bonus, deptno)
+values('김진수','사원','2012-03-02',NULL,880000,NULL,40);
+
+insert into employee(pname, job, hiredate, firedate, sal, bonus, deptno)
+values('김성하','사원','2012-04-01',NULL,1000000,NULL,40);
+
+insert into employee(pname, job, hiredate, firedate, sal, bonus, deptno)
+values('황철원','대리','2011-12-01',NULL,1500000,150000,40);
+
+insert into employee(pname, job, hiredate, firedate, sal, bonus, deptno)
+values('엄효인','사원','2011-12-15',NULL,1200000,NULL,40);
+
+
+
+-----------
+mysql> create table employee(
+    -> perno int primary key auto_increment,
+    -> pname varchar(50) not null,
+    -> job varchar(30) not null,
+    -> hiredate varchar(50) not null,
+    -> firedate varchar(20) null,
+    -> sal int not null,
+    -> bonus int null,
+    -> deptno int not null
+    -> );
+Query OK, 0 rows affected (0.03 sec)
+
+mysql> desc employee;
++----------+-------------+------+-----+---------+----------------+
+| Field    | Type        | Null | Key | Default | Extra          |
++----------+-------------+------+-----+---------+----------------+
+| perno    | int         | NO   | PRI | NULL    | auto_increment |
+| pname    | varchar(50) | NO   |     | NULL    |                |
+| job      | varchar(30) | NO   |     | NULL    |                |
+| hiredate | varchar(50) | NO   |     | NULL    |                |
+| firedate | varchar(20) | YES  |     | NULL    |                |
+| sal      | int         | NO   |     | NULL    |                |
+| bonus    | int         | YES  |     | NULL    |                |
+| deptno   | int         | NO   |     | NULL    |                |
++----------+-------------+------+-----+---------+----------------+
+8 rows in set (0.00 sec)
+
+mysql> insert into employee(perno, pname, job, hiredate, firedate, sal, deptno)
+    -> values(1, '박청규' , '사원' , '2010-03-02', '2012-08-31', 880000, 10);
+Query OK, 1 row affected (0.01 sec)
+
+mysql> insert into employee(perno, pname, job, hiredate, sal, bonus, deptno)
+    -> values(2, '강원일' , '팀장' , '2010-08-02', 2000000, 200000, 10);
+Query OK, 1 row affected (0.01 sec)
+
+mysql> insert into employee(perno, pname, job, hiredate, firedate, sal, bonus, deptno)
+    -> values(3, '이봉수' , '부장' , '2010-01-02', '2012-02-28', 3000000, 300000, 10);
+Query OK, 1 row affected (0.00 sec)
+
+mysql> insert into employee(perno, pname, job, hiredate, sal, bonus, deptno)
+    -> values(4, '허태훈' , '과장' , '2010-05-02', 1800000, 100000, 10);
+Query OK, 1 row affected (0.01 sec)
+
+mysql> select * from employee;
++-------+--------+------+------------+------------+---------+--------+--------+
+| perno | pname  | job  | hiredate   | firedate   | sal     | bonus  | deptno |
++-------+--------+------+------------+------------+---------+--------+--------+
+|     1 | 박청규 | 사원 | 2010-03-02 | 2012-08-31 |  880000 |   NULL |     10 |
+|     2 | 강원일 | 팀장 | 2010-08-02 | NULL       | 2000000 | 200000 |     10 |
+|     3 | 이봉수 | 부장 | 2010-01-02 | 2012-02-28 | 3000000 | 300000 |     10 |
+|     4 | 허태훈 | 과장 | 2010-05-02 | NULL       | 1800000 | 100000 |     10 |
++-------+--------+------+------------+------------+---------+--------+--------+
+4 rows in set (0.00 sec)
+
+mysql> insert into employee(perno, pname, job, hiredate, sal, deptno)
+    -> values(5, '윤주옹' , '사원' , '2011-12-01', 1500000, 10);
+Query OK, 1 row affected (0.01 sec)
+
+mysql> insert into employee(perno, pname, job, hiredate, firedate, sal, deptno)
+    -> values(6, '김태환' , '대리' , '2010-08-01', '2012-04-30', 1700000, 20);
+Query OK, 1 row affected (0.01 sec)
+
+mysql> insert into employee(perno, pname, job, hiredate, sal, bonus, deptno)
+    -> values(7, '배현직' , '본부장' , '2010-01-02', 2500000, 200000, 20);
+Query OK, 1 row affected (0.00 sec)
+
+mysql> insert into employee(perno, pname, job, hiredate, sal, bonus, deptno)
+    -> values(8, '전민철' , '이사' , '2010-01-02', 5000000, 500000, 30);
+Query OK, 1 row affected (0.01 sec)
+
+mysql> insert into employee(perno, pname, job, hiredate, sal, deptno)
+    -> values(9, '심승진' , 'CEO' , '2010-01-02', 10000000, 30);
+Query OK, 1 row affected (0.01 sec)
+
+mysql> insert into employee(perno, pname, job, hiredate, firedate, sal, bonus, deptno)
+    -> values(10, '강대원' , '과장' , '2010-04-02', '2012-08-31', 2200000, 200000, 30);
+Query OK, 1 row affected (0.01 sec)
+
+mysql> insert into employee(perno, pname, job, hiredate, sal, deptno)
+    -> values(11, '유성원' , '대리' , '2010-02-01', 1600000, 30);
+Query OK, 1 row affected (0.01 sec)
+
+mysql> insert into employee(perno, pname, job, hiredate, sal, bonus, deptno)
+    -> values(12, '안재연' , '과장' , '2012-02-01', 2000000, 200000, 40);
+Query OK, 1 row affected (0.00 sec)
+
+mysql> insert into employee(perno, pname, job, hiredate, sal, deptno)
+    -> values(13, '김진수' , '사원' , '2012-03-02', 880000, 40);
+Query OK, 1 row affected (0.01 sec)
+
+mysql> insert into employee(perno, pname, job, hiredate, sal, deptno)
+    -> values(14, '김성하' , '사원' , '2012-04-01', 1000000, 40);
+Query OK, 1 row affected (0.01 sec)
+
+mysql> insert into employee(perno, pname, job, hiredate, sal, bonus, deptno)
+    -> values(15, '황철원' , '대리' , '2011-12-01', 1500000, 150000, 40);
+Query OK, 1 row affected (0.01 sec)
+
+mysql> insert into employee(perno, pname, job, hiredate, sal, deptno)
+    -> values(16, '엄효인' , '사원' , '2011-12-15', 1200000, 40);
+Query OK, 1 row affected (0.01 sec)
+
+mysql> select * from employee;
++-------+--------+--------+------------+------------+----------+--------+--------+
+| perno | pname  | job    | hiredate   | firedate   | sal      | bonus  | deptno |
++-------+--------+--------+------------+------------+----------+--------+--------+
+|     1 | 박청규 | 사원   | 2010-03-02 | 2012-08-31 |   880000 |   NULL |     10 |
+|     2 | 강원일 | 팀장   | 2010-08-02 | NULL       |  2000000 | 200000 |     10 |
+|     3 | 이봉수 | 부장   | 2010-01-02 | 2012-02-28 |  3000000 | 300000 |     10 |
+|     4 | 허태훈 | 과장   | 2010-05-02 | NULL       |  1800000 | 100000 |     10 |
+|     5 | 윤주옹 | 사원   | 2011-12-01 | NULL       |  1500000 |   NULL |     10 |
+|     6 | 김태환 | 대리   | 2010-08-01 | 2012-04-30 |  1700000 |   NULL |     20 |
+|     7 | 배현직 | 본부장 | 2010-01-02 | NULL       |  2500000 | 200000 |     20 |
+|     8 | 전민철 | 이사   | 2010-01-02 | NULL       |  5000000 | 500000 |     30 |
+|     9 | 심승진 | CEO    | 2010-01-02 | NULL       | 10000000 |   NULL |     30 |
+|    10 | 강대원 | 과장   | 2010-04-02 | 2012-08-31 |  2200000 | 200000 |     30 |
+|    11 | 유성원 | 대리   | 2010-02-01 | NULL       |  1600000 |   NULL |     30 |
+|    12 | 안재연 | 과장   | 2012-02-01 | NULL       |  2000000 | 200000 |     40 |
+|    13 | 김진수 | 사원   | 2012-03-02 | NULL       |   880000 |   NULL |     40 |
+|    14 | 김성하 | 사원   | 2012-04-01 | NULL       |  1000000 |   NULL |     40 |
+|    15 | 황철원 | 대리   | 2011-12-01 | NULL       |  1500000 | 150000 |     40 |
+|    16 | 엄효인 | 사원   | 2011-12-15 | NULL       |  1200000 |   NULL |     40 |
++-------+--------+--------+------------+------------+----------+--------+--------+
+
+

@@ -1,0 +1,53 @@
+*keyup/ keydown
+
+KeyboardEventisTrusted: truealtKey: falsebubbles: truecancelBubble: falsecancelable: truecharCode: 0code: "F12"composed: truectrlKey: falsecurrentTarget: nulldefaultPrevented: falsedetail: 0eventPhase: 0isComposing: falsekey: "F12"keyCode: 123location: 0metaKey: falsepath: (4)?[body, html, document, Window]repeat: falsereturnValue: trueshiftKey: falsesourceCapabilities: InputDeviceCapabilities?{firesTouchEvents: false}srcElement: bodytarget: bodytimeStamp: 1909.2000000001863type: "keydown"view: Window?{window: Window, self: Window, document: document, name: '', location: Location,?…}which: 123[[Prototype]]: KeyboardEvent
+키보드에서 a눌렀을 때
+keyEvent2.html:13 KeyboardEvent?{isTrusted: true, key: 'a', code: 'KeyA', location: 0, ctrlKey: false,?…}
+키보드에서 엔터키 눌렀을 때
+keyEvent2.html:13 KeyboardEvent?{isTrusted: true, key: 'Enter', code: 'Enter', location: 0, ctrlKey: false,?…}
+
+
+-------
+
+*input, select, textarea
+*폼과 폼 조작하기
+1. 폼과 요소 탐색하기
+폼은 특수한 컬렉션인 document.forms의 구성원입니다.
+<form name="myform">
+	<input type="text" name="userId">
+</form>
+1)폼의 name값으로 접근 : document.forms.폼이름
+ex> document.forms.myForm
+2)폼의 순서로 접근 : document.forms[0] -> 문서 내에 첫번째 폼 
+		(하나밖에 없어도 이렇게 접근가능)
+3)폼의 요소에 접근 form.elements.요소name값
+ex> form.elements.userId
+짧은 표기법 form.name
+4)focus 지정하기(방법 2가지)
+- autofocus 속성 추가  --> 그냥 바로 주면 됨
+- node.focus() 메서드
+
+폼이벤트
+input : input태그에 값을 적을 때
+change : 폼요소의 값이 변경될 때
+focus : 커서가 선택되었을 때
+blur : 커서가 떠났을 때
+
+
+----
+<우편번호 서비스>
+https://postcode.map.daum.net/guide
+
+통합 로딩 방식 : postcode.v2.js 라는 이름의 파일 로딩을 통해 우편번호 서비스를 이용하실 수 있습니다.
+<script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
+<script>
+    new daum.Postcode({
+        oncomplete: function(data) {
+            // 팝업에서 검색결과 항목을 클릭했을때 실행할 코드를 작성하는 부분입니다.
+            // 예제를 참고하여 다양한 활용법을 확인해 보세요.
+        }
+    }).open();
+</script>
+
+----
+https://chlee21.tistory.com/96 참고하기 자바스크립트 폼양식 연산!

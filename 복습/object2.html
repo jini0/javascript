@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        //❤객체 Object❤
+        //키에는 문자형 , 값은 모든 자료형
+        //객체 생성자 방식
+        let obj1 = new Object();
+        //객체 리터럴 방식
+        let obj2 = {};
+        //객체에 프로퍼티 추가하기
+        obj1.name = "green";
+        obj2.name = "blue";             
+        obj1.age = 20;
+        obj2.age = 30;
+        console.log(obj1);
+        console.log(obj2);
+        //프로퍼티 삭제하기
+        //delete 이용해서 삭제 가능 -> 실무가서 이렇게 쓰지 않음
+        delete obj1.age;
+        console.log(obj1);
+        let user = {
+            name: "John",
+            age: 30,
+            "likes birds": true,       //두개의 단어 이상을 이용해서 key를 만들거면 "따옴표" 이용해서 적어주면 됨!!
+        }
+        //*값에 접근하는 방법
+        //.표기법(dot)   : obj.key
+        //대괄호 표기법  : obj['key']
+        console.log(user.name);
+        console.log(user.age);
+        // console.log(user.likes birds);  //이렇게 안됨 - 두개이상 단어 키는 '대괄호표기법' 사용!
+        console.log(user['likes birds']);
+        //*단축 프로퍼티
+        //생성자 함수 - 객체 생성의 효율을 높여주고 100개를 만든다 생각할 때 계속 key적어주기 힘듬 -> 한번에 만들어주고!
+        function Student(name, age, score, phone){
+            // let this = {};       //빈객체를 만들고
+            this.name = name;
+            this.age = age;
+            this.score = score;
+            this.phone = phone;
+            // return this;         //this를 반환해주는거
+        }
+        let stu1 = new Student("민영",22,90,'01012341234');
+        let stu2 = new Student("수진",27,60,'01044441344');
+        console.log(stu1);
+        console.log(stu2);
+        //*단축 프로퍼티
+        //name: name => name
+        //age: age => age
+        function makeUser(name, age){                   //생성자함수 아님
+            return {
+                // name: name,          //key와 value의 이름이 같을 때-> 단축 할 수 있음
+                // age: age,
+                name,                   //이렇게 생략할 수 있음
+                age,
+            }
+        }
+        let user2 = makeUser("green",20);
+        console.log(user2);
+        // in연산자 - 객체의 프로퍼티가 있는지 확인
+        // "key" in object      => 있으면 true 반환 / 없으면 false 반환
+        console.log("name" in user2);       //true    //name 이라는 key가 user2에 있는지 -> 있으면 true / 없으면 false
+        console.log("abc" in user2);        //false   //abc 라는 key가 user2에 있는지 -> 있으면 true / 없으면 false
+
+        // for in 반복문
+        for(let key in user2){
+                //key는 그냥 변수 이름 ->  변수이름을 a를 하든 b를 하든 상관 없이 => for in문은 "key"가 담김!
+            console.log(`객체의 key는 ${key}입니다.`);               //키에 접근
+            console.log(`객체의 값은 ${user2[key]}입니다.`);        //값에 접근
+        }
+
+        let user3 = {};
+
+        // ex>
+        // 프로퍼티 합계구하기
+        let students = {
+            a: 90,
+            b: 80,
+            c: 60,
+        }
+        // 학생들의 점수를 다 더한 값을 리턴해주는 함수를 생성하시오.
+        function studentSum(stus){
+            let sum = 0;
+            for (let key in stus){
+                sum += stus[key];
+            }
+            return sum;
+        }
+        console.log(studentSum(students));
+
+        // Object.keys(obj)    -> 객체의 키를 담은 배열을 반환
+        // Object.values(obj)  -> 객체의 값만 담은 배열을 반환
+        // Object.entries(obj) -> [키, 값]을 담은 배열을 반환
+        // Object.fromEntries(array) -> 배열을 다시 객체로 반환
+        let keyArr = Object.keys(user2);
+        let valueArr = Object.values(user2);
+        let entriArr = Object.entries(user2);
+        console.log(keyArr);
+        console.log(valueArr);
+        console.log(entriArr);
+        let newObj = Object.fromEntries(entriArr);
+        console.log(newObj);
+
+        //ex>
+        //프로퍼티 개수 구하기
+        let dog = {
+            name: "구름",
+            age: 3,
+            color: "white",
+        }
+        //객체를 매개변수로 받아서 그 객체의 프로퍼티가 몇 개인지 반환해주는 함수를 만드시오.
+        //내가 한거
+        function property(a){
+            let answer = Object.entries(a).length;
+            return answer;
+        }
+        console.log(property(dog));
+
+        //쌤이한거
+        function count(obj){
+            return Object.keys(obj).length;
+        }
+        console.log(count(dog));
+    </script>
+</body>
+</html>

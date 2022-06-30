@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        div {
+            width: 100%;
+            height: 300px;
+            background: pink;
+        }
+        div.on {
+            background: yellow;
+        }
+    </style>
+</head>
+<body>
+    <button onclick="chBackground()">클릭하세요</button>
+    <div></div>
+    <script>
+        function chBackground(){
+            document.querySelector('div').classList.toggle('on');
+        }
+        // ex) 모바일 햄버거메뉴에서 쓸 수 있음
+        // * 내장함수 몇 가지
+        //   Add() - 엘리먼트에 클래스 추가
+        //   remove() - 제거
+        //   toggle() - 클래스가 존재하면 제거, 없으면 추가
+        //   contains() - 존재하는지 확인
+        //   replace() - 새로운 클래스로 교체
+    </script>
+</body>
+</html>

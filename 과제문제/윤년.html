@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        let year = Number(prompt('년도를 입력하세요'));
+        // console.log(year);
+        console.log(chYear(year));
+        function chYear(year){
+                        //변수 이름이고 위에 year랑 같은거 아님 다른거 해도 됨
+            if (year % 4 === 0){
+                //4로 나눴을 때 떨어짐 -> 4로 나눌 때 나머지=0
+                if (year %100 === 0){
+                    // return year % 400 == 0? true : false;
+                    // 삼항연산자  
+                    // year % 400 == 0? 조건  / 조건 맞을 때 ->true /아닐 때 -> false를 return
+                    // if문 써도 됨 -밑에가 삼항연산자를 if문으로 한거
+                    if (year % 400 === 0){
+                        return true;
+                        //중괄호 안에 실행문이 한개면 중괄호 생략가능 -->밑에가 중괄호 생략한거
+                        //if (year % 400 === 0) return true;
+                        //else return false;
+                    }else {
+                        return false;
+                    }
+                }else {
+                    return true;
+                    //100으로 나누어 떨어지는 애 -> 평년 / 아닌애 ->윤년
+                }
+            }else {
+                return false;
+            }
+        }
+    </script>
+</body>
+</html>

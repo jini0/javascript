@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        class Shape {
+            constructor(width, height, color) {
+                this.width = width;
+                this.height = height;
+                this.color = color;
+            }
+            draw() {
+                console.log(`drawing ${this.color} color`);
+            }
+            getArea() {
+                return this.width * this.height;
+            }
+        }
+        class Rectangle extends Shape {
+
+        }
+        class Triangle extends Shape {
+            //오버라이딩 - 메서드재정의
+            getArea() {
+                return (this.width * this.height) / 2;
+            }
+        }
+        let rectangle = new Rectangle(20,20,'blue');
+        let triangle = new Triangle(20,20,'red');
+        rectangle.draw();
+        console.log(rectangle.getArea());
+        triangle.draw();
+        console.log(triangle.getArea());
+
+        // instanceof
+        // a instanceof b    a오브젝트가 b클래스를 이용해서 만들어졌는지 체크
+
+        console.log(rectangle instanceof Rectangle);
+        console.log(rectangle instanceof Shape);
+        console.log(triangle instanceof Shape);
+        console.log(triangle instanceof Triangle);
+        console.log(triangle instanceof Rectangle);
+        console.log(triangle instanceof Object);    // true로 나옴!
+        // console.log(triangle);          // Prototype : Shape을 눌러보면 Prototype : Object가 있음!!!
+        console.log(triangle.toString());   //toString : 문자열로!    - > object를 문자열로 바꿔준거
+    </script>
+</body>
+</html>

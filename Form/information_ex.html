@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            width: 40%;
+            margin: 0 auto;
+        }
+        h1 { font-size: 22px; text-align: center; background: lightblue;}
+        table {
+            width: 100%;
+            border: 1px solid lightblue;
+        }
+        table  th {
+            background: rgb(223, 223, 223);
+            width: 20%;
+            border-bottom: 1px solid lightblue;
+            border-right: 1px solid lightblue;
+        }
+        table  td {
+            border-bottom: 1px solid lightblue;
+        }
+        #table1 input {
+            width: 200px;
+            height: 20px;
+        }
+        #table2 input {
+            width: 200px;
+            height: 20px;
+        }
+        #table2 textarea {
+            width: 300px;
+            height: 50px;
+        }
+        p {
+            text-align: center;
+            padding-top: 30px;
+        }
+    </style>
+</head>
+<body>
+    <form action="" name="myForm1">
+        <table id="table1">
+            <h1>회원 기본 정보</h1>
+            <tr>
+                <th>아이디</th>
+                <td><input type="text"></td>
+            </tr>
+            <tr>
+                <th>비밀번호</th>
+                <td><input type="text"></td>
+            </tr>
+            <tr>
+                <th>비밀번호 확인</th>
+                <td><input type="text"></td>
+            </tr>
+            <tr>
+                <th>메일주소</th>
+                <td><input type="text"> 예) id@domain.com</td>
+            </tr>
+            <tr>
+                <th>이름</th> 
+                <td><input type="text"></td>
+            </tr>
+        </table>
+    </form>
+    <form action="" name="myForm2">
+        <table id="table2">
+            <h1>개인 신상 정보</h1>
+            <tr>
+                <th>주민등록번호</th>
+                <td><input type="text">-<input type="text"></td>
+            </tr>
+            <tr>
+                <th>주소</th>
+                <td><input type="text"> <button  id="btn1">우편번호찾기</button> <br>
+                    <input type="text"><input type="text"></td>
+            </tr>
+            <tr>
+                <th>생일</th> 
+                <td><input type="text">년 <input type="text">월 <input type="text">일</td>
+            </tr>
+            <tr>
+                <th>관심분야</th>
+                <td><input type="checkbox">컴퓨터 <input type="checkbox">인터넷 <input type="checkbox">여행 <input type="checkbox">영화감상 <input type="checkbox">음악감상</td>
+            </tr>
+            <tr>
+                <th>자기소개</th>
+                <td><textarea name="" id="" cols="30" rows="10"></textarea></td>
+            </tr>
+        </table>
+    </form>
+    <p>
+        <button id="btn2">회원가입</button> <button id="btn3">다시 입력</button>
+    </p>
+    <script>
+        let 
+    </script>
+</body>
+</html>

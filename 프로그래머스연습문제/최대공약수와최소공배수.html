@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // https://m.blog.naver.com/junhyuk7272/221749211310
+        //두 수의 최대 공약수
+        //두 수의 최소 공배수
+        //3,12
+        //3=3 / 12=2^2*3
+        function solution(n, m){
+            let answer = [];
+            //최대공약수 구하기
+            //n과 m 중에 작은 수를 먼저 알아야함(두 수 중 작은 수만큼 반복하기)
+            //두 수를 1부터 작은 수까지 나머지 연산을 했을 때
+            //둘 다 0이 되는 가장 큰 수를 구하기
+            for(let i=1; i<=Math.min(n,m); i++){                //Math.min(): 가장 작은 값 찾아줌
+                if(n % i === 0 && m % i === 0){
+                    answer[0] = i;      //배열의 0번 인덱스(1번째 값) => 최대공약수
+                }
+            }
+            //최소공배수 구하기
+            //어떤 수를 n으로 나누었을 때 나머지가 0이 되고
+            //어떤 수를 m으로 나누었을 때 나머지가 0이 되는 수 중
+            //가장 작은 수            
+            let lcm =1;
+            while(true){
+                if(lcm%n ===0 && lcm%m === 0){
+                    break;
+                }
+                lcm++;
+            }
+            answer[1] = lcm;        //배열의 1번 인덱스(2번째 값) => 최소공배수
+            return answer;
+        }
+        console.log(solution(3, 12));
+        console.log(solution(2, 5));
+    </script>
+</body>
+</html>

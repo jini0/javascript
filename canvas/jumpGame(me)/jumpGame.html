@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="./css/style.css">
+</head>
+<body>
+    <canvas id="canvas" width="1200" height="600"></canvas>
+    <div id="jumpNum" class="hidden">성공 × <span>0</span></div>
+    <div id="gameover" class="hidden">GAME OVER</div>
+    <button id="btn">Start</button>
+    <div id="character"></div>
+    <div id="bomb"></div>
+    <!-- <div id="bomb2"></div>
+    <div id="bomb3"></div> -->
+    <script>
+        const canvas = document.querySelector('#canvas');
+        const ctx = canvas.getContext('2d');
+        const startBtn = document.querySelector('#btn');
+        const bomb = document.querySelector('#bomb');
+        // const bomb2 = document.querySelector('#bomb2');
+        // const bomb3 = document.querySelector('#bomb3');
+        const gameover = document.querySelector('#gameover');
+        const jumpNum = document.querySelector('#jumpNum');
+        let character = document.querySelector('#character');
+        //캐릭터 이미지
+        // let imgElem = new Image();
+        // imgElem.src = "../img/pacman1.png";
+        // imgElem.addEventListener('load',()=>{
+        //     ctx.drawImage(imgElem,30,460,120,120);
+        // })
+        //지뢰1
+        // let imgElem2 = new Image();
+        // imgElem2.src = "../img/cherries.png";
+        //지뢰2
+        // let imgElem3 = new Image();
+        // imgElem3.src = "../img/lemon.png";
+        //지뢰3
+        // let imgElem2 = new Image();
+        // imgElem2.src = "../img/tangerine.png";
+        
+        //지뢰
+        // let imgElem2 = new Image();
+        // imgElem2.src = "../img/cherries.png";
+        // let imgElem3 = new Image();
+        // imgElem3.src = "../img/lemon.png";
+        // let imgElem4 = new Image();
+        // imgElem4.src = "../img/tangerine.png";
+        // class Bomb {
+        //     constructor(x, y, speed) {
+        //         // this.index = index;
+        //         this.x = x;
+        //         this.y = y;
+        //         this.speed = speed;
+        //         // this.width = 90;
+        //         // this.height = 90;
+        //         this.draw();                           
+        //     }
+        //     drawImg() {
+        //         imgElem2.addEventListener('load',()=>{
+        //             ctx.drawImage(imgElem2,100,460,90,90);
+        //         })
+        //         imgElem3.addEventListener('load',()=>{
+        //             ctx.drawImage(imgElem3,120,460,100,100);
+        //         })
+        //         imgElem4.addEventListener('load',()=>{
+        //             ctx.drawImage(imgElem4,150,460,90,90);
+        //         })
+        //     }
+        // }
+        // let tempX, tempY, tempSpeed;      
+        // for(let i=0; i<10; i++){
+        //     tempSpeed = Math.floor(Math.random()*5)+1;         
+        //     tempX = Math.random() * canvas.width * 0.8;
+        //     tempY = Math.random() * canvas.height * 0.8;
+        //     bomb.push(new Bomb(i, tempX, tempY, tempSpeed))            
+        // }
+        // console.log(bomb);
+
+        // function bombMove(){
+        //     //그린걸 한번 지워줘야함(계속 겹쳐져서)
+        //     context.clearRect(0,0,canvas.width, canvas.height);
+        //     bomb.forEach(bomb=>{
+        //         bomb.x += bomb.speed;
+        //         if(bomb.x > canvas.width){
+        //             bomb.x = - bomb.x;
+        //         }
+        //         box.draw();             
+        //     })
+        //     requestAnimationFrame(bombMove);
+        // }
+        // bombMove();    
+
+
+        //start 버튼 누를 때,
+        startBtn.addEventListener("click", (e) => {
+            // e.stopPropagation();
+            // stopflag = false;
+            // bomb.classList.add("move");
+            gameover.classList.add("hidden");
+            startBtn.classList.add("hidden");
+            jumpNum.classList.remove("hidden");
+            // jumpNumCnt.textContent = 0;
+            bombMove();
+            jump();
+        });
+        
+        
+        // let animation;
+        // let x = 1000;
+        // let y = 800;
+        // let z = 600;
+        // function bombMove(){
+        //     x += 1;
+        //     bomb.style.right = x+'px';
+        //     y += 1;
+        //     bomb2.style.right = y+'px';
+        //     z += 1;
+        //     bomb3.style.right = z+'px';
+        //     animation = requestAnimationFrame(bombMove);  
+        // }
+
+        
+        //캐릭터 점프
+        let charAnimation;
+        let charY = 380;
+        character.addEventListener('keydown',jump());
+        function jump(){
+            if(charY){
+                charY -= 10;
+                character.style.top = charY+'px';
+                return charAnimation = requestAnimationFrame(jump);
+                // if(charY == 360){
+                //     cancelAnimationFrame(charAnimation);
+                // }
+            }
+        }
+        jump();
+
+        //다시
+        // let charAnimation;
+        // let charY = 380;
+        // imgElem.addEventListener('keydown',jump());
+        // function jump(){
+        //     if(charY){
+        //         charY -= 10;
+        //         ctx.drawImage(imgElem,30,charY+'px',120,120);
+        //         return charAnimation = requestAnimationFrame(jump);
+        //         // if(charY == 360){
+        //         //     cancelAnimationFrame(charAnimation);
+        //         // }
+        //     }
+        // }
+        // jump();
+        </script>
+</body>
+</html>

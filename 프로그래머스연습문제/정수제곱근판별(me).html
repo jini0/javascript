@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // https://programmers.co.kr/learn/courses/30/lessons/12934
+        // https://m.blog.naver.com/PostView.naver?isHttpsRedirect=true&blogId=diceworld&logNo=220198130087
+        // sqrt 는 특정숫자의 제곱근 값을 계산해주는 함수입니다.
+        // Math.sqrt([대상 숫자]); 
+        //왜 안되지... -1을 못불러오뮤ㅠㅠ
+        function solution(n) {
+            var answer = 0;
+            if(Math.sqrt(n)){
+                return answer = (Math.sqrt(n)+1)*(Math.sqrt(n)+1);
+            }else {
+                return -1;
+            }
+        }
+        console.log(solution(121));
+        console.log(solution(3));
+    </script>
+</body>
+</html>

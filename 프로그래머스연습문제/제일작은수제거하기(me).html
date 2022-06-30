@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // https://programmers.co.kr/learn/courses/30/lessons/12935
+        // function solution(arr) {
+        //     var answer = [];
+        //     if(arr.length <= 1){
+        //         return [-1];
+        //     }else {
+        //         arr.splice(arr.indexOf(Math.min(...arr)),1);
+        //         answer = arr;
+        //     }
+        //     return answer;
+        // }
+        // console.log(solution([4,3,2,1]));
+        // console.log(solution([10]));
+
+        function solution(arr) {
+            arr.splice(arr.indexOf(Math.min(...arr)),1);
+            return arr.length ? arr : [-1];
+        }
+        console.log(solution([4,3,2,1]));
+        console.log(solution([10]));
+    </script>
+</body>
+</html>

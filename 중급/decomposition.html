@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // <구조분해 할당 실습>
+        let fruits = ["🥝","🍒","🍓","🍑","🍍"];
+        //이렇게 해도 되는데 - 길게 써져서 간단하게 구조분해 할당을 해줄거임
+        // let fruit1 = fruits[0];
+        // let fruit2 = fruits[1];
+        // let fruit3 = fruits[2];
+        // let fruit4 = fruits[3];
+        // console.log(fruit1);
+        // console.log(fruit2);
+        // console.log(fruit3);
+
+        //*구조분해할당
+        let [fruit1, fruit2, , ,fruit3] = fruits;       //쉼표사용해서 무시하기 가능
+        console.log(fruit1,fruit2,fruit3);
+        // 나머지 매개변수로 배열 받기           // ... ->나머지 매개변수
+        let [fru, ...frus] = fruits;
+        console.log(`fru변수에 담긴 값은 : ${fru}입니다.`); 
+        console.log(`frus에 담긴 값은 : ${frus}배열 입니다.`);
+        console.log(frus);
+        let green = "green";
+        let blue = "blue";
+        console.log(`green변수에 담긴 값은 ${green}이다.`);
+        console.log(`blue변수에 담긴 값은 ${blue}이다.`);
+        // 변수값 변경하기 - 구조분해할당으로 바꿔치기하기
+        [green, blue] = [blue, green];
+        console.log(`green변수에 담긴 값은 ${green}이다.`);
+        console.log(`blue변수에 담긴 값은 ${blue}이다.`);
+
+        let [a, b, c] = ["green","blue","pink"];
+
+        //기본값
+        // let [name, age] = [];   //error는 생기지 않고 undefined가 담김
+        // console.log(name);
+        // console.log(age);
+        let [name = "bob", age = 30] = ["guest", 50];   //guest와 50이라는 값을 안주면
+                                                        //기본값으로 설정한 bob 와 30이 출력됨!    
+        console.log(name);  //값을 줘서 guest가 출력
+        console.log(age);   //값을 줘서 50이 출력
+
+        //*객체 구조분해 할당
+        let options = {
+            title: "Menu",
+            width: 100,
+            height: 200,
+        }
+        let { width, height } = options;
+        console.log(width);
+
+        //키명과 다른 변수명으로 할당
+        let { title:m } = options;      //title의 키 값을 변수 m에 할당
+        console.log(m);                 //Menu가 출력됨
+
+        //객체 구조분해할당 나머지 할당하기
+        let { title, ...rest} = options;
+        console.log(`title변수에는 ${title}이 할당됨`);
+        console.log(`rest변수에는 ${rest} title은 제외한 나머지 객체가 할당됨`);
+        console.log(rest);
+
+        //객체 구조분해 할당 기본값 설정하기
+        let person1 = {
+            name: "bob",
+            age: 30,
+            subname: "abc",
+            isJob: true,
+            hobby: "음악감상",
+        }
+        let { name: n, age: ab, subname, hobby="독서"} = person1;   
+            //그냥 name, age를 적으면
+        console.log(hobby);         //위에 hobby가 없으면 undefined로 뜸    // hobby: "음악감상"이라는 값이 있어서 기본값인 독서가 안나오고 음악감상이 출력됨
+
+
+        //
+        let opt = {
+            title2: "Menu"
+        }
+        let { 
+            width2 = prompt("width?"),       //default를 prompt로도 줄 수 있음!
+            height2 = prompt("height?"),
+            title2 } = opt;
+
+        console.log(width2, height2, title2);   
+    </script>
+</body>
+</html>

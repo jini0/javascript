@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!-- 6.30 -->
+    <script>
+        // 💖try catch문법💖
+        // 1. 
+        // try {
+        //     //에러가 없는 상태
+        //     alert('try 블럭 실행');         
+        //     //이걸 적어주면 error가 생겨서 catch안의 코드도 실행됨
+        //     green;
+        // }
+        // catch(e){
+        //     alert('catch 블럭 실행');
+        // }
+
+
+        // 2. 문제 없는거
+        // let json = '{"name":"green", "age":30}';    //이건 그냥 문자열형태로 값 넣어준거!
+        // let user = JSON.parse(json);            //JSON.parse - 객체형태로 만들겠다!
+        // console.log(user.name);                 //user가 객체라서-객체의 값을 부를때!   1.  .(dot)방식 2. ['']대괄호 표기법
+        // console.log(user.age);                  //user가 객체라서-객체의 값을 부를때!   1.  .(dot)방식 2. ['']대괄호 표기법
+
+        // 2-2. error시
+        let json = '{"name""green", "age":30}';         //"name"과 "green" 사이에 :콜론을 뺌 -> error
+        // 밑에처럼 terror를 발생시키고 script가 죽어버림 -> try catch를 이용해서 처리가능!!!!
+        // 콘솔창에, Uncaught SyntaxError: Unexpected string in JSON at position 7 at JSON.parse (<anonymous>) at error.html:31:25  -> error가 발생하고 밑에 console.log('ddddddddd')가 실행 안됨! -script가 죽어서
+        // let user = JSON.parse(json);            
+        // console.log(user.name);                 
+        // console.log(user.age);  
+        // console.log('ddddddddd');
+        // 💖try catch 이용하면 에러가 발생해도 에러를 제어하여 에러 이후의 코드인 console.log('ddddddddd');
+        try{
+            let user = JSON.parse(json);           
+            console.log(user.name);                 
+            console.log(user.age);  
+        }
+        catch(e){
+            console.log("데이터가 에러가 있어 재요청을 합니다.");
+        }
+        console.log('ddddddddd');
+
+        // 3.
+        let json2 = '{"age":20}';
+        try{
+            let user2 = JSON.parse(json);
+            // console.log(user2.name);
+            // // 이름이 없으므로 에러가 발생   -> SyntaxError!
+            if(!user2.name){
+                throw new SyntaxError("불완전한데이터: 이름없음");          //throw문 - error를 만들어줌!
+            }
+        }
+        catch(e){
+            console.log('catch실행');
+            console.log(e.name);
+            console.log(e.message);
+        }
+        //💜throw연산자 - 에러 처리를 통보
+        //💜throw <error object>
+        //💜자바스크립트 에러 객체 생성자
+        //💜Error, SyntaxError, ReferenceError, TypeError (-> 4가지가 표준에러 생성자!)
+        // new Error(message);            
+        // new SyntaxError(message);            
+        // new ReferenceError(message);            
+        let error = new Error("에러가 생겼어요");             //new Error 이렇게 해서 Error 객체 만든거(Error: 에러가 생겼어요 ->이게 객체)
+        console.log(error);
+        console.log(error.name);
+        console.log(error.message);
+        
+
+    </script>
+</body>
+</html>

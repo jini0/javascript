@@ -1,0 +1,241 @@
+@charset "utf-8";
+
+/* reset */
+*{
+    margin: 0;
+    padding: 0;
+}
+body{
+    background-image: url(./image_readtop_2019_433227_0_082121.jpg);
+    background-repeat: no-repeat;
+    background-size: 100vw 100vh;
+}
+/* container */
+#container{
+    /* background-color: bisque; */
+    background-color: rgba(240, 248, 255, 0.8);
+    width: 800px;
+    margin: 0 auto;
+    margin-top: 50px;
+    padding: 10px;
+    text-align: center;
+    border: 3px solid black;
+    border-radius: 15px;
+}
+
+/* display */
+#display{
+    /* background-color: aqua; */
+    width: auto;
+    height: 100px;
+    display: flex;
+    justify-content: space-between;
+    padding: 10px;
+    border: 2px solid black;
+    border-radius: 10px;
+    margin-bottom: 20px;
+}
+
+#display>div{
+    border: 1px solid black;
+    border-radius: 5px;
+    padding: 10px;
+}
+
+#display p{
+    display: block;
+}
+
+/* display 1, 2 */
+#display_1{
+    width: 35%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+}
+
+#round{
+    font-size: 25px;
+    font-weight: bold;
+    line-height: 25px;
+}
+
+#counts{
+    display: flex;
+    justify-content: space-between;
+}
+
+#counts p{
+    font-size: 20px;
+}
+
+#display_2{
+    width: 40%;
+    display: flex;
+    justify-content: space-between;
+}
+
+#display_2 div{
+    width: 40%;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+}
+
+#display_2 div:nth-child(2){
+    width: 10%;
+    font-size: 25px;
+    line-height: 25px;
+    font-weight: bold;
+}
+
+#display_2 .display_2_nameH{
+    font-size: 18px;
+    font-weight: bold;
+}
+#display_2 .display_2_nameA{
+    font-size: 18px;
+    font-weight: bold;
+}
+
+
+#comScore , #playerScore{
+    background-color: black;
+    color: yellow;
+    font-size: 20px;
+    line-height: 40px;
+}
+
+/* #board */
+#board{
+    background-color: rgba(184, 134, 11, 0.7);
+    width: auto;
+    height: 500px;
+    border: 2px solid black;
+    border-radius: 10px;
+    position: relative;
+    margin-bottom: 20px;
+}
+
+#board div{
+    font-size: 25px;
+    line-height: 70px;
+    font-weight: bolder;
+}
+
+#filed{
+    background-color: rgb(2, 190, 2);
+    width: 280px;
+    height: 280px;
+    transform: rotate(45deg);
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    margin: -140px 0 0 -140px;
+    border: 1px solid black;
+}
+
+#filed2{
+    background-color: darkgoldenrod;
+    width: 60px;
+    height: 60px;
+    position: absolute;
+    top: 50%;
+    margin-top: -30px;
+    left: 50%;
+    margin-left: -30px;
+    border: 1px solid black;
+    border-radius: 50%;
+}
+
+#filed3{
+    background-color: bisque;
+    width: 20px;
+    height: 20px;
+    position: absolute;
+    top: 50%;
+    margin-top: -10px;
+    left: 50%;
+    margin-left: -10px;
+    border: 1px solid black;
+}
+
+#Base{
+    background-color: red;
+    width: 70px;
+    height: 70px;
+    position: absolute;
+    top: 413px;
+    left: 50%;
+    margin-left: -35px;
+    border: 1px solid black;
+}
+
+#firBase{
+    background-color: bisque;
+    width: 70px;
+    height: 70px;
+    position: absolute;
+    top: 50%;
+    margin-top: -35px;
+    left: 562px;
+    border: 1px solid black;
+}
+
+#secBase{
+    background-color: bisque;
+    width: 70px;
+    height: 70px;
+    position: absolute;
+    bottom: 412px;
+    left: 50%;
+    margin-left: -35px;
+    border: 1px solid black;
+}
+
+#thrBase{
+    background-color: bisque;
+    width: 70px;
+    height: 70px;
+    position: absolute;
+    top: 50%;
+    margin-top: -35px;
+    right: 560px;
+    border: 1px solid black;
+}
+
+/* control */
+#control{
+    /* background-color: khaki; */
+    width: auto;
+    height: 100px;
+    border: 2px solid black;
+    border-radius: 10px;
+    padding: 10px;
+}
+
+#control div{
+    display: flex;
+    justify-content: space-around;
+}
+
+#result{
+    width: 90%;
+    margin: 0 auto;
+    border: 1px solid black;
+    border-radius: 5px;
+    font-size: 25px;
+    line-height: 50px;
+    font-weight: bolder;
+    margin-bottom: 10px;
+}
+
+#control button{
+    display: inline-block;
+    width: 40%;
+    font-size: 20px;
+    line-height: 35px;
+    border: 1px solid black;
+    border-radius: 5px;
+}

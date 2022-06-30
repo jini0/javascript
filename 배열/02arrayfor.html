@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        let arr = [1,2,3,4,5];
+        console.log(arr);
+        // 배열을 순차적으로 반복문을 통해서 요소에 접근가능
+        // 배열의 반복문
+        // 1. for반복문 : 배열의 길이를 이용
+        for(let i=0; i.length; i++){
+            console.log(arr[i]);
+        }
+        //2. forEach문
+        // forEach로 쓸 수 있음 --> forEach(callback함수가 옴 : value/index/array)
+        // 맨첫번째에는 value값이 오니까 변수의 요소값만 적어서 나타낼 수 있음
+        arr.forEach(a=>{
+            console.log(a);
+        })
+        // 3. for of문  --> for ( 변수를 만들어주고 of 배열 )   --> 배열의 요소에 접근가능
+        // 소괄호 안에 of
+        for(let list of arr){
+            console.log(list);
+        }
+        let fruits = ['🍒','🍓','🍎','🍌'];
+        for(let a of fruits){
+            console.log(a);
+        }
+        //맨 뒤 추가
+        fruits.push('🍋');
+        console.log(fruits);
+        //맨 뒤 삭제
+        fruits.pop();
+        console.log(fruits);
+        //맨 앞 삭제
+        fruits.shift();
+        console.log(fruits);
+        //맨 앞 추가
+        fruits.unshift('🍉');
+        console.log(fruits);
+    </script>
+</body>
+</html>

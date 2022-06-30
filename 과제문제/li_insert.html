@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <ul id="ul">
+        <li id="one">1</li>
+        <li id="two">4</li>
+    </ul>
+    <script>
+        let lione = document.querySelector('#one');
+        //beforebegin 선택한 요소 앞에 삽입
+        //afterbefore 선택한 요소 첫번째 자식요소 앞에 삽입
+        //beforeend 선택한 요소 마지막 자식요소 다음에 삽입
+        //afterend 선택한 요소 다음에 삽입
+        lione.insertAdjacentHTML('beforebegin','<li>2</li><li>3</li>'); 
+             //append나 before와 달리 insertAdjacentHTML는 createElement없이 바로 그냥 HTML 태그 사용가능
+        // one.insertAdjacentHTML('afterend','<li>2</li><li>3</li>');  이렇게 id는 자바스크립트에서 바로 id로 접근가능!!! 
+        // 클래스는 안됨! 아이디만 가능
+    </script>
+</body>
+</html>

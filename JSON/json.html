@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        const rabbit = {
+            name: 'tory',
+            color: 'white',
+            size: 'small',
+            birthDay : new Date(),      //문자가 아니라 Date객체가 들어감!
+            jump: ()=>{
+                console.log("점프할 수 있음");
+            }
+        }
+        //JSON.stringify(obj)
+        let json = JSON.stringify(rabbit);
+        console.log(rabbit);
+        console.log(json);
+
+        //JSON.parse(json)
+        let obj = JSON.parse(json);
+        console.log(obj);
+        let obj2 = JSON.parse(json,(key,value)=>{
+            return key === 'birthDay' ? new Date(value) : value;
+        })
+        console.log(obj2);
+    </script>
+</body>
+</html>

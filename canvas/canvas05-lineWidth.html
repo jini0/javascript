@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        canvas {
+            background-color: lightblue;
+        }
+    </style>
+    <script>
+        function draw(){
+            let canvas = document.querySelector('canvas');
+            let ctx = canvas.getContext('2d');
+            let lineCap = ['butt','round','square'];        
+            for(let i=0; i<10; i++){
+                ctx.lineWidth = 1+i;
+                ctx.lineCap = lineCap[i%3];     //i%3 : 나머지연산자3을 해주면 -> 0,1,2만 될거임
+                ctx.beginPath();
+                ctx.moveTo(5+i*16, 5);          //선 두께가 다 다르게 그려질거임!
+                ctx.lineTo(5+i*16, 140);
+                ctx.stroke();
+            }
+        }
+    </script>
+</head>
+<body onload="draw()">
+    <canvas width="1000" height="600"></canvas>
+</body>
+</html>

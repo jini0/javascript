@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="box1" class="divbox">
+        박스1 입니다.
+    </div>
+    <div id="box2" class="divbox">
+        박스2 입니다.
+    </div>
+    <script>
+        // Dom 요소 선택
+        // 1. 단수 선택
+        // 01)document.getElementById('id명')
+        // 02)document.querySelector('css선택자 그대로')
+
+        // 2. 복수 선택
+        // 01)document.getElementsByClassName('class명')  - html 컬렉션(유사배열)
+        // 02)document.getElementsByTagName('tag명')  - html 컬렉션(유사배열)
+        // 03)document.querySelectorAll('css선택자 그대로') -노드리스트(유사배열)
+
+        console.log(document.querySelectorAll('.divbox'));
+        // [0].innerHTML 이나 [1].innerHTML를 지정안해주면 콘솔에 NodeList(2) [div#box1.divbox, div#box2.divbox] 노드리스트로 뜸 -> 전체 볼 수 있음
+        document.querySelectorAll('.divbox')[0].innerHTML = "안녕하세요";
+        document.querySelectorAll('.divbox')[1].innerHTML = "여러분";
+
+
+        // document.querySelector('.divbox').innerHTML = "태그명으로 선택했습니다.";
+        // ()괄호 안에 css선택자 처럼 그대로 적어주면 됨 -> 클래스는 .divbox / 아이디라면 #box1
+
+        // console.log(document.getElementsByClassName("divbox")[1]);
+            // document.getElementsByClassName("divbox")
+                // css선택자 적음 안되고 . 적어서 하면 안됨!!! 그냥 클래스명만 적어주는거!
+            // getElementsByClassName : 클래스 이름을 가져오겠다 
+            // Elements 's'라고 복수형임 -> 요소가 하나만 있어도 배열형태로 데이터들을 선택해야함 []이렇게 안에 넣어서
+            // 하나밖에 없더라도 배열에 번호를 적어줘야 생성됨
+                        // [0]번은 div box1 
+                        // [1]번은 div box2
+            // console.log(document.getElementById("box1"));
+        // document.getElementById : Element 단수 -> 하나의 요소를 택하는 거
+        // 태그명이나 클래스명은 html collection 이 됨 -> 묶음으로 선택됨(복수선택)
+        //                                              클래스, 태그가 하나뿐이더라도 묶음으로 선택되기 때문에
+        //                                              찾으려면 순번 배열을 써야함 ([대괄호] 사용)
+        // 모든 프로그래밍은 zero카운팅 -> 0번 부터가 시작임!! (1부터 아님)
+        // 아이디명은 하나만(단수선택)
+    </script>
+</body>
+</html>

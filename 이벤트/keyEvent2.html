@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div></div>
+    <script>
+        document.addEventListener('keydown',function(e){
+            // console.log(e);
+            // <콘솔창>
+            // 키보드에서 엔터키를 눌렀을 때
+            // KeyboardEvent {isTrusted: true, key: 'Enter', code: 'Enter', location: 0, ctrlKey: false, …}
+            // key: 'Enter', code: 'Enter' -> key값 = Enter
+            // 키보드에서 a를 눌렀을 때
+            // keyEvent2.html:13 KeyboardEvent {isTrusted: true, key: 'a', code: 'KeyA', location: 0, ctrlKey: false, …}
+            // key: 'a', code: 'KeyA' -> key값 = a
+            // 이걸 이용해서 밑에처럼 줄 수 도 있음
+
+            if(e.key === 'Enter') alert('안녕하세요');
+        })
+    </script>
+</body>
+</html>

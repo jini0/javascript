@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        let obj = {
+            name: "green",
+            age: 30,
+        }
+        let id = Symbol('id');
+        obj[id] = 123;
+        console.log(obj);
+        console.log(Object.keys(obj));
+        console.log(Object.values(obj));
+        console.log(obj['name']);
+        console.log(Object.getOwnPropertySymbols(obj));
+        console.log(Reflect.ownKeys(obj));
+        console.log(obj[id]);
+        let clone = Object.assign({},obj);      //assign 객체 복사
+
+        console.log(clone);
+
+        // 객체 메서드
+        // 🖤Object.keys(객체) 객체의 키들을 배열로 반환(키 중 심볼은 제외)
+        // 🖤Object.values(객체) 객체의 값들을 배열로 반환(키 중 심볼은 제외)
+        // 🖤Object.assign({목표객체}, 복사할객체) 복사할객체를 목표객체에 복사하고 복사된 객체반환
+        // + 추가설명 + Object.assign({}, 복사할객체) 저렇게 앞에 빈객체를 만들면 뒤의 복사할객체가 앞에 빈곳에 복사되고!
+        // Object.getOwnPropertySymbols(객체) 객체의 키 중 심볼을 배열로 반환
+        // Reflect.ownKeys(객체) 객체의 키들을 배열로 반환(심볼타입, 문자열타입)
+                             // 객체의 키: 문자열 아님 심볼타입만 가능 -> 우리가 적는 name이런거 다 문자열~
+        
+    </script>
+</body>
+</html>

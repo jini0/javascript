@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <form action="" name="myForm">
+        <p>전체선택<input type="checkbox" name="allSelect"></p>
+        <hr>
+        <p>사과<input type="checkbox" name="fruits" value="사과"></p>
+        <p>수박<input type="checkbox" name="fruits" value="수박"></p>
+        <p>바나나<input type="checkbox" name="fruits" value="바나나"></p>
+        <p>오렌지<input type="checkbox" name="fruits" value="오렌지"></p>
+        <p><button id="btn">확인</button></p>
+        <p id="result"></p>
+    </form>
+    <script>
+        let form = document.forms.myForm;
+        const btn = document.querySelector('#btn');
+        btn.addEventListener('click',function(){
+            let fruitsInput = document.querySelectorAll('input');
+            let str = '';
+            fruitsInputs.forEach(input=>{
+                str = input.checked ? str+input.value : str;
+            })
+            document.querySelector('#result').innerHTML = str;
+        })
+    </script>
+</body>
+</html>

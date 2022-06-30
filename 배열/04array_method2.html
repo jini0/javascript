@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        let fruits = ['🍑','🍊','🍋','🍓','🍏']
+        //01. 문자로 변경하기 join()   --> 배열이 아니고 문자로 나옴
+        // let fruitsStr = fruits.join('');
+        let fruitsStr = fruits.join('_');   //배열아님 문자열임
+                                    //언더바 넣고 싶으면 '' 따옴표 사이에 _언더바 넣어주고
+                                    //* 넣고싶으면 ('*') 해주면 됨
+        console.log(fruitsStr);
+        // console.log(typeof fruitsStr);
+
+        //02. 문자를 배열로 변경하기 split()
+        // let str = "a,b,c,d,e";
+                    // ,와 *는 그냥 구별해주기위한 거
+        let str = "a*b*c*d*e";
+        // let strarr = str.split(',');
+        let strarr = str.split('*',2);
+                                // 2개만 있게 하고 싶다~ -->a/b만 뜸
+                                // split()클릭하면 -> ? 속성 뜨는거: 안적어도 되는거 (number갯수속성)
+        console.log(strarr);
+
+        //03. 해당 조건에 맞는 하나의 값을 찾아서 반환 find()
+        let score = [60,70,80,90,95];
+        // let result = score.find(function(sc){
+        //     return sc > 70;
+        //     //60이 처음 들어옴 -> 70이 넘나요 -> 아니요
+        //     //70이 들어옴 -> 70이 넘나요 -> 아니요
+        //     //80이 들어옴 -> 70이 넘나요 -> 네   -->멈춤!!!!!!
+               //70넘는 숫자가 나왔으니 처음 나온 곳에서 멈춤!! -> 값은 80하나임!!!
+        // })
+        //화살표함수로 많이 쓸거임
+        // let result = score.find((sc)=>{return sc > 70})
+        let result = score.find(sc=> sc > 70)
+                                //여기 값이 하나면 소괄호 생략 가능
+                                    //여기 값이 하나면 중괄호 생략 가능
+                                    //return만 있을 때는 return도 생략 가능
+        console.log(result);    // 80 이 나올 거임
+        
+        //04. 해당 조건에 맞는 모든 값을 찾아서 배열로 반환 filter() ★★★
+        let result2 = score.filter(function(sc){
+            return sc > 60;
+        })
+        console.log(result2);
+
+        //05. 값을 수정 후 배열로 반환 map() ★★★
+        let result3 = score.map(function(sc){
+            return `점수는 ${sc}이다`;
+            // return sc+5;
+            //내가 원하는 형태로 값을 변경할 수 있음 --> score 값들에서 +5되게~
+            // return sc-5;
+            //내가 원하는 형태로 값을 변경할 수 있음 --> score 값들에서 -5되게~  등등등
+        })
+        console.log(result3);
+    </script>
+</body>
+</html>

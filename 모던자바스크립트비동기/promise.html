@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!-- 6.30 Promise -->
+    <script>
+        // 💗promise를 불러옴!💗
+        // 자바스크립트에서 제공해주는 객체 - callback함수를 가짐(resolve와 reject)
+        // 성공하면 resolve가 호출/실패하면 reject가 호출
+        // 1. 값에 promise를 넣어준고!
+        // const promise = new Promise((resolve, reject)=>{
+        //     console.log("수행중.....");
+        //     setTimeout(()=>{
+        //         // resolve("안녕안녕안녕");
+        //         reject(new Error('not Found'))      //new Error하면 error를 만듬!
+        //     },2000)
+        // })
+        // //promise를 사용하는 입장
+        // promise.then(value=>console.log(value))         //resolve -> then이 받음
+        // .catch(error=>console.log(error))               //reject -> catch가 받음(catch를 쓰면 error를 불러옴!)
+        // .finally(()=>{
+        //     console.log("끝났어요");            
+        // })
+
+
+
+        // // 2. 함수를 부르면 promise가 실행
+        // // 상태를 가짐!
+        // function fetchUser(){
+        //     return new Promise((resolve,reject)=>{
+        //         // return "green";                  // 이렇게 하고 콘솔을 보면 Promise {<pending>} 이렇게 뜸!!! [[PromiseState]]: "pending" -> pending상태(resolve나 reject가 호출이 되어야지 promise는 끝이남!)
+        //         // resolve("프로미스성공");          //Promise {<fulfilled>: '프로미스성공'}
+        //         reject(new Error('ddddd'));         //<rejected>: Error: ddddd
+        //     })
+        // }
+        // const user = fetchUser();
+        // console.log(user);
+        // //resolve나 reject가 호출이 되어야지 promise는 끝이남!
+
+
+        // // 3.
+        // const fetchNumber = new Promise((resolve, reject)=>{
+        //     setTimeout(()=>resolve(1),1000)         //1이라는 결과값을 가져오는 promise 만든고
+        // })
+        // //💛then은 값을 전달할 수도 있고 또다른 프로미스도 전달할 수 있음.
+        // //  => promise를 다시 return해줄 수 있다는거!
+        // fetchNumber.then(num => num*2)          //num=1, 결과 1*2=2     (resolve(1)이니까 num=1)
+        // .then(num => num*3)                     //2*3=6
+        // .then(num => {
+        //     return new Promise((resolve,reject)=>{
+        //         setTimeout(()=>resolve(num-1),1000)     //6-1=5
+        //     })  
+        // }).then(num => console.log(num));               //5가 콘솔에 찍힘!
+
+
+        // // 4. promise를 return해주는 함수들
+        // function getHen(){
+        //     return new Promise((resolve, reject)=>{
+        //         setTimeout(()=>resolve('암탉'),1000);
+        //     })
+        // }
+        // function getEgg(){
+        //     return new Promise((resolve, reject)=>{
+        //         setTimeout(()=>reject(new Error('계란을 받아올 수 없어')),1000);
+        //     })
+        // }
+        // function cook(egg){
+        //     return new Promise((resolve, reject)=>{
+        //         setTimeout(resolve(egg+'후라이'),1000);
+        //     })
+        // }
+        // getHen()
+        // .then(getEgg)               //getEgg의 Promise(()=>{setTimeout(()=>reject(new Error('계란을 받아올 수 없어')),1000)});를 받아오고!
+        // .catch(error=>{
+        //     return '햄';            //error를 catch로 받아서 다른애로 return    => 그래서 최종적으로! cook(egg)대신 cook(햄)이 담기는거!
+        // }).then(cook).then(console.log);       
+
+
+        // https://joshua1988.github.io/web-development/javascript/js-async-await/      - async&await 참고하기!
+        //💙async는 promise를 더 편하게 쓸 수 있게 해줌!
+        //💙async를 함수 앞에 적으면 프로미스를 쓰지 않아도 함수 안에 블럭이 프로미스로 적용됨
+        //🧡await
+        //🧡async가 붙은 함수 안에서만 사용할 수 있음
+        // 5. 
+        // function delay(ms){
+        //     return new Promise((resolve, reject)=> setTimeout(resolve,ms));
+        // }
+        // async function getApple(){
+        //     await delay(2000);
+        //     return '사과';
+        // }
+        // async function getBanana(){
+        //     await delay(2000);
+        //     return '바나나';
+        // }
+        // async function pickFruits(){
+        //     const apple = await getApple();
+        //     const banana = await getBanana();
+        //     return `${apple}+${banana}`;
+        // }
+        // pickFruits().then(console.log);
+
+        //💙async만 붙으면 return해주는 애가 promise가 됨!
+        //💙함수 앞에 async가 붙으면 해당 함수는 항상 프로미스를 반환
+        //💙프로미스가 아닌 것을 프로미스로 감싸서 반환
+        // 6.
+        async function asyfu(){
+            return 1;
+        }
+        //promise가 분명히 없는데 then을 쓸 수 있음
+        asyfu().then(console.log);
+        async function asyfu2(){
+            return Promise.resolve(1);
+        }
+        asyfu2().then(console.log);         //1 1이 찍혀있음
+        //🧡await은 async가 붙어있는 함수에서만 사용 가능
+        //🧡await 프로미스가 처리될 때까지 기다림
+        //🧡await async 키워드가 있는 함수 안에서만 사용가능 (일반 함수에는 await사용불가)
+        async function promiseF(){
+            let promise = new Promise((resolve, reject)=>{
+                setTimeout(()=>resolve("완료!"),1000)
+            });
+            let result = await promise;         //바로 이 값을 담기지 않고 await이 실행될 때까지 기다리는 애! 비동기 전송값을 기다리고 있는거- 기다리다가 그제서야 변수의 값을 담아주는거
+        }                                       //1초가 지나서! 값을 받아서 '완료!' 가 뜨는거!!!!!
+
+
+        // 7.
+        // 에러 핸들링
+        // async function f(){
+        //     await Promise.reject(new Error("에러발생!!!!"));
+        // }
+        // // 🧡await- promise가 거절되면 throw문을 작성한 것 처럼 try-catch를 사용할 수 있음!!
+        // //   실패했을 때 제어의 흐름을 catch블럭으로 넘겨주겠다!
+        // async function f(){
+        //     throw new Error("에러발생!!!!");
+        // }
+        // * 6.29에 react에서 lamp-shopping-client에서 작성한 코드 생각해보자!!!
+        async function f(){
+            try{
+                let response = await fetch('유효하지않은 주소');
+            }
+            catch(e){
+                console.log(e);
+            }
+        }
+    </script>
+</body>
+</html>

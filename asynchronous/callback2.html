@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // #자바스크립트는 동기적!
+        // #하나하나 순차적으로 실행시키는 애임
+
+        //*이렇게 해주면 1이 먼저 출력되고 그 다음 3 그 다음 2가 나올 거임(2는 2초뒤에 뜨니까!)
+        //1 3 2 가 되어버림
+        console.log('1');
+        setTimeout(()=>{
+            console.log('2');
+        },2000)
+        console.log('3');
+        function printConsole(){
+            console.log("자바스크립트 콜백!!!!!");
+        }
+        //synchronous콜백 실습
+        function printImmediately(print){
+            print();
+        }
+        printImmediately(printConsole);
+        //asynchronous콜백 실습  => 비동기!
+        function printWithDelay(print, timeout){
+            setTimeout(print, timeout);
+        }
+        printWithDelay(printConsole, 2000);        //timeout인 2초(2000)이 지난 다음 실행되는 함수!
+        //이런 콜백을 여러개 만들면 불편함 => 그래서 생겨난게 "Promise"
+
+
+        //*이렇게 하면 1이 먼저 있고 2-3이 같이 생겨남 차례대로
+        // console.log('1');
+        // for(let i=0; i<1000000000; i++){
+
+        // }
+        // console.log('2');
+        // console.log('3');
+    </script>
+</body>
+</html>

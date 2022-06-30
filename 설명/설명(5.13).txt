@@ -1,0 +1,117 @@
+Q4문제 <배열>
+문자열 내 p와 y의 개수
+
+문제설명
+대문자와 소문자가 섞여있는 문자열 s가 주어집니다. s에 'p'의 개수와 'y'의 개수를 비교해 같으면 true,
+다르면 false를 return하는 solution를 완성하세요. 'p', 'y' 모두 하나도 없는 경우는 항상 true를 리턴합니다.
+단, 개수를 비교할 때 대문자와 소문자는 구별하지 않습니다.
+
+예를 들어 s가 "pPoooyY"면 true를 return하고 "Pyy"라면 false를 return합니다.
+
+제한사항
+문자열 s의 길이 : 50 이하의 자연수
+문자열 s는 알파벳으로만 이루어져 있습니다.
+입출력 예
+      s               answer
+---------------------------
+ "pPoooyY"         true
+ "Pyy"                false
+
+
+
+
+-----------------------
+
+*DOM 문서객체모델
+웹브라우저에서 사용하려고 만든 언어
+-> 현재는 다양한 사용처와 플랫폼을 지원함
+
+window 호스트환경
+1)DOM(Document Object Model)
+웹페이지 내의 모든 콘텐츠를 객체로 나타내줌
+2)BOM(Browser Object Model)
+문서이외에 다른 것을 제어하기 위해 브라우저가 제공하는 추가 객체를 나타내줌
+3)Javascript
+
+window-전역객체 (this치면 window가 됐음)
+
+-
+탐색하기
+<html> -> document.documentElement	로 접근가능(나타낼 수 있음)
+<body> -> document.body        		로 접근가능(나타낼 수 있음)
+	//document라는 객체에서 시작 -> 얘를 통하면 어떤 노드에도 접근 가능
+<head> -> document.head	      		로 접근가능(나타낼 수 있음)
+
+-자식노드 탐색
+childNodes - 자식노드탐색
+children - 자식요소노드 탐색
+firstChild - 자식노드 중 첫번째 자식노드 탐색
+lastChild - 자식노드 중 마지막 자식노드 탐색
+firstElementChild - 자식요소노드 중 첫번째 요소노드 탐색
+lastElementChild - 자식요소노드 중 마지막 요소노드 탐색
+nodeName - 노드의 이름을 나타냄 (text노드는 #text / 요소노드는 태그명 / 주석노드는 #comment)
+nodeType -
+--
+노드라는 트리로 되어있음
+-text 노드
+-element(요소) 노드
+-주석 노드
+       --> 얘네들 각각을 하나의 객체로 봄
+
+cf.<DOM>childNodes.html
+
+   		html
+	head		body
+			 div
+			 div
+			 div
+
+--
+노드
+텍스트노드
+요소노드
+주석노드
+
+elem.nodeType
+
+----
+*선택한 요소의 내용 조작
+innerHTML = '<h1>안녕하세요</h1>'      //태그가 만들어짐 (html구조도 바꾸고 싶을때)  - 얘만 써도됨
+textContent = '<h1>안녕하세요</h1>'     //태그가 만들어지지 않고 그냥 문자로
+
+------------
+*요소 생성하기
+1)요소노드 생성하기
+document.createElement(tag)
+2)텍스트노드 생성하기
+document.createTextNode('안녕하세요')
+
+*요소 추가하기
+1)node.append - 노드나 문자열을 node끝에 추가합니다.
+2)node.prepend - 노드나 문자열을 node맨 앞에 추가합니다.
+3)node.before - 노드나 문자열을 node이전에 추가합니다.
+4)node.after - 노드나 문자열을 node다음에 추가합니다.
+5)node.insertAdjacentHTML(where, html) - 원하는 위치에 html을 추가합니다.★
+'beforebegin' node의 바로 앞에 html을 추가
+'afterbegin' node의 첫번째 자식요소 앞에 html을 추가
+'beforeend' node의 마지막 자식요소 다음에 html을 추가
+'afterend' node의 바로 다음에 html을 추가
+
+*요소복제하기
+elem.cloneNode(true)
+
+*요소 삭제하기
+elem.remove()
+
+
+-----
+<DOM>todolist.html
+https://www.w3schools.com/icons/tryit.asp?filename=tryicons_google-add_circle
+<!-- https://www.w3schools.com/icons/google_icons_content.asp 아이콘 가져오기 -->
+
+CSS의 gradient
+https://pepepien.tistory.com/297
+https://webgradients.com/  참고해서 복사해서 넣을 수 있음
+
+
+

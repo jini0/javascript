@@ -1,0 +1,96 @@
+클래스 - es6
+클래스
+
+
+
+오브젝트 - 실제 데이터를 넣어서 나오는 객체
+
+ex>
+붕어빵 틀 : 클래스
+틀 안에 밀가루 팥 넣어서 찍어내는 붕어빵이 : 오브젝트
+
+user1 = {
+	name: 'green',
+	age: '19',
+	isjob: false,
+}
+user2 = {
+	name: 'blue',
+	age: '32',
+	isjob: true,
+}
+user3 = {
+	name: 'pink',
+	age: '32',
+	isjob: true,
+}
+
+-->name / age / isjob 을 계에에속 적기 힘듬
+-->객체를 만들기 위한 틀
+
+생성자함수
+function User(name, age, isjob){
+	this.name = name;
+	this.age = age;
+	this.isjob = isjob;
+}
+let user1 = new User('green',32,true);
+let user2 = new User('blue',19,false);
+let user3 = new User('pink',32,true);
+
+--
+class 클래스명 {
+	//생성자
+	constructor(name, age){
+		this.name = name;
+		this.age = age;
+	}
+	speak() {
+		//console.log(this.name);
+		console.log('hello');
+	}
+}
+let min = new 클래스명('min',30)
+
+
+--------------
+<객체> 13extends.html
+
+* extends 키워드   -> 클래스를 상속할 때 사용
+- 클래스 상속을 사용하면 클래스를 다른 클래스로 확장을 할 수 있습니다. 
+- 기존에 존재하던 기능을 토대로 새로운 기능을 만들 수 있습니다.
+
+* 메서드 오버라이딩
+상속받은 클래스의 메서드를 새로운 기능으로 재정의
+- 키워드 super를 사용하면 부모클래스에 정의된 메서드도 호출가능
+- super는 부모 생성자를 호출하는데, 자식 생성자 내에서만 사용할 수 있음
+
+* 생성자 오버라이딩
+- 상속 클래스의 생성자에겐 반드시 super()를 호출해야 합니다.
+class Animal {
+	constructor(name){
+		this.speed = 0;
+		this.name = name;
+	}
+}
+맞는거
+class Rabbit extends Aniaml {
+	constructor(name, earLength){
+		super(name);		(O) //위에 상속받아서 온 name은 위에도 있어서 super에 안담아주면 error가 발생함
+		this.earLength = earLength;
+	}
+}
+
+
+--
+틀린거
+class Rabbit extends Aniaml {
+	constructor(name, earLength){
+		this.earLength = earLength; (X)  // 이렇게만 적어주면 name은 부모요소의 constructor에 name이 있어서 error발생
+	}
+}
+
+
+
+
+

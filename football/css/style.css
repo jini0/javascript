@@ -1,0 +1,217 @@
+@import url("http://fonts.googleapis.com/css?family=Orbitron");
+* { padding: 0; margin: 0;}
+li { list-style: none; }
+a { text-decoration: none; }
+img { border: 0; vertical-align: top; }
+body { width: 100%; height: 23000px; font-family:Orbitron;
+font-size: 13px; letter-spacing: 2px; }
+/* 배경이미지 */
+.bg {
+	position: fixed; 
+	/* 스크롤해도 멈춰있도록 fixed */
+	width: 100%;
+	height: 100vh;
+	top:0;
+	left:0;
+	background: url("../img/bg.jpg") no-repeat center top;
+	background-size: cover;
+ }
+
+ /* 로고 */
+ h1 { position: fixed; top: 40px; left: 70px;}
+ h1 img { width: 130px; }
+ 
+ /* 상단네비 */
+ .topmenu {
+	position: fixed; top: 50px; right: 50px; 
+	display: flex;
+	z-index: 10;
+ }
+ .topmenu ul {
+	display: flex;
+ }
+ .topmenu ul:nth-child(1) a {
+	display: block;
+	font-size: 14px;
+	transition: 0.5s;
+	opacity: 0.5;
+ }
+ .topmenu ul:nth-child(1) li {
+  padding-left: 50px;}
+ .topmenu ul:nth-child(1) li:hover a {
+	transform: scale(1.5);
+	opacity: 1;
+ } 
+ .topmenu ul a {
+	color: #fff;
+ }
+ .topmenu ul:nth-child(2) {
+	padding-left:30px;
+ }
+ .topmenu ul:nth-child(2) li {
+	padding-left:20px;
+ }
+ .topmenu ul:nth-child(2) .fa {
+	font-size: 18px; 
+	transition: 0.5s;
+	transform : scale(1);
+ }
+ .topmenu ul:nth-child(2) li:hover .fa {
+	transform : scale(1.5);
+	opacity: 1;
+ }
+
+ /* 왼쪽메뉴 */
+ .leftnav {
+	position: fixed;
+	top: 50%;
+	transform: translateY(-50%);
+	z-index: 10;
+	left: 100px;
+ }
+ .leftnav li {
+	width: 150px;
+	height: 30px;
+	margin-bottom: 20px;
+	font-size: 13px;
+	text-align: center;
+	position: relative;
+ }
+ .leftnav li a { color:#fff; }
+ .leftnav strong { 
+	 position: absolute; 
+	 top: 8px; 
+	 left: 20px; 
+	 font-size: 14px;
+ }
+ .leftnav span {
+	display: block;
+	width: 3%;
+	height: 100%;
+	position: absolute;
+	transform: skewX(-30deg);
+	transition: 0.5s;
+ }
+ .leftnav li.on span, .leftnav li:hover span {
+	/* hover할 때나 on이 붙었을 때 */
+	width: 100%;
+ }
+ .leftnav li:nth-child(1) span {
+	background: #ff0f51;
+ }
+ .leftnav li:nth-child(2) span {
+	background: #fffb02;
+ }
+ .leftnav li:nth-child(3) span {
+	background: #b57de4;
+ }
+ .leftnav li:nth-child(4) span {
+	background: #7cf923;
+ }
+ .leftnav li:nth-child(5) span {
+	background: #3dbdfa;
+ }
+ /* 컨텐츠 영역 */
+ section {
+	width: 1200px;
+	height: 700px;
+	position: fixed;
+	left: calc(50% - 600px);
+	top: calc(50% - 350px);
+	z-index: 1;
+	perspective: 2300px;
+	/* 부모요소에 perspective지정해줘서 원근감!!! */
+ }
+ section article {
+	width: 1200px;
+	height: 700px;
+	position: absolute;
+	top: 0;
+	left: 0;
+	opacity: 0.5;
+	z-index: 8;
+ }
+ section article.on {
+	z-index: 9;
+	opacity: 1;
+ }
+ section article:nth-child(1){
+	transform: translateZ(0px);
+ }
+ section article:nth-child(2){
+	transform: translateZ(-5000px);
+ }
+ section article:nth-child(3){
+	transform: translateZ(-10000px);
+ }
+ section article:nth-child(4){
+	transform: translateZ(-15000px);
+ }
+ section article:nth-child(5){
+	transform: translateZ(-20000px);
+ }
+ /* 이미지 배치 */
+ section article img {
+	position: absolute;
+ }
+ /* absolute로 이미지들을 줘서!! 이미지들이 겹쳐질 수 있게 한거임 */
+ section div {
+	position: absolute; width: 450px;
+	padding: 30px 60px; color:#fff;
+ }
+section div h3 {
+	font-size: 60px; letter-spacing:0; line-height: 1.5;
+}
+
+/* 첫번째 콘텐츠 */
+section article:nth-child(1) div  {
+	bottom: 100px; right: -100px;
+}
+section article:nth-child(1) h3 {
+	color: #ff0f51;
+}
+.obj11 { bottom: -100px; left: -270px; }
+.obj12 { top:-85px; right: -598px; }
+.obj13 { bottom: 20px; left: -100px;}
+
+/* 두번째 콘텐츠 */
+section article:nth-child(2) div  {
+	bottom: 200px; right: -100px;
+}
+section article:nth-child(2) h3 {
+	color: #fffb02;
+}
+.obj21 { bottom: -420px; right: -710px; }
+.obj22 { bottom:-100px; right: -50px; }
+
+/* 세번째 콘텐츠 */
+section article:nth-child(3) div  {
+	bottom: 200px; right: -100px;
+}
+section article:nth-child(3) h3 {
+	color: #b57db4;
+}
+.obj31 { bottom: 70px; right: 110px; }
+.obj32 { bottom:-150px; left: 100px; }
+
+/* 네번째 콘텐츠 */
+section article:nth-child(4) div {
+	bottom: 100px; right: -100px;
+}
+section article:nth-child(4) h3 {
+	color:#7cf923;
+}
+.obj41 { bottom: -150px; left: 350px; }
+.obj42 { top: -255px; right: 167px; }
+.obj43 { bottom: -120px; left:-100px;}
+
+/* 다섯번째 콘텐츠 */
+section article:nth-child(5) div {
+	bottom: 100px; right: -100px;
+}
+section article:nth-child(5) h3 {
+	color: #3dbdfa;
+}
+.obj51 { bottom: -290px; left:-10px; }
+.obj52 { top: 170px; right: 30px; }
+.obj53 { bottom: 0; left: -30px; }

@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        li { list-style: none; }
+        #wrap {
+            width: 70%;
+            height: 100vh;
+            margin: 300px auto;
+        }
+        ul {
+            display: flex;
+            flex-direction: row;
+            justify-content: center;
+            align-items: center;
+        }
+        ul > li img {
+            width: 100%;
+        }
+    </style>
+</head>
+<body>
+    <div id="wrap">
+        <ul>
+            <li><img src="../images/img_lights1.jpg" alt="첫번째 사진입니다." onclick="liView(this)" class="imgSize"></li>
+            <li><img src="../images/img_lights2.jpg" alt="두번째 사진입니다." onclick="liView(this)" class="imgSize"></li>
+            <li><img src="../images/img_lights3.jpg" alt="세번째 사진입니다." onclick="liView(this)" class="imgSize"></li>
+            <li><img src="../images/img_lights4.jpg" alt="네번째 사진입니다." onclick="liView(this)" class="imgSize"></li>
+        </ul>
+    </div>
+    <script>
+        function liView(a){
+            document.querySelector('.imgSize').setAttribute("style", "width: 150%" );
+            console.log(a);
+        }
+    </script>
+</body>
+</html>

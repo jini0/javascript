@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // 자바스크립트는 동기적처리하는 애임
+        // function work(){
+        //     const start = Date.now();
+        //     for(let i=0; i<1000000000; i++){
+
+        //     }
+        //     const end = Date.now();
+        //     console.log(end-start+'ms');
+        // }
+        function work(callback){            //callback은 그냥 매개변수 이름 a/b/~아무거나 적어도 상관X
+            setTimeout(()=>{
+                const start = Date.now();
+                for(let i=0; i<1000000000; i++){
+
+                }
+                const end = Date.now();
+                console.log(end-start+'ms');
+                callback();
+            },0)
+        }
+        console.log('workt호출하기');
+        // work();
+        work(()=>{
+            console.log('작업이 끝났어요');         //*콜백함수 - work라는 함수를 호출할 때 값이 아닌 인자로 받는 거
+        });
+        console.log('다음 작업');
+    </script>
+</body>
+</html>

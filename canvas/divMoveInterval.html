@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        div {
+            width: 200px;
+            height: 200px;
+            position: absolute;
+            left: 100px;
+            top: 100px;
+            background-color: tomato;
+            transition: 0.5s;
+        }
+    </style>
+</head>
+<body>
+    <div></div>
+    <script>
+        const div = document.querySelector('div');
+        let divLeft = 100;                  //원래 있던거 left: 100px; 이니까 그냥 100주기
+        //애니메이션 효과로..? 우리가 배운 비동기는 setInterval()뿐임
+        setInterval(function(){
+            div.style.left = divLeft+'px';
+            divLeft += 100; 
+            if(divLeft>window.innerWidth){
+                divLeft = -50;
+            }
+        },500)
+        // *setInterval 정지시키는 방법
+        // setInterval을 변수에 담았다가 clearInterval로 정지시켰었음
+    </script>
+</body>
+</html>

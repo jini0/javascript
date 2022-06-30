@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!-- 자바스크립트 쪽지시험 15번 문제 -->
+    <script>
+        function solution(absolute, signs){
+                //[4,7,12]: absolute [true,false,true]: signs
+            let answer = 0;
+            absolute.forEach((num, index) => {
+                    // 4는 num=4, index=0  / 7는 num=7, index=1 / 12는 num=12, index=2
+                answer = signs[index] ? answer+num : answer-num;
+                        //4의 signs는 true니까 answer+num
+                        //7의 signs는 fasle니까 answer-num
+                        //12의 signs는 true니까 answer+num
+            })
+            return answer;
+        }
+        console.log(solution([4,7,12],[true,false,true]));
+    </script>
+</body>
+</html>

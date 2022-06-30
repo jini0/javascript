@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!-- html5때 추가된 애들 -->
+    <!-- 모든 태그에 다 쓸 수 있음 -->
+    <div>
+        <!-- <button data-key="buttondata" data-value="10">버튼</button> -->
+        <button data-key1="buttondata" data-key2="10">버튼</button>
+    </div>
+    <script>
+        // 속성명을 만들 때 data- 를 해주면 됨 ->dataset이라는 객체로
+         
+        let btn = document.querySelector('button');
+        // console.log(btn);
+        // console.dir(btn);   // dir : 자세히 볼 수 있게 찍어주는 애
+                               // data- 라는 속성을 쓰면 -> dataset이라는 속성이 되는거임 --->객체타입으로 됨!
+                               // 콘솔창 - > dataset: DOMStringMap {key: 'buttondata', value: '10'}
+        console.log(btn.dataset);
+        //각 값에 접근하려면, 
+        console.log(btn.dataset.key1);
+        console.log(btn.dataset.key2);
+        let obj = {
+            name: 'green',
+            age: 30,
+        }
+    </script>
+</body>
+</html>

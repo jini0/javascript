@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <form action="" name="myForm">
+        <p>가격 <input type="text" name="price" id="price"></p>
+        <p>수량 
+            <select name="num" id="num">
+                <option value="10">10</option>
+                <option value="20">20</option>
+                <option value="30">30</option>
+                <option value="40">40</option>
+            </select>
+        </p>
+        <p>총가격 <input type="text" name="subPrice" id="subPrice"></p>
+    </form>
+    <script>
+        let form = document.forms.myForm;
+        let sbPrice = document.querySelector('#subPrice');
+        document.querySelector('#num').addEventListener('change',function(){
+            console.log(this.value);     
+        })
+
+    </script>
+</body>
+</html>

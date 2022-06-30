@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        li { list-style: none; }
+        #toggle {
+            width: 100%;
+            height: 100vh;
+            position: absolute;
+            top: 0;
+            right: -100%;
+        }
+        #btn {
+            position: absolute;
+            top: 100px;
+            right: 5px;
+            height: 30px;
+            width: 30px;
+            display: flex;
+            flex-direction: column;
+        }
+        /* #btn.on {
+            top: 100px;
+            right: 5px;
+        } */
+        .btn1 {
+            height: 3px;
+            width: 100%;
+            background: #333;
+            margin: 3px 0; 
+        }
+        #menu {
+            display: flex;
+            justify-content: center;
+            width: 100%;
+        }
+        .box {
+            width: 19%;
+            height: 100vh;
+            padding-top: 100px;
+            padding-left: 30px;
+            border-right: 1px solid #ccc;
+            transition: 0.5s;
+        }
+        .box.on {
+            background: #e60044;
+        }
+        h2 {
+            padding-bottom: 20px;
+        }
+        li {
+            line-height: 30px;
+        }
+        .x {
+            font-size: 30px;
+            width: 5%;
+            padding-top: 90px;
+            padding-left: 30px;
+        }
+    </style>
+</head>
+<body>
+    <div id="toggle" onclick="hideMenu()">
+        <div id="btn">
+            <span class="btn1"></span>
+            <span class="btn1"></span>
+            <span class="btn1"></span>
+        </div>
+    </div>
+    <div id="menu" onclick="showMenu()"> 
+        <div class="box">
+            <h2>회사소개</h2>
+            <ul>
+                <li>서브메뉴1</li>
+                <li>서브메뉴2</li>
+                <li>서브메뉴3</li>
+                <li>서브메뉴4</li>
+            </ul>
+        </div>
+        <div class="box">
+            <h2>회사소개</h2>
+            <ul>
+                <li>서브메뉴1</li>
+                <li>서브메뉴2</li>
+                <li>서브메뉴3</li>
+                <li>서브메뉴4</li>
+            </ul>
+        </div>
+        <div class="box">
+            <h2>사업분야</h2>
+            <ul>
+                <li>서브메뉴1</li>
+                <li>서브메뉴2</li>
+                <li>서브메뉴3</li>
+                <li>서브메뉴4</li>
+            </ul>
+        </div>
+        <div class="box">
+            <h2>투자정보</h2>
+            <ul>
+                <li>서브메뉴1</li>
+                <li>서브메뉴2</li>
+                <li>서브메뉴3</li>
+                <li>서브메뉴4</li>
+            </ul>
+        </div>
+        <div class="box">
+            <h2>인재경영</h2>
+            <ul>
+                <li>서브메뉴1</li>
+                <li>서브메뉴2</li>
+                <li>서브메뉴3</li>
+                <li>서브메뉴4</li>
+            </ul>
+        </div>
+        <div class="box">
+            <h2>미디어센터</h2>
+            <ul>
+                <li>서브메뉴1</li>
+                <li>서브메뉴2</li>
+                <li>서브메뉴3</li>
+                <li>서브메뉴4</li>
+            </ul>
+        </div>
+        <span class="x">X</span>
+    </div>
+    <script>
+        function showMenu(){
+                document.querySelector('#menu').classList.add('on');
+                document.querySelectorAll('.box')[0].classList.add('on');
+                document.querySelectorAll('.box')[1].classList.add('on');
+                document.querySelectorAll('.box')[2].classList.add('on');
+                document.querySelectorAll('.box')[3].classList.add('on');
+                document.querySelectorAll('.box')[4].classList.add('on');
+                document.querySelectorAll('.box')[5].classList.add('on');
+            }
+            function hideMenu(){
+                document.querySelector('#menu').classList.remove('on');
+            }
+            
+    </script>
+</body>
+</html>

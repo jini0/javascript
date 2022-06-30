@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // 평균 = 전체합/개수
+        //reduce()  -> 전체합계, 평균 구하기 용이함
+        function solution(arr) {
+            var answer = 0;
+            answer = arr.reduce((pre,cur)=>{
+                                //pre에 담기는게 return값이 계속해서 담기는거임!
+                return pre+cur;
+            })/arr.length;
+            return answer;
+        }
+        console.log(solution([1,2,3,4]));
+        console.log(solution([5,5]));
+    </script>
+</body>
+</html>

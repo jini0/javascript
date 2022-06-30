@@ -1,0 +1,77 @@
+UI userInterface
+API application programming interface
+
+문자열
+배열
+객체
+수학
+
+https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Global_Objects/String/split 참고
+
+
+---
+toString()
+
+let number2 = 20
+undefined
+
+number2
+20
+
+number2.toString()
+'20'
+
+20.toString()
+VM966:1 Uncaught SyntaxError: Invalid or unexpected token
+
+number2.toString(16)
+'14'
+
+let number3 = 56;
+undefined
+
+number3.toString(2)
+'111000'
+
+--------------
+Q문제1   -- <String>_string_ex.html
+문자열 s를 숫자로 변환한 결과를 반환하는 함수, solution을 완성하세요.
+
+제한조건
+s의 길이는 1이상 5이하입니다.
+s의 맨앞에는 부호(+,-)가 올 수 있습니다.
+s는 부호와 숫자로만 이루어져있습니다.
+s는 "0"으로 시작하지 않습니다.
+입출력 예
+예를 들어 str이 "1234"이면 1234를 반환하고, "-1234"이면 -1234를 반환하면 됩니다.
+str은 부호(+,-)와 숫자로만 구성되어 있고, 잘못된 값이 입력되는 경우는 없습니다.
+
+function solution(s){
+	let answer = 0;
+	실행문
+	return answer;
+}
+console.log(solution('12345'))
+
+---
+Q문제2
+가운데 글자 가져오기
+문제 설명
+단어s의 가운데 글자를 반환하는 함수, solution을 만들어 보세요.
+단어의 길이가 짝수라면 가운데 두글자를 반환하면 됩니다.
+
+제한사항
+s는 길이가 1이상, 100이하인 스트링입니다.
+입출력 예
+    s            return
+-------------------------
+"abcde"       "c"
+"qwer"        "we"
+
+function solution(s){
+	let answer = "";
+	실행문
+	return answer;
+}
+
+

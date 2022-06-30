@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        li { list-style: none; }
+        div {
+            width: 70%;
+            margin: 100px auto;
+        }
+        h2 {
+            background: pink;
+            color: #fff;
+            text-align: center;
+            padding: 30px;
+        }
+        li {
+            line-height: 40px;
+            border-bottom: 1px solid #ccc;
+            padding-left: 30px;
+        }
+        li span {
+            display: inline-block;
+            width: 30%;
+        }
+        li input {
+            border: none;
+            width: 300px;
+            height: 30px;
+            /* input은 인라인태그지만 높이 줄 수 있음 */
+            background: pink;
+            outline: none;
+            color: #fff;
+        }
+        li button {
+            background: pink;
+            color: #fff;
+            border-radius: 6px;
+            border: none;
+            outline: none;
+            padding: 6px 20px;
+        }
+    </style>
+</head>
+<body>
+    <div>
+        <h2>회원가입</h2>
+        <ul>
+            <!-- 일정한 간격 주고싶어서 li 안에 span주기 -->
+            <li><span>아이디</span><input type="text" id="userId"></li>
+            <li><span>비밀번호</span><input type="password" id="userPw"></li>
+            <li><span>비밀번호확인</span><input type="password" id="userPwch"></li>
+            <li><span>전화번호</span><input type="text" id="userPhone"></li>
+            <li><span>이메일</span><input type="text" id="userEmail"></li>
+            <li><button onclick="joinProcess()">회원가입</button></li>
+        </ul>
+    </div>
+    <script>
+    function joinProcess(){
+        // 변수에 따로 담으려고 let이용해서 변수 할당 해주기
+        let userId = document.querySelector('#userId').value;
+        let userPw = document.querySelector('#userPw').value;
+        let userPwch = document.querySelector('#userPwch').value;
+        //아이디를 입력했는지 체크
+        if(!userId){
+            // if(userId === "")로 적어도 됨
+            //값이 없으면~         ! : not 의미  -->not은 false를 true로 바꿔줌
+            // if는 true일 때만 실행됨
+            // userId의 값이 지정된게 아니라서 값이 없음-> false가 나올 것임 -> 이거에 !(not)을 붙여줘서 
+                // !false => true가 되어 나타남
+            // ex> !true -> false  
+                // !false -> true
+            alert('아이디를 입력하세요.');
+        }
+        //비밀번호가 8자인지 체크
+        if(userPw.length < 8 ){
+            alert('비밀번호는 8자리 이상 입력하셔야 합니다.')
+            // 8보다 작을 때 경고창이 뜨도록
+        }
+        //비밀번호와 비밀번호체크가 일치하는 지 체크
+        if(userPw !== userPwch){
+            alert('패스워드 확인이 일치하지 않습니다.')
+            // 패스워드와 패스워드확인이 일치 하지 않을 때 경고창이 뜨도록
+        }
+    }
+    </script>
+</body>
+</html>

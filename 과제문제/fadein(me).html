@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            width: 100%;
+            height: 100vh;
+        }
+        /* @keyframes fadein {
+            0%{ 
+                position: relative; 
+                left: 0; }
+            100%{ 
+                position: absolute; 
+                left: 50%; }
+        } */
+        .fadeImg {
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%,-50%);
+            animation: fadein 0.5s;
+        }
+    </style>
+</head>
+<body>
+    <div class="fadeImg"><img src="../images/img_lights1.jpg" alt=""></div>
+    <div class="fadeImg"><img src="../images/img_lights2.jpg" alt=""></div>
+    <div class="fadeImg"><img src="../images/img_lights3.jpg" alt=""></div>
+    <div class="fadeImg"><img src="../images/img_lights4.jpg" alt=""></div>
+    <script>
+        //사진이 옆으로 넘어가게하기...
+        let imgDivs = document.querySelectorAll('.fadeImg');
+        let indexNum = 0;
+        let nextNum;
+        for(let i=0; i<imgDivs.length; i++){
+            imgDivs[i].style.display = 'none';
+        }
+        imgDivs[0].style.display = 'block';
+        setInterval(function(){
+            nextNum = indexNum === 3? 0: indexNum+1;
+            imgDivs[indexNum].style.display = 'none';
+            imgDivs[nextNum].style.display = 'block';
+            indexNum = nextNum;
+        },3000)
+    </script>
+</body>
+</html>

@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="wrap">
+        
+    </div>
+    <ol id="ol">
+        <li>1</li>
+        <li>2</li>
+        <li>3</li>
+    </ol>
+    <div id="insert">
+        insert DIV입니다.
+    </div>
+    <script>
+        // 이런 방법 있고,
+        // let nDiv = document.createElement('div');
+        // nDiv.innerHTML = "<h1>안녕하세요</h1>"
+        // // 넣어줄 때는 append라는 메서드 사용
+        // wrap.append(nDiv);
+
+        //이렇게 우린 했었음
+        wrap.innerHTML = '<div><h1>안녕하세요요요</h1></div>';
+        let nP = document.createElement('p');       //태그를 하고 싶으면 create를 해줘서!!
+        let nLi1 = document.createElement('li');
+        let nLi2 = document.createElement('li');
+        nP.innerHTML = '<h2>이전이전이전</h2>';
+        nLi1.innerHTML = '추가한li1';
+        nLi2.innerHTML = '추가한li2';
+
+        ol.before(nP);
+        // ol.before('<p>이전</p>');       //innerHTML처럼 태그 적용되는게 아님 그냥 문자열처럼 저 글자가 다 적힘<p>이전</p> /p는 태그가 아니고 글자처럼 취급
+        // ol.before('이전');
+        ol.after('이후');
+        // ol.append('마지막에추가');
+        // ol.prepend('처음에추가');
+        ol.append(nLi1);
+        // ol.prepend(nLi1);    //nLi이미 위에 한번 써서 이렇게 하면 하나만 적용됨 -nLi2처럼 하나 더 만들어 줘야함
+        ol.prepend(nLi2);
+
+
+        // *요소 추가하기
+        // 1).append - 노드나 문자열을 node끝에 추가합니다.
+        // 2).prepend - 노드나 문자열을 node맨 앞에 추가합니다.
+        // 3).before - 노드나 문자열을 node이전에 추가합니다.(ol안이 아니라 바깥에 생기는거임🖤)
+        // 4).after - 노드나 문자열을 node다음에 추가합니다.(ol안이 아니라 바깥에 생기는거임🖤)\
+        // 🖤5)node.insertAdjacentHTML(where, html) - 원하는 위치에 html을 추가합니다.🖤
+        // 'beforebegin' node의 바로 앞에 html을 추가
+        // 'afterbegin' node의 첫번째 자식요소 앞에 html을 추가
+        // 'beforeend' node의 마지막 자식요소 다음에 html을 추가
+        // 'afterend' node의 바로 다음에 html을 추가
+
+        insert.insertAdjacentHTML('beforebegin', '<p>beforebegin입니다.</p>');    
+        insert.insertAdjacentHTML('afterbegin', '<h2>afterbegin입니다.</h2>');
+        insert.insertAdjacentHTML('beforeend', '<h3>beforend입니다.</h3>');
+        insert.insertAdjacentHTML('afterend', '<p>afterend입니다.</p>');
+    </script>
+</body>
+</html>

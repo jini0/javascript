@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        let set = new Set();    //빈 셋 만듦 - new Array()하면 빈배열 만든 것 처럼
+        let green = { name: 'green' };
+        let blue = { name: 'blue' };
+        let pink = { name: 'pink' };
+
+        set.add(green);
+        set.add(blue);
+        set.add(pink);
+        set.add(green);
+        console.log(set);
+        set.forEach((value,index)=>{
+            console.log(`value는 ${value}이다.`);
+            console.log(`index는 ${index}이다.`);
+        })
+
+        // let numSet = new Set ([1,2,3,4,5]);
+        // let numSet2 = new Set2 (["a","b","c","d","e"]);
+        
+        let numSet = new Set (["a","b","a","a","e"]);
+        // let newArr = new Array(...numSet);
+        let newArr = [...numSet];
+        console.log(numSet);
+        console.log(newArr);
+        numSet.forEach((value,index)=>{
+            console.log(`value는 ${value}이다.`);
+            console.log(`index는 ${index}이다.`);
+        })
+    </script>
+</body>
+</html>

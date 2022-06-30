@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        //배열메서드
+        //01 splice 배열에서 선택한 요소를 제거, 새로운 요소 추가  : 제거와 추가 다 가능
+        //구문 arr.splice(start,num,ele..) 
+        // 여기에서부터 몇개를 제거할거냐~
+        let arr = ['green','blue','red','yellow','pink'];
+        arr.splice(1,1,'tomato') //1번 인덱스에서부터 1개만 제거 후 그자리에 tomato 추가
+        //arr.splice는 delete와 다르게 배열의 요소도 제거 가능!!!
+
+        // 제거하지 않고 그 자리에 추가하고 싶으면 num에 0을 적어주면 됨
+        // arr.splice(1,0,'tomato')
+        console.log(arr);
+
+        // let arr = ['green','blue','red'];
+        // delete arr[1];
+        // delete를 이용해 삭제: index 1번인 blue는 사라짐!! 요소는 지웠지만 배열의 요소는 여전히 3개!!!(1번인 blue가 비어있는 걸로 생각)
+        // console.log(arr);
+
+        //02 slice 배열에서 시작인덱스부터 마지막 인덱스(마지막 인덱스는 제외)까지 반환
+        //구문 arr.slice(start,end)
+        let arr2 = [1,2,3,4,5,6,7,4];
+                //  0 1 2 3 4 5 6     : (1,4)니까 1번 index에서 부터 4개인데(2,3,4,5) 마지막 인덱스는 포함 안하니까 -->2,3,4 만!!!
+        let result = arr2.slice(1,4);    //(start,end) : end는 제외됨!!!(마지막 인덱스는 포함 안됨)
+        console.log(result);
+        console.log(arr2);
+
+        //03 indexOf 배열에서 해당 item이 있는지 탐색 후 item의 index를 반환
+        //(배열에 값이 없는 경우 -1을 반환)
+        //구문 arr.indexOf(item)   : 여기 있는 item의 값이 그 항목에 있는지 없는지 / 있다면 해당하는 index 번호를 불러옴
+        let result2 = arr2.indexOf(4);
+        // 숫자 4는 arr2에서 index 3번!!   -> 만약 숫자 4가 2번 있으면 젤 앞에꺼를 불러냄!!(첫번째 인덱스를 반환함)
+                                          // 7번 인덱스를 불러오지 않고 젤 앞의 4인 3번 인덱스를 불러옴
+        //만약 없는 걸 찾으면 -1을 불러옴
+        // let result2 = arr2.indexOf(11);
+        console.log(result2);
+
+        //04 includes 배열에서 해당 item이 있는지 탐색 후 있으면 true
+        //없으면 false 반환
+        //구문 arr.includes(item)
+        let result3 = arr2.includes(5);       // 배열에 해당하는 item값 有 ->true
+        // let result3 = arr2.includes(11);   // 배열에 해당하는 item값 X -> false
+        console.log(result3);
+
+        //05 join 배열 요소를 모두 합친 후 하나의 문자열을 만들어줌
+        //(배열을 문자열로 변경가능)
+        // let result4 = arr2.join();
+        // let result4 = arr2.join(';');
+        // ()안에 값을 주면 요소 사이에 끼워넣을 수 있음
+        // let result4 = arr2.join('');
+        //그냥 붙이고 싶을 때 ''
+        let result4 = arr2.join(' ');
+        //한칸씩 띄어짐
+        let result0 = arr.join(',');
+        console.log(result4);
+        console.log(result0);
+
+        //06 concat 배열을 합쳐서 새로운 배열을 반환
+        let arr3 = ['🍒','🍓'];
+        let arr4 = arr3.concat(['🍖','🥩']);
+        console.log(arr4);
+    </script>
+</body>
+</html>

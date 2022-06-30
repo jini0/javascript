@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        li { list-style: none; }
+        #wrap {
+            width: 60%;
+            height: 100vh;
+            margin: 0 auto;
+            /* background: lightblue; */
+        }
+        #toDo {
+            width: 100%;
+            text-align: center;
+            height: 200px;
+            background: rgb(235, 66, 159);
+        }
+        #toDo h1 {
+            padding-top: 60px;
+            padding-bottom: 10px;
+            color: #fff;
+            font-size: 36px;
+        }
+        #toDo input {
+            width: 70%;
+            height: 50px;
+            border-radius: 20px;
+            border: none;
+            outline: none;
+        }
+        #toDo button {
+            border: none;
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            font-size: 40px;
+            line-height: 40px;
+            margin-left: 20px;
+        }
+        #write {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        /* #indi {
+            background: rgb(231, 231, 231);
+        } */
+        #indi > li {
+            padding: 10px 0;
+            padding-left: 100px;
+            background: rgb(231, 231, 231);
+        }
+    </style>
+</head>
+<body>
+    <div id="wrap">
+        <div id="toDo">
+            <h1>To do List</h1>
+            <div id="write">
+                <input type="text" id="text">
+                <button onclick="inputCheck()">+</button>
+            </div>
+        </div>
+        <div id="list">
+            <ul id="indi">
+
+            </ul>
+        </div>
+    </div>
+    <script>
+        let indiStr = '';
+        function inputCheck(){
+            let value = document.querySelector('input').value; 
+            document.querySelector('#indi').innerHTML = indiStr;
+            indiStr = indiStr + `<li>${value}</li>`;
+            document.querySelector('li').innerHTML = value;
+        }
+        inputCheck();
+    </script>
+</body>
+</html>

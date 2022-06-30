@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="./style.css">
+    <script defer src="./script.js"></script>
+    <!-- defer 안해주면 script를 밑에 해줘야함 -->
+</head>
+<body>
+    <div id="wrap">
+        <!-- 점수판 -->
+        <div class="div-scoreboard inner">
+            <div class="div-short-left">
+                <span>남은 슛 횟수</span>
+                <span id="shorts-left">15</span>
+            </div>
+            <div class="div-score">
+                <div class="div-score-list">
+                    <div class="div-score-name">컴퓨터</div>
+                    <div class="div-score-number" id="computer-score">0</div>
+                </div>
+                <div class="div-score-list">
+                    <div class="div-score-name">사람</div>
+                    <div class="div-score-number" id="user-score">0</div>
+                </div>
+            </div>
+            <div id="text">컴퓨터 부터 시작합니다.</div>
+        </div>
+        <!-- 조작부 -->
+        <div class="div-control-panel">
+            <div id="div-computer" class="div-panel">
+                <div>컴퓨터</div>
+                <button class="btn-computer">슛하기</button>
+            </div>
+            <div class="div-panel">
+                <div>사용자</div>
+                <button class="btn-user" id="btn-user2">2점슛</button>
+                <button class="btn-user" id="btn-user3">3점슛</button>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

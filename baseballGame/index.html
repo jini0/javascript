@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="./style.css">
+    <script defer src="./script2.js"></script>
+</head>
+<body>
+    <div id="wrap">
+        <div id="left">
+            <div id="filed"></div>
+            <div id="filed2"></div>
+            <div id="homeBase">Base</div>
+            <div id="Base1">1루</div>
+            <div id="Base2">2루</div>
+            <div id="Base3">3루</div>
+        </div>
+        <div id="right">
+            <div id="round">
+                <div id="round1">
+                    <p>1회 초</p>
+                </div>
+                <div id="count">
+                    <p id="strike">S ○○</p>
+                    <p id="ball">B ○○○</p>
+                    <p id="out">O ○○</p>
+                </div>
+            </div>
+            <div id="score">
+                <div id="computer">
+                    <p id="com_name">Computer</p>
+                    <p id="comscore">0</p>
+                </div>
+                <div id="VS">
+                    <p>VS</p>
+                </div>
+                <div id="User">
+                    <p id="user_name">User</p>
+                    <p id="userscore">0</p>
+                </div>
+            </div>
+            <div id="control">
+                <p id="text">야구게임 시작합니다.</p>
+                <div id="computer_btn">
+                    <button id="btn_strike" onclick="onComputerShoot()">스트라이크</button>
+                    <button id="btn_ball" onclick="onComputerShoot()">볼</button>
+                    <!-- <button id="com_btn_hit">안타</button>
+                    <button id="com_btn_homerun">홈런</button>
+                    <button id="com_btn_out">아웃</button> -->
+                </div>
+                <div id="user_btn">
+                    <button id="btn_swing" onclick="onUserShoot()">스윙</button>
+                    <button id="btn_see" onclick="onUserShoot()">볼보기</button>
+                </div>
+                <!-- <div id="user_btn">
+                    <button id="user_btn_hit">안타</button>
+                    <button id="user_btn_homerun">홈런</button>
+                    <button id="user_btn_out">아웃</button>
+                </div> -->
+            </div>
+        </div>
+    </div>
+</body>
+</html>

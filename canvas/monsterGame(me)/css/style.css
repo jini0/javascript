@@ -1,0 +1,239 @@
+/* reset */
+* { margin: 0; padding: 0; box-sizing: border-box; }
+li { list-style: none; }
+
+/* 전체 화면 */
+body {
+    background-color: #324145;
+    /* cursor : url(./cursor.cur) 5 5, auto;  */
+}
+#wrap {
+    width: 1800px;
+    height: 100vh;
+    margin: 0 auto;
+}
+/* 닌텐도 화면 */
+#background {
+    background: url('../img/switch.png') center center/ contain no-repeat;
+    width: 1800px;
+    height: 100vh;
+    position: relative;
+    margin: 0 auto;
+    filter: drop-shadow(5px 5px 5px #000);
+}
+/* canvas는 css로 크기 주는거 아님! */
+/* start화면 */
+#canvas {
+    position: absolute;
+    top: 19.5%;
+    left: 50%;
+    transform: translate(-50%);
+    background: url('../img/background.png') center center/ cover no-repeat;
+    /* opacity: 0; */
+}
+/* 게임화면 */
+#canvas1 {
+    position: absolute;
+    top: 19.5%;
+    left: 50%;
+    transform: translate(-50%);
+    background: url('../img/spm.png') center center/ cover no-repeat;
+    opacity: 60%;
+    filter: grayscale(40%);
+}
+/* 마우스 커서 */
+/* .cursor {
+    width: 50px;
+    height: 50px;
+    background-image: url('../img/cursor.png');
+    position: absolute;
+    z-index: 500;
+} */
+/* 방향키 */
+.small-btns {
+    position: absolute;
+    top: 50%;
+    left: 2.8%;
+    transform: translateY(-50%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.btnStyle {
+    background: #324145;
+    outline: none;
+    border: none;
+    border-radius: 50%;
+    line-height: 30px;
+    font-size: 30px;
+    padding: 15px;
+    cursor: pointer;
+}
+/* .small-btns button {
+    background: #324145;
+    outline: none;
+    border: none;
+    border-radius: 50%;
+    line-height: 30px;
+    font-size: 30px;
+    padding: 15px;
+    cursor: pointer;
+} */
+.top-btn {
+    margin-top: 55px;
+}
+.left-right-btn {
+    width: 170px;
+    display: flex;
+    justify-content: space-between;
+    margin-top: -5px;
+    margin-bottom: -5px;
+}
+.click {
+    background: #324145;
+    outline: none;
+    border: 5px solid #fff;
+    border-radius: 50%;
+    line-height: 24px;
+    font-size: 24px;
+    padding: 15px;
+    cursor: pointer;
+    animation: twinkle 0.5s linear 2;
+}
+@keyframes twinkle {
+    0% {
+      opacity: 0.2;
+    }
+    50% {
+      opacity: 1;
+    }
+    100% {
+      opacity: 0.2;
+    }
+}
+/* 저장 버튼 */
+.saveBtn {
+    position: absolute;
+    top: 52.7%;
+    right: 4.1%;
+    transform: translateY(-50%);
+    outline: none;
+    border: 5px solid #585659;
+    background: #302f45;
+    color: rgba(234, 234, 234, 0.966);
+    border-radius: 50%;
+    width: 120px;
+    height: 120px;
+    font-size: 20px;
+    cursor: pointer;
+}
+/* 메인정보영역(경험치) */
+#main-info {
+    pointer-events: none;
+    position: relative;
+}
+/* 플레이어 */
+#player {
+    position: absolute;
+    bottom: -742px;
+    left: 22%;
+    width: 100px;
+    height: 150px;
+}
+#level {
+    position: absolute;
+    bottom: -655px;
+    left: 28%;
+    color: #fff;
+    text-shadow: 2px 2px 3px rgb(68, 67, 67);
+    font-size: 20px;
+}
+#playerId {
+    position: absolute;
+    bottom: -680px;
+    left: 28%;
+    color: #fff;
+    text-shadow: 2px 2px 3px rgb(68, 67, 67);
+    font-size: 20px;
+}
+/* 경험치 게이지 */
+#level-gauge {
+    position: absolute;
+    bottom: -700px;
+    left: 28%;
+    -webkit-appearance: none;
+  }
+  /* bar색상 */
+  ::-webkit-progress-bar {
+    background-color: rgba(128, 128, 128, 0.788);
+    height: 30px;
+  }
+  /* value값 색상 */
+  ::-webkit-progress-value {
+    background-color: orange;
+  }
+/* 게임오버 */
+#gameover {
+    position: absolute;
+    top: 100px;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 3rem;
+    font-weight: bolder;
+    filter: drop-shadow(2px 2px rgb(124, 97, 97));
+    /* opacity: 0; */
+    animation: twinkle 0.5s linear 2;
+}
+@keyframes twinkle {
+    0% {
+      opacity: 0.2;
+    }
+    50% {
+      opacity: 1;
+    }
+    100% {
+      opacity: 0.2;
+    }
+}
+/* start 버튼 */
+#btn {
+    position: absolute;
+    top: 75%;
+    left: 50%;
+    transform: translate(-75%,-50%);
+    width: 120px;
+    height: 50px;
+    border: none;
+    border-radius: 20px;
+    outline: none;
+    box-shadow: 5px 5px red;
+    font-size: 30px;
+    color: white;
+    font-weight: 700;
+    background: linear-gradient(to bottom, rgb(247, 50, 50) 50%, orange 50%);
+    cursor: pointer;
+}
+#btn:hover {
+    color: rgb(54, 236, 17);
+}
+.hidden {
+    display: none;
+}
+/* 로딩창 아이디 입력 */
+#writeId {
+    position: absolute;
+    top: 64%;
+    left: 40%;
+    transform: (-64%,-40%);
+    width: 300px;
+    height: 55px;
+    outline: none;
+    background: #32414550;
+    filter: drop-shadow(1px 1px 1px rgba(112, 92, 92, 0.884));
+    border: none;
+    border-radius: 50px;
+    text-align: center;
+    color: #fff;
+    cursor: pointer;
+    font-size: 15px;
+}

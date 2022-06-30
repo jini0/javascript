@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!-- 메모장(5.12)-3 Q3.문제 참고 -->
+    <script>
+        // function solution(arr, divisor){
+        //     let answer = [];
+        //     //arr배열 요소 중 divisor로 나누었을 때 나머지가 0이되는 요소는
+        //     //answer에 넣기
+        //     //1)answer.push()
+        //     //2)filter를 사용하여 해당 배열을 answer에 할당
+
+        //     //1)방법
+        //     arr.forEach(val=>{
+        //         if(val % 5 == 0) answer.push(val)
+        //     })
+        //     return answer;
+        // }
+        // console.log(solution([5,9,7,10],5))   // arr(배열)는 [5,9,7,10]을 받고 divisor는 5를 받음
+
+        function solution(arr, divisor){
+            let answer = [];
+            //arr배열 요소 중 divisor로 나누었을 때 나머지가 0이되는 요소는
+            //answer에 넣기
+            //1)answer.push()
+            //2)filter를 사용하여 해당 배열을 answer에 할당
+
+            //1)방법
+            // arr.forEach(val=>{
+            //     if(val % divisor == 0) answer.push(val)
+            // })
+            // answer = answer.length == 0 ? [-1] : answer;
+            // return answer;
+            //2)방법
+            answer = arr.filter(val=> val % divisor === 0)
+            answer = answer.length == 0 ? [-1] : answer;
+            return answer;
+        }
+        console.log(solution([5,9,7,10],15))   //15로 나눴을 때 0되는 값X ->[-1]나와야함
+
+    </script>
+</body>
+</html>

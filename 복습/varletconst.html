@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // console.log(num);  // 자바스크립트는 위에서 아래로 읽어내려가는데 호출하는 거보다 선언이 아래 있어서 -> 콘솔 보면 error가 뜸
+                              // 변수를 선언도 하기 전에 호출 -> reference error
+        console.log(num3);    // var호이스팅 되어 제일 위로 가있다고 여겨져서 -> 선언전에 호출해도 에러는 발생하지 않음 
+                              // -> 그치만 값은 호이스팅 되지 않아 undefined만 출력됨                
+        var num3 = 10;        // var는 호이스팅 됨 - 값인 10은 호이스팅 안되고 변수를 선언해주는 선언부만 호이스팅됨 
+        //바깥에 적어준고 '전역변수(글로벌변수)''
+        let num;
+        num = 10;
+        const num2 = 20;  //선언과 동시에 할당해줘야함(선언만 하면 error뜸)
+        // for(let i=0; i<3; i++){
+        //     //이렇게 안에서 적어준거 '지역변수'
+        //     var varNum = i;         
+        //                             //함수 블럭만 블럭에서 되고 나머지는 바깥에서 쓴건 다 똑같음(나머지 변수는 다 무시)
+        //     // let varNum = i;      //let은 블럭스코프라 reference error로 뜸
+        //     console.log(varNum);
+        // }
+        // console.log(varNum);        
+        function myFunc(){
+            var varNum = 20;    //var는 함수스코프라서~  
+            console.log(varNum);  //여기 안에서만 !!!
+        }
+        myFunc(); //함수 호출
+        console.log(varNum);   //바깥에서 쓸 수 없음!!!
+    </script>
+</body>
+</html>

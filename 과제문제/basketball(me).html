@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        li { list-style: none; }
+        #wrap {
+            width: 1200px;
+            height: 600px;
+            margin: 0 auto;
+            text-align: center;
+            background: tomato;
+            color: #fff;
+            margin-top: 100px
+        }
+        #score {
+            background: rgba(245, 157, 41, 0.644);
+            width: 1190px;
+            height: 400px;
+            border: 2px solid #fff;
+            margin: 0 auto;
+            padding-top: 50px;
+            line-height: 30px;
+        }
+        .bg {
+            background: #333;
+            width: 70px;
+            height: 30px;
+            margin-left: 10px;
+        }
+        .bg2 {
+            background: #333;
+            width: 120px;
+            height: 40px;
+            line-height: 40px;
+        }
+        .shorts_left {
+            display: flex;
+            flex-direction: row;
+            justify-content: center;
+        }
+        #score  ul {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        #score  ul li {
+            border: 1px solid #fff;
+            padding: 50px 80px;
+            margin: 30px;
+        }
+        #shoot {
+            background: tomato;
+            height: 200px;
+            display: flex;
+            justify-content: center;
+            padding-top: 75px;
+        }
+        #shoot div:nth-child(1) {
+            margin-right: 200px;
+        }
+        #shoot button {
+            width: 100px;
+            height: 40px;
+        }
+    </style>
+</head>
+<body>
+    <div id="wrap">
+        <div id="score">
+            <div class="shorts_left">
+                <p>남은 슛 횟수</p>
+                <div class="bg">15</div>
+            </div>
+            <ul>
+                <li>
+                    <p>컴퓨터</p>
+                    <div id="computer-score" class="bg2">0</div>
+                </li>
+                <li>
+                    <p>사람</p>
+                    <div id="user_score" class="bg2">0</div>
+                </li>
+            </ul>
+            <p id="text"></p>
+        </div>
+        <div id="shoot">
+            <div id="div_computer">
+                <p>컴퓨터</p>
+                <button class="btn_com">슛하기</button>
+            </div>
+            <div id="div_user">
+                <p>사용자</p>
+                <button class="btn_user">2점슛</button>
+                <button class="btn_user">3점슛</button>
+            </div>
+        </div>
+    </div>
+    <script>
+        let userScore = 0;
+        let comScore = 0;
+        let comScoreE = document.querySelector('#computer_score');
+        let userScoreE = document.querySelector('#user_score');
+        let textE = document.querySelector('#text');
+        let isComputerTrun = true;
+        let shotsleft = 15;
+
+        function onComputerShoot(){
+            if(!isComputer){
+                return;
+                let shootType;
+            }
+            if(Math.random() < 0.5){
+               shootType = 2;
+            }else{
+               shootType = 3;
+            }
+            if(shootType===2){
+                if(Math.random() < 0.5){
+                    // 2점슛 50%확률로 성공
+                    textE.innerHTML = '컴퓨터가 2점슛을 성공시켰습니다!';
+                    comScore += 2;   
+                }else {
+                    // 실패시
+                    textE.innerHTML = '컴퓨터가 2점슛을 실패했습니다.';
+                }
+            }else{
+                if(Math.random() < 0.33){
+                    // 3점슛 30%확률로 성공
+                    textE.innerHTML = '컴퓨터가 3점슛을 성공시켰습니다!';
+                    comScore += 3;
+                }else {
+                    // 실패시
+                    textE.innerHTML = '컴퓨터가 3점슛을 실패했습니다.';
+                } 
+            }
+            comScoreE.innerHTML = comScore;
+        isComputerTrun = false;
+            let computerButton = document.querySelector('.btn_com');
+            for(let i=0; i<computerButton.length; i++){
+                computerButton[i].disabled = true;
+            }
+            let userButton = document.querySelector('.btn_user');
+            for(let i=0; i<userButton.length; i++){
+                userButton[i].disabled = false;
+            }
+        }
+    </script>
+</body>
+</html>

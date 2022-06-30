@@ -1,0 +1,184 @@
+자바스크립트 기본구문
+1. 변수
+let, var, const
+-let 
+: 변수선언가능(할당 없이 변수 선언만 가능 - 할당도 가능) / 블럭스코프
+  모던자바스크립트에서 사용하는 변수 선언방식
+-var 
+: 오래된 변수 선언방식- 요즘 X / 함수 스코프
+-const 
+: 선언과 동시에 할당
+  변하지 않는 수를 담아두는 데이터 그릇(->상수) --구별하기 위해 대문자로 표기함
+  /블럭 스코프
+  모던자바스크립트에서 사용하는 변수 선언방식
+
+cf.스코프 : 변수의 유효범위★   - 다시 공부하기..
+1. var   - 함수
+2. let, const    - 블럭
+
+--
+ex>
+let num;    :이렇게 선언만 가능 (let num = 10; 할당도 되고)//let은 자물쇠가 열려있다 생각 
+num = 10;     
+num = 20;   ->num 값 변경가능
+	
+const num2 = 20; ->선언하면서 할당도 같이 해야함 // num2값 변경X(상수)
+
+var num; 		:이렇게 선언만 가능(var num = 10; 할당도 되고)
+num = 10;	★var - 호이스팅됨!!! 
+		        - 조금 문제있는 변수사용법
+		할당 없이 선언한 상태는 undefinded가 되어있음 -> num의 값은 안뜨고 에러는 안나고 undefinded가 뜰거임
+		var에 있는 값까지 끌어올리진 않음  - 에러가 발생하지 않음
+		선언한 num만 호이스팅되고 그 값인 10은 끌어올라가지 않음!!!!
+
+
+2.함수
+*함수선언문 - function을 이용해서 만드는 함수
+ex>
+function 빵만들기(재료1,재료2){
+	let 빵 = 재료1 + 재료2 + '빵';
+	return '빵';
+}
+//빵만들기('밀가루','옥수수');    -->함수 호출해야 나옴
+	//함수 호출할 때, 함수에게 전달하는 어떤 값 : 인수
+	//밀가루 / 옥수수 -> 인수
+	//재료1에 밀가루가 담기고 재료2에 옥수수가 담김
+let 빵1 = 빵만들기('밀가루','옥수수');   ->위에꺼를 변수에 담은거
+let 빵2 = 빵만들기('찹쌀','팥');
+
+
+빵만들기 - 함수이름
+재료1 / 재료2 - 매개변수 (함수 내에서 사용하기 위한 변수)(인수를 받아주는 변수)
+return - 반환 (함수가 종료된다)  --> 재료1 재료2를 받아서 빵을 만듬
+밀가루 / 옥수수 -> 인수(실제 보내지는 값)
+
+*함수표현식
+ex>
+let 빵만들기 = function(재료1,재료2){		->let 변수에 빵만들기 함수 만드는거
+	let 빵 = 재료1 + 재료2 + '빵';
+	return '빵';
+}
+빵만들기();   				 ->함수 호출
+
+
+*콜백함수 
+https://blog.naver.com/psychozandy/222671758210  참고하기..
+https://blog.naver.com/dlrhkdgh3333/222630707171
+https://blog.naver.com/paustina96/222651251425
+
+*화살표함수 -> 함수표현식을 화살표함수로 가능
+let 빵만들기 = (재료1, 재료2) => {
+	        //매개변수 없으면 () 이렇게만 적음됨
+	let 빵 = 재료1 + 재료2 + '빵';
+	return '빵';
+}
+-특징
+① function 대신 =>
+② (재료1) 매개변수가 하나일 때는 () 소괄호 생략가능
+		   두개일때는 생략X
+③ 실행문이 한줄일 때는 {} 중괄호 생략가능 그 한줄이 return문일 때는 return 생략
+
+ex>
+let sum = function(num1,num2){
+	return num1 +  num2;
+}
+-->함수표현식으로
+let sum = (num1,num2) => {
+	return num1 +  num2;
+}
+-->더 생략
+let sum = (num1,num2) => num1 +  num2
+
+ex2>
+let sum = function(num1){
+	return num1 +  10;
+}
+-->함수표현식으로
+let sum = num1 => num1 +  10
+
+
+3. 배열
+let arr = [1,2,3,4,5,6,7];
+*배열의 길이 arr.length
+배열의 마지막 인덱스는 arr.length - 1
+갯수는 1부터 새고 / 길이는 0부터 새니까!
+
+*배열 메서드 
+push()/pop()/shift()/unshift()
+indexOf()
+includes()
+slice()
+splice()
+map()
+filter()
+find()
+some()
+
+-->잘 모르면 mdn사이트 가서!!(필요할때마다 검색)
+https://developer.mozilla.org/ko/docs/Learn/JavaScript
+-메서드 다 암기 안해도 되지만 기본구문은 암기해야함!!!
+	     
+4.객체(object)
+연관된 변수와 메서드를 하나로 묶어서 관리  -- key라는 값으로 value에 접근(key1/key2 등~)
+*객체리터럴방식
+let key4 = 'key add';
+let obj = {
+	key1 : value,
+	key2 : value,
+	[key4] : value3,	 	//대괄호 표기법으로 변수를 넣어줘야지 에러 발생안함 (->계산된 프로퍼티)
+	//key add : value3,           //띄어쓰기 하면 안됨 ->error  // 이렇게 해주고 싶으면 변수를 만들어서 담아야함
+	//key는 string타입만 담김 /value는 string, 숫자, 배열, boolean 등 다 됨
+}
+obj.key1			--->접근방식 (둘 다 가능)
+obj['key1']
+
+<접근방법>
+.   dot닷 이용 ->
+[]  대괄호 표기법 ->string타입으로 지정
+
+obj.key3 = true;  		 -->key3 추가하기(crazy짓... -->이렇게 쓰진 않음)
+delete obj.key1		-->delete 이용해서 삭제하기(crazy짓... -->이렇게 쓰진 않음)
+
+
+
+
+---
+Q
+https://blog.naver.com/pink_candy02/222366460440 주사위게임
+https://www.a-mean-blog.com/ko/blog/%EC%9E%90%EB%B0%94%EC%8A%A4%ED%81%AC%EB%A6%BD%ED%8A%B8%EB%A1%9C-%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%B0%8D-%EC%9E%85%EB%AC%B8/_/%EC%9E%90%EB%B0%94%EC%8A%A4%ED%81%AC%EB%A6%BD%ED%8A%B8%EB%A1%9C-%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%B0%8D-%EC%9E%85%EB%AC%B8-10-%EB%9E%9C%EB%8D%A4%ED%95%9C-%EC%88%98-%EC%83%9D%EC%84%B1-%EC%BD%94%EB%93%9C%EC%9D%98-%EC%9D%BC%EB%B0%98%ED%99%94-%EC%A3%BC%EC%82%AC%EC%9C%84-%EA%B2%8C%EC%9E%84-%EC%A3%BC%EC%84%9D
+
+
+--
+Q 농구게임 규칙
+
+1. 화면구성 
+슛횟수
+컴퓨터 점수/ 사용자 점수
+알림글
+컴퓨터는 : 슛하기 버튼
+사용자는 : 2점슛, 3점슛 버튼
+
+2. 게임규칙
+1)슛횟수는 15번입니다.
+2)컴퓨터가 먼저 시작합니다.
+3)컴퓨터는 슛하기를 클릭하면
+2점슛, 3점슛 50%확률로 선택하며, 
+2점슛은 50% 성공률/ 3점슛은 30% 성공률로
+성공과 실패를 결정한다.
+4)결과는 알림글 화면에 출력된다.
+5)성공하면 컴퓨터의 점수가 올라간다.
+6)컴퓨터 턴이 끝나면 사용자 버튼이 나타난다.(disabled)(disabled='true')
+7)사용자는 2점슛과 3점슛 버튼을 클릭할 수 있다.
+8)2점슛은 50%확률 3점슛은 30%확률로 성공
+9)성공하면 사용자 점수가 올라간다.
+10)사용자 턴이 종료되면 남은 슛횟수가 1씩 줄어든다.
+11)슛횟수가 0이되면 게임이 종료
+12)게임결과가 화면에 알림글 화면에 출력
+
+cf. 
+https://blog.naver.com/bbeeeack/222078723203
+https://blog.naver.com/pink_candy02/222141607560
+https://blog.naver.com/pink_candy02/222142548981
+
+
+

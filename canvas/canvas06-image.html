@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        canvas {
+            background-color: lightblue;
+        }
+    </style>
+</head>
+<body>
+    <canvas id="canvas" width="1000" height="500"></canvas>
+    <div style="display:none">
+        <img id="source" src="https://mdn.mozillademos.org/files/5397/rhino.jpg" alt="" width="300" height="227">
+    </div>
+    <script>
+        const canvas = document.querySelector('#canvas');
+        const ctx = canvas.getContext('2d');
+        // ctx.drawImage(image, dx, dy, dWidth, dHeight);
+        //*이건 그냥 이미지 불러와서 하는거
+        // const image = document.querySelector('#source');
+        // //이미지가 다 불러왔을 때 실행되어야하니까! -> addEventListener로 이벤트 줌(load 이벤트시! 함수 실행)
+        // image.addEventListener('load',e=>{
+        //     // ctx.drawImage(image,50,100,100,150);
+        //     // ctx.drawImage(image,10,30);          //좌표만 적어줄 수도 있음
+        //     ctx.drawImage(image,10,30,140,100);          
+        // })
+
+        //*이미지 객체 만들기
+        //1. document.createElement('img');    이렇게 img태그를 만들어서 해줄 수도 있고 2. new Image()라는 생성자 이용할 수도 있음
+        const imgElem = new Image();
+        imgElem.src = 'https://mdn.mozillademos.org/files/5397/rhino.jpg';      //img태그의 필수속성 src
+        imgElem.addEventListener('load',()=>{
+            ctx.drawImage(imgElem,50,50,100,60);
+            ctx.drawImage(imgElem,200,50,100,60);
+            //값을 8개를 줄 수 있는데 이미지에서 원하는 부분만 자르고 할 수 있음!
+            // ctx.drawImage(imgElem,10,10,50,50,400,100,200,140);     //앞에 적어준 10,10,50,50 : 이미지를 보여주고 싶은만큼 자를 수도 있음(crop)
+        })
+    </script>
+</body>
+</html>

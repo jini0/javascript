@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        //Promise()에 갖다대면,
+        // var Promise: PromiseConstructor
+        //new <any>(executor: (resolve: (value: any) => void, reject: (reason?: any) => void) => void) => Promise<any>
+                              //resolve는 실행될 때         / reject는 에러 발생시(실패시)
+
+        //1.프로미스 프로듀서
+            //promise는 그냥 상수의 이름 a/ b/ c 등 뭐 상관없음ㄴ
+        const promise = new Promise((resolve, reject)=>{            //new라는 키워드로 생성함
+            console.log('수행중......');
+            setTimeout(()=>{
+                //성공했는지 실패했는지 둘 다 가지 않고 하나만 감!(resolve나 reject 둘 중 하나만 써줘야함!)
+                resolve("결과");                        //-> then이 실행
+                // reject("에러발생");                  //-> catch가 실행
+                // reject(new Error('찾을 수 없어'));   //-> catch가 실행
+            },2000)
+        });      
+        console.log(promise);
+        //2.프로미스 컨슈머 (컨슈머 함수 : then, catch, finally)
+                    //value도 그냥 변수 이름 / 아무거나 적어도 상관 없음
+        // promise.then(value=>{
+        //     console.log(value);
+        // })
+        //*사용자 입장에서는 then으로 받음!
+        // promise.then(
+        //     //결과를 다룹니다.      /promise가 resolve를 보내면 얘가 실행됨
+        //     // function(a){
+        //     //     console.log('resolve실행');
+        //     //     console.log(a);
+        //     // },         
+        //     //*위에 껄 화살표 함수로 표현
+        //     // ()=>{},          //이렇게 해도 함수임✔
+        //     // (a)=>{console.log(a)}, 
+        //     (a)=>console.log(a), 
+
+        //     //에러를 다룹니다.      /promise가 reject를 보내면 얘가 실행됨
+        //     // function(e){
+        //     //     console.log('reject실행');
+        //     //     console.log(e);
+        //     // }   
+        //     //*위에 껄 화살표 함수로 표현
+        //     e=>{
+        //         console.log('reject실행');
+        //         console.log(e);
+        //     }        
+        // )
+
+        // 성공한 결과는 then이 처리 / 실패하면 catch가 처리 
+        // finally 실패하든 성공하든 promise가 끝나면 실행됨 - 잘 안씀
+        promise.then(value=>{
+            console.log(value);
+        })
+        .catch(error=>{
+            console.log(error);
+        }).finally(()=>{
+            console.log("끝났어요");
+        })
+
+        // ex>고객정보를 불러올건데 promise를 다 받아오면 알려줘 라는 약속을 만들어줌
+        // 다 받아지면 나한테 딱 알려주는게 promise
+        // 성공하면 값을 주고 실패하면 error
+    </script>
+</body>
+</html>

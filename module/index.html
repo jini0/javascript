@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <!-- <script src="sayHi.js"></script>
+    이렇게 html에서 script를 태그로 부르는게 아니라! script코드 내에서 script를 부르고 싶음! -->
+    <script type="module">
+        //1.
+        // import { sayHi, sayHi2 } from './sayHi.js';
+        // - { sayHi, sayHi2 } 얘네들을 받아줄 이름? -> '객체구조분해할당'({중괄호} 안에 적은거)  
+        // - from 'sayHi.js' :파일 경로 from으로 지정
+        // console.log(sayHi('green'));
+        // console.log(sayHi2('blue'));
+
+        //2.
+        // * as <obj> -> 객체 형태로 원하는 것들을 불러옴!(한꺼번에 모든 걸 받음)  /  * : 전체(모든거)
+        // ★say 라는 객체(obj)가 모든걸 가지고 있음!(객체 통으로 받은거) -> 그래서 불러줄 때도 say. 붙여줘야함!!
+        import * as say from './sayHi.js';
+        console.log(say);
+        console.log(say.sayHi('green'));
+        console.log(say.sayHi2('blue'));
+        //script코드 내에서 script를 부르고 싶음! -> 부르고 싶은거에 export 앞에 붙여주고 불러오고 싶은 곳에 import 해주기! + script의 type에 'module'해주기!
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        //❤class❤ - 16버전에서 추가된 새로운 애들임 // react리액트에서 많이 쓸거
+        //*클래스 선언하기
+        //이건 선언만 한거임(틀을 만들어 놓은거)
+        class Person {
+            constructor(name, age){
+                this.name = name;
+                this.age = age;
+            }
+            //메서드    - 기능은 메서드로 정리 가능
+            speak(){
+                console.log(`${this.name}: 안녕~`);
+            }
+        }
+        //*객체생성
+        const min = new Person('min',30);       //new라는 키워드로 객체 만든거
+        const green = new Person('green',25);       
+        console.log(min.name);
+        console.log(min.age);
+        // 객체가 가지고 있는 함수 => 메서드
+        min.speak();
+        green.speak();
+
+        //ex>
+        //클래스 상속
+        //extends를 이용하여 클래스를 상속받음
+        //네모, 삼각형, 원을 만들기 전 모양이라는 클래스를 생성
+        //모양이라는 클래스를 네모, 삼각형, 원이 상속을 받도록 함.
+        class Shape {
+            constructor(width,height,color){
+                this.width = width;
+                this.height = height;
+                this.color = color;
+            }
+            draw(){
+                console.log(`모양의 색은 ${this.color}로 그린다.`);
+            }
+            getArea(){
+                return this.width * this.height;        //사각형 넓이 구하기
+            }
+        }
+        class Rectangle extends Shape {
+            //Rectangle 사각형 클래스가 Shape이라는 클래스 상속받는거
+        }
+        class Triangle extends Shape {
+            //Triangle 사각형 클래스가 Shape이라는 클래스 상속받는거
+            //부모요소에 있는 메서드를 자식요소에서 재정의할 수 있음
+            //오버라이딩(오버라이드) : 필요한 함수만 재정의(덮어씌우는거!)
+            draw(){
+                //슈퍼를 이용하여 부모요소에 있는 메서드도 적용
+                super.draw();          
+                console.log('삼각형을 그립니다.');
+            }
+        }
+        const rectangle = new Rectangle(20,20,'blue');
+        rectangle.draw();
+        console.log(rectangle.getArea());
+        const triangle1 = new Triangle(20,40,'red');
+        triangle1.draw();               //Triangle안에 있는 메서드가 실행됨 - 가까이에 있는 메서드가 적용됨 / 자식요소에 없으면 부모요소에껄 extends를 해옴(상속)
+                                        //super를 써주면 부모요소꺼도 적용함
+        //instanceof
+        //a instanceof b : a가 b를 이용해서 만들어졌는지(상속받았는지)
+        console.log(rectangle instanceof Shape);        //true
+        console.log(rectangle instanceof Rectangle);    //true
+        console.log(triangle1 instanceof Shape);        //true
+        console.log(triangle1 instanceof Rectangle);    //false
+        console.log(rectangle instanceof Object);       //true (console.log(rectangle);콘솔을 보면 [[Prototype]]: Shape
+                                                        // constructor: class Rectangle
+                                                        // [[Prototype]]: Object) 이렇게 되어있음! Object도 그래서 true!
+        console.log(rectangle);
+    </script>
+</body>
+</html>

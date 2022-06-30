@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // https://programmers.co.kr/learn/courses/30/lessons/72410   코딩테스트_정규표현식
+        function solution(new_id){
+            let answer = '';
+            //1단계 아이디는 소문자로만 되어야함
+            new_id = new_id.toLowerCase(); 
+            console.log(`소문자로 변경: ${new_id}`);
+            //2단계 알파벳 소문자, 숫자, 빼기(-), 밑줄(_), 마침표(.)를 제외한 모든 문자를 제거  
+            new_id = new_id.replace(/[^a-z0-9\-\_\.]/g,"");       //^ 있으면 -> 이 규칙이 없는 애들이 선택됨(^:아닐때 의미)
+            console.log(`특수문자제거 변경: ${new_id}`);
+            //3단계 마침표(.)가 2번 이상 연속된 부분을 하나의 마침표로 변경
+            new_id = new_id.replace(/\.{2,}/g,".");
+            console.log(`연속마침표를 하나로 변경: ${new_id}`);
+            //4단계 마침표(.)가 처음이나 끝에 위치하면 제거
+            new_id = new_id.replace(/^\.|\.$/,"");                 //처음(^)에 있는 애 또는(|) 마지막($)애
+            console.log(`앞,뒤마침표를 제거: ${new_id}`);
+            //5단계 new_id가 빈문자열이라면 "a"를 대입해라
+            new_id = new_id.length === 0 ? "a" : new_id;        //new_id.length === 0  : length가 0이면->빈문자열
+            //6단계 new_id의 길이가 16자 이상이면 new_id 첫 15개 문자를 제외한 나머지 문자를 제거
+            //제거했을 때 마침표(.)가 new_id의 끝에 위치한다면 마지막(.)문자를 제거
+            new_id = new_id.length >= 16 ? new_id.slice(0,15) : new_id;         //slice로 15개 문자로 만들어준거
+            new_id = new_id.replace(/\.$/,"");
+            console.log(`15개만 남기기 제거: ${new_id}`);
+            return new_id;
+        }
+        // console.log(solution("...!@BaT#*..y.abcdefghijklm")); 
+        solution("...!@BaT#*..y.abcdefghijklm"); 
+    </script>
+</body>
+</html>

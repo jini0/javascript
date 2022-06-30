@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <!-- <script src="myScript.js"></script>를 주겠다는 거와 같은거임!!(밑에 해주는게!) -->
+    <!-- 개발자모드(F12) 해보면 생긴걸 볼 수 있음 -->
+</head>
+<body>
+    <script>
+        // function loadScript(src){
+        //     //script태그를 만들고 페이지에 script태그를 추가합니다.
+        //     //태그가 페이지에 추가되면 src에 있는 스크립트를 로딩하고 실행합니다.
+        //     let script = document.createElement('script');      //.createElement() : 태그를 만듬
+        //     script.src = src;
+        //     document.head.append(script);
+        // }
+        // loadScript("myScript.js");
+        // printHi();               //myScript.js파일 안에 printHi();함수를 불러오지 못함! (console에 안녕~~~~!!!!! 불러오지 못함)
+                                    //ReferenceError가 뜸.. =>loadScript("myScript.js");가 load도 되기전에 printHi()가 호출되어서! 
+                                    //=> 이렇게 쓰면 안됨!!★ (불러오기도 전에 실행되어서..)
+
+
+        function loadScript(src, callback){
+            let script = document.createElement('script');
+            script.src = src;
+            script.onload = () => callback();
+            document.head.append(script);
+        }
+        //❤콜백함수 써줘서 해야 오류가 안뜸!❤
+        loadScript("myScript.js", function(){
+            printHi();
+        })
+    </script>
+</body>
+</html>

@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        let fruits = ['🍉','🍒','🍓','🍏','🍊'];
+        // 이모지는 네트워크창(왼쪽 컨트롤 옆)+; 클릭하면 나옴
+        //  push : 맨 뒤에 추가   /  pop : 맨 뒤에 제거
+        //  unshift : 맨 앞에 추가  / shift : 맨 앞에 제거
+
+        // 마지막에 배열요소를 추가
+        fruits.push('🍍');
+        // 제일 앞에 배열요소를 추가
+        fruits.unshift('🥝');
+        console.log(fruits);
+        // 마지막 배열요소를 삭제
+        fruits.pop();
+        console.log(fruits);
+        // 제일 앞에 배열요소를 삭제 
+        fruits.shift();
+        console.log(fruits);
+        fruits.forEach(function(a,b,c){
+                //forEach       //괄호 안엔 그냥 이름 임의로 지정한거(이름은 안중요함)
+                                //이름에 상관없이 값은 정해져있음!!
+                                //그릇의 이름일 뿐 아무 의미 없음 !! 그냥 맨 첫번째는 무조건 배열의 값이 오고, 두번째 자리에는 index가 담기고, 세번째 자리에는 배열이담김
+                                //value 배열의 값 / index 배열의 인덱스 / array 배열그자체
+            console.log(`첫번째 매개변수 자리에는 값 ${a}`);
+            console.log(`두번째 매개변수 자리에는 index ${b}`);
+            console.log(`세번째 매개변수 자리에는 배열 ${c}`);
+        })
+
+        //배열의 순회 (배열의 반복)
+        // fruits.forEach(function(list){
+        //         console.log(list);
+        // })
+            // --->for로도 할 수 있다
+        // for(let i=0; i<fruits.length; i++){
+        //     console.log(fruits[i]);
+        // }
+
+
+        //forEach는 배열 매서드!! ->배열에서만 쓸 수 있음(유사배열도 가능)
+        // fruits.forEach(function(value){
+                                    // 하나있으니 하나만 나옴->값만(자리수가 정해져 있어서!)
+                                    // index만 받아오고 싶어도 (value, index) 이렇게 두개 다 적어야함!!!!
+                                    // 적고 index만 쓰면 됨
+        //     console.log(`첫번째 매개변수 자리에는 값 ${value}`);
+        // })
+ 
+        // 화살표 함수 ((위에꺼랑 같은 의미))
+        // fruits.forEach(value=>console.log(`첫번째 매개변수 자리에는 값 ${value}`))   
+                        //하나라서 중괄호 생략가능
+
+
+
+        //2번
+        // fruits.forEach((fruit)=>{
+        //     console.log(fruit)
+        // })
+
+        // forEach : array에 쓸 수 있는 속성
+        // (value 배열의 값 / index 배열의 인덱스 / array 배열그자체)  가 담김
+
+
+        //1번  (2번이랑 같은거임)
+        // for(let i=0; i<fruits.length; i++){
+        //     console.log(fruits[i]);
+        //     // 배열의 길이만큼 출력해줄 거임
+        // }
+        // console.log(fruits);
+
+
+
+        // 이렇게 하나하나 하는 거 불편해서 
+        // console.log(fruits[0]);
+        // console.log(fruits[1]);
+        // console.log(fruits[2]);
+        // console.log(fruits[3]);
+        // console.log(fruits[4]);
+    </script>
+</body>
+</html>

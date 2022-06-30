@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <ul>
+        <li onclick="liView(this)">menu1</li>
+        <li onclick="liView(this)">menu2</li>
+        <li onclick="liView(this)">menu3</li>
+        <li onclick="liView(this)">menu4</li>
+        <!-- 이렇게 이벤트를 사용할 때, this는 이벤트를 발생한 애로 바라보게 돌림 -->
+        <!-- this는 onclick -->
+    </ul>
+    <div><img src="../images/img_lights2.jpg" alt="여러분안녕하세요" onclick="imgSrc(this)"></div>
+    <script>
+        function imgSrc(img){
+            console.log(img.alt);
+        }
+        function liView(a){
+            console.log(a);
+        }
+        let user = {
+            name: 'green',
+            age: 20,
+            say: function() {
+                console.log(this.name);
+                //this 나 자신을 의미 -> say라는 메서드를 실행 
+                //let 뒤의 user가 this를 의미(객체에서 사용할 때는 앞의 애가 this)
+            }
+        }
+        let user2 = {
+            name: 'blue',
+            age: 30,
+            say(){
+                console.log(this.name);
+                //this는 user2를 의미
+            }
+        }
+        let obj = {
+            print: function(){
+                console.log(this);
+                //print는 객체 안에서 사용된 메서드!! 
+                //객체 안 this는 obj! 
+            }
+        }
+        function printThis(){
+            console.log(this);
+            //이렇게 사용하는 this는 윈도우를 바라봄
+            //함수에서 그냥 사용한 this -> 윈도우
+        }
+        user.say();
+        user2.say();
+        console.log(this);
+        //window라는 애가 나옴 -> 자바스크립트는 웹브라우저/노드에서 사용됨
+        //그때 가르키는 this는 제일 처음에는 윈도우임!!!(전역객체인 윈도우를 말함)
+        obj.print();
+
+        //원래 this는  윈도우를 가르킴 (웹브라우저에서 this가 바라보는 대상은 윈도우)
+        //객체에 메서드를 사용 -> 객체 메서드 안에 있는 this는 이 메서드를 호출한 객체를 바라봄(그 앞에서 날 호출한)
+        //this 나자신 이라는 키워드로 자주 사용
+        // addEventListener를 사용할 때도 this는 
+
+
+
+
+        
+
+
+        // let user = {
+        //     name: 'green',
+        //     age: 20,
+        //     say() {
+        //         console.log(name);
+        //         //error는 뜨지않지만 값이 안뜸
+        //     }
+        // }
+        // console.log(user.name);
+        // user.say();
+    </script>
+</body>
+</html>

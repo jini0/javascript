@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <button id="a">클릭</button>
+    <button id="b">클릭</button>
+    <button onclick="viewButton()">보이기/안보이기</button>
+    <script>
+        // '버튼 활성화' 자바스크립트로
+        let temp = 0;
+        function viewButton(){
+            if(temp==0){
+                document.querySelector('#a').disabled = true;
+                temp = 1;
+            }else {
+                document.querySelector('#a').disabled = false;
+                temp = 0;
+            }
+        }
+        // true ->
+    </script>
+</body>
+</html>

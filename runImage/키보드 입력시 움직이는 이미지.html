@@ -1,0 +1,105 @@
+<html>
+<meta charset="UTF-8" />
+<title>키보드 입력시 움직이는 이미지</title>
+
+<head>
+  <style>
+    body {
+      background-color: #ffffff;
+    }
+
+    @keyframes run {
+      to {
+        background-position: -192px 0;
+      }
+    }
+
+    #hero {
+      position: absolute;
+
+      width: 64px;
+      height: 64px;
+
+      background: url('./hero.png') no-repeat 0 0 / auto 64px;
+      animation: run 0.5s infinite steps(3);
+    }
+  </style>
+</head>
+
+<body>
+  <img id="hero" />
+  <script>
+    document.addEventListener("keydown", movePosition);
+
+    const arrowUpKey = "ArrowUp";
+    const arrowRightKey = "ArrowRight";
+    const arrowDownKey = "ArrowDown";
+    const arrowLeftKey = "ArrowLeft";
+
+    const moveValue = 50;
+
+    const heroElement = document.getElementById("hero");
+
+    function setInitPosition(element) {
+      element.style.top = "0px";
+      element.style.left = "0px";
+    }
+
+    function getPosition(element) {
+      const top = parseInt(element.style.top.replace("px", ""), 10);
+      const left = parseInt(element.style.left.replace("px", ""), 10);
+
+      return { top, left };
+    }
+
+    function setPosition(element, top, left) {
+      element.style.top = top + "px";
+      element.style.left = left + "px";
+    }
+
+    function movePosition(event) {
+      const { key } = event;
+      const toUp = key == arrowUpKey;
+      const toRight = key == arrowRightKey;
+      const toDown = key == arrowDownKey;
+      const toLeft = key == arrowLeftKey;
+
+      const { top, left } = getPosition(heroElement);
+
+      let nextTopPosition = top;
+
+      if (toUp) {
+        nextTopPosition -= moveValue;
+      }
+
+      if (toDown) {
+        nextTopPosition += moveValue;
+      }
+
+      if (nextTopPosition < 0) {
+        nextTopPosition = 0;
+      }
+
+      let nextLeftPosition = left;
+
+      if (toLeft) {
+        nextLeftPosition -= moveValue;
+      }
+
+      if (toRight) {
+        nextLeftPosition += moveValue;
+      }
+
+
+      if (nextLeftPosition < 0) {
+        nextLeftPosition = 0;
+      }
+
+      setPosition(heroElement, nextTopPosition, nextLeftPosition);
+    }
+
+    setInitPosition(heroElement);
+  </script>
+</body>
+
+</html>

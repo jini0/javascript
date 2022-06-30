@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="samplediv">
+        <h2>안녕하세요 금요일입니다.</h2>
+    </div>
+    <script>        
+        // *요소복제하기
+        // elem.cloneNode(true) html의 요소를 선택해서 복사할 애를 만들어주는거
+        // let div2 = document.querySelector('#samplediv').cloneNode(true);
+        // div2.querySelector('h2').innerHTML = '안녕히가세요';
+        // document.querySelector('#samplediv').after(div2);
+
+
+        // let div2 = document.querySelector('#samplediv').cloneNode(false);  // div#samplediv 가 하나 더 생기는데 안에 아무것도 없는 애가 생김
+        // document.querySelector('#samplediv').after(div2);
+
+
+        let div2 = document.querySelector('#samplediv').cloneNode(true);
+        div2.querySelector('h2').innerHTML = '안녕히가세요';
+        // document.querySelector('#samplediv').insertAdjacentElement('beforebegin', div2);
+        // document.querySelector('#samplediv').insertAdjacentElement('beforeend', div2);
+        // document.querySelector('#samplediv').insertAdjacentElement('afterbegin', div2);
+        document.querySelector('#samplediv').insertAdjacentElement('afterend', div2);
+    </script>
+</body>
+</html>

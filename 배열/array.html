@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        //배열선언
+        //1. new 키워드 사용 - 얘는 잘 사용하지 않음
+        let arr = new Array(); 
+        //2. 배열 리터럴 방식 - 많이 씀  / new라는 키워드 없이 빈배열 만들 수 있음
+        let arr2 = [];      
+        let arr3 = [1,2,3,4,5];
+        console.log(arr3[0]);
+        console.log(arr3[1]);
+        console.log(arr3);
+        console.log(arr3.length);
+        // 배열은 prototype을 보면 Array가 있고 Object도 있음
+
+        let fruits = ['🍉','🍊','🥝','🍓'];
+        fruits.push('🍐');          //마지막에 추가
+        fruits.unshift('🍇');       //제일 앞에 추가
+        console.log(fruits);
+        fruits.shift();       //맨 앞 제거
+        fruits.pop();         //마지막꺼 제거 
+
+        //❤forEach문 - 배열은 forEach쓰면 배열을 순차적으로 돌면서~! 쉽게 하려고 쓰는거임
+        fruits.forEach((item,index)=>{
+            console.log(item,index);
+        })
+        //❤for문
+        for(let i=0; i<fruits.length; i++){         //i가 인덱스가 될거임
+            console.log(fruits[i], i);
+        }
+        //❤for-of문 (배열요소의 값만 받음)
+        //그 값이 value에 담김!! let value of fruits - let 다음 변수에 담기는 거!
+        for(let value of fruits){
+            console.log(value);
+        }
+        
+        //❤배열 메서드❤
+        //pop(), push(), shift(), unshift()
+        //join(), indexOf(), includes(), splice(), slice()
+        //substr(), map(), find(), filter(), reduce()
+
+        //join  - 배열 변수.join을 해주면 문자열을 만들어줌 (원본 배열을 훼손 하진 않고)
+        let arrStr = fruits.join("");
+        let arrStr2 = fruits.join(",");
+        let arrStr3 = fruits.join("그린");
+        console.log(arrStr);
+        console.log(arrStr2);
+        console.log(arrStr3);
+        console.log(typeof(arrStr3));       //string 문자열 타입임!
+        //indexOf   - 있으면 순번(인덱스)을 반환 / 없으면 -1을 반환 
+        console.log(fruits.indexOf('🍒'));   
+        console.log(fruits.indexOf('🥝'));
+        //includes  - 배열에 얘가 있는지 없는지 - 불린형 데이터를 반환해줌(true/false)
+        console.log(fruits.includes('🍉'));  
+        console.log(fruits.includes('🥒'));
+        //❤map   - 원래 있던 배열을 훼손하진 않고 새로운 배열을 반환해주는거!
+        let scores = [80,60,70,90,95];   
+        let sc2 = scores.map(score=>{
+            return score+10;        //10점씩 더한 점수를 알고 싶다
+        })
+        //❤filter    - 내가 원하는 값만 다시 배열로 return해줌(조건에 맞는 애만 찾고싶을 때)
+        //조건에 해당하는 값을 가지고 있는 애들을(조건에 맞는 모든 값들을 배열로 return)(해당하는 모든 값들을 새로운 배열로 반환)
+        let sc3 = scores.filter(score=>{
+            return score>=70;
+        })
+        //find
+        //배열이 아닌 하나의 값만 return해줌 (해당하는 값 중에서 하나만!)
+        let sc4 = scores.find(score=>{
+            return score>=70;
+        })
+        //❤reduce
+        //변수.reduce((매개변수, 매개변수)=>{함수},초기값)
+        //초기값이 설정되어 있으면 초기값이 들어가고
+        //없으면 0번 값이 들어감 
+        let sum = scores.reduce((pre,cur)=>{
+            return pre+cur;         //결론 적으로 값 다 더한 값임!
+        },0)
+        console.log(sc2);           //[90, 70, 80, 100, 105]한 배열이 만들어짐
+        console.log(sc3);           //[80, 70, 90, 95] -- 조건에 해당하는 모든 값을 배열로 반환
+        console.log(sc4);           //80  -- 조건에 해당하는 하나만 불러옴
+        console.log(sum);
+        let avg = sum/scores.length;
+        console.log("점수배열의 평균은 "+ avg + " 입니다.");   //javascript의 결합연산자 +     / php의 결합연산자 .
+        console.log(`점수배열의 평균은 ${avg} 입니다.`);
+        //✔2차원 배열
+        let multyArr = [[1,10],[2,20],[3,30],[4,40]];
+        // 10이라는 값에 접근 - 전체에서 0번째[1,10]에서 [1,10]중에서 10은 2번째라 =>1번째 인덱스 ->[0][1]이렇게 해주면 됨
+        console.log(multyArr[0][1]);
+        // 1이라는 값에 접근
+        console.log(multyArr[0][0]);
+
+        multyArr.forEach(item=>{
+            item.forEach(i=>{
+                console.log(i);
+            })
+        })
+        //❤set   - 배열의 중복 제거시 사용 
+        //배열은 아니고 객체!! / {중괄호}로 되어있음(객체의 키!)(키/벨류 형태)
+        //[[Prototype]]: Set  을 눌러보면, 
+        //length는 없고 size가 있음! (size: 5)  // 배열이 length
+        let set = new Set();    //new 키워드 붙여서 만들 수 있음
+        set.add(1);       //add로 값을 넣어줌(추가해줌)
+        set.add(2);
+        set.add(3);
+        set.add(4);
+        set.add(5);
+        set.add(2);        //중복을 허용하지 않음   / 2가 두번 들어가지 않음
+        //여러가지 값이 있는, 중복된 값이있는 배열의 중복된 값을 제거할 때 주로 사용!
+        console.log(set);   //Set(5) {1, 2, 3, 4, 5}
+        let set2 = new Set();
+        let green = { name: 'green'};
+        let blue = { name: 'blue'};
+        let pink = { name: 'pink'};
+        set2.add(green);
+        set2.add(blue);
+        set2.add(pink);
+        console.log(set2);
+        // set은 배열의 index처럼 0/1/2/3~이 아니고 그냥 같은 값을 가짐
+        set2.forEach((value,index)=>{               //value랑 index가 같음
+            console.log(`value는 ${value}이다.`);   //자동으로 string으로 형변환해서 
+            console.log(`index는 ${index}이다.`);
+        })
+        set.forEach((value,index)=>{                //value랑 index가 같음
+            console.log(`value는 ${value}이다.`);   
+            console.log(`index는 ${index}이다.`);
+        })
+        //중복된 값 제거
+        let numSet = new Set([1,2,3,4,5,5,6,2,3,4]);
+        console.log(numSet);                //Set(6) {1, 2, 3, 4, 5, 6}
+        //중복된 값을 제거한 후, 다시 배열로 만들기
+        let newArr = [...numSet];   //스프레드(...): 펼치기 구문 이용해서 -얘가 가지고 있는 값을 다 펼치는 거
+        console.log(newArr);
+    </script>
+</body>
+</html>

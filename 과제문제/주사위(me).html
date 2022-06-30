@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        function dice(){
+            return Math.floor(Math.random() * 7);
+        }
+        function dicePrint(name, num){
+            console.log(`${name}의 주사위는 ${num}입니다.`);
+        }
+        function diceVictory(name){
+            console.log(`${name}의 승리입니다.`);
+        }
+        function diceDraw(){
+            console.log('비겼습니다.');
+        }
+        function diceGame(){
+            let name = '당신';
+            let comName = '컴퓨터';
+
+            let comData = dice(6);
+            dicePrint(comeName, comData);
+
+            let data = dice(6);
+            dicePrint(name, data);
+
+            if(comData > data){
+                diceVictory(comName);
+            }else if(comData < data){
+                diceVictory(name);
+            }else {
+                diceDraw();
+            }
+        }
+        diceGame();
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        // 1번
+        // https://blog.naver.com/pink_candy02/222366460440
+        // function dice(){
+        //     return Math.floor(Math.random()*6)+1; 
+        // }
+        // function printDice(name, dice){
+        //     console.log(`${name}의 주사위는 ${dice}입니다.`);
+        // }
+        // function printVictory(name){
+        //     console.log(`${name}의 승리입니다.`)
+        // }
+        // function draw(){
+        //     console.log('비겼습니다.')
+        // }
+        // function gameGo(){
+        //     const computer = '컴퓨터';
+        //     const person = '당신';
+        //     let com_dice;
+        //     let per_dice;
+        //     com_dice = dice();
+        //     printDice(computer, com_dice);
+        //     per_dice = dice();
+        //     printDice(person, per_dice);
+        //     if(com_dice === per_dice){
+        //         draw();
+        //     }
+        //     else if(com_dice > per_dice){
+        //         printVictory(computer);
+        //     }else{
+        //         printVictory(person);
+        //     }
+
+        // }
+        // gameGo();
+
+
+        //2번
+        //https://www.a-mean-blog.com/ko/blog/%EC%9E%90%EB%B0%94%EC%8A%A4%ED%81%AC%EB%A6%BD%ED%8A%B8%EB%A1%9C-%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%B0%8D-%EC%9E%85%EB%AC%B8/_/%EC%9E%90%EB%B0%94%EC%8A%A4%ED%81%AC%EB%A6%BD%ED%8A%B8%EB%A1%9C-%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%B0%8D-%EC%9E%85%EB%AC%B8-10-%EB%9E%9C%EB%8D%A4%ED%95%9C-%EC%88%98-%EC%83%9D%EC%84%B1-%EC%BD%94%EB%93%9C%EC%9D%98-%EC%9D%BC%EB%B0%98%ED%99%94-%EC%A3%BC%EC%82%AC%EC%9C%84-%EA%B2%8C%EC%9E%84-%EC%A3%BC%EC%84%9D
+        // 주사위 값을 생성하는 함수
+                // function dice(maxNumber){
+                //     return Math.floor(Math.random()*maxNumber)+1;
+                // }
+
+                // // 주사위 값을 출력하는 함수
+                // function printDice(name, num){
+                //     console.log(name+"의 주사위는 "+num+"입니다.");
+                // }
+
+                // // 승자를 출력하는 함수
+                // function printWinner(name){
+                //     console.log(name+"의 승리입니다.");
+                // }
+
+                // // 비겼음을 출력하는 함수
+                // function printDraw(){
+                //     console.log("비겼습니다.");
+                // }
+
+                // /*
+                // 위의 함수들은 게임의 각 부분을 담당하는 함수들이며,
+                // 아래 게임 메인 함수는 전체적인 프로그램의 진행을 담당합니다.
+                // */
+
+                // // 게임 메인 함수
+                // function diceGame(){
+                //     var computerName = "컴퓨터";
+                //     var yourName = "당신";
+
+                //     var computerDice = dice(6); // 컴퓨터의 주사위 값 을 구함
+                //     printDice(computerName, computerDice); // 컴퓨터 주사위 값 출력
+
+                //     var yourDice = dice(6); // 사용자의 주사위 값을 구함
+                //     printDice(yourName, yourDice); // 사용자 주사위 값 출력
+
+                //     if(computerDice > yourDice){ // 만약 컴퓨터의 주사위 값이 더 크면,
+                //         printWinner(computerName); // 컴퓨터 승리 문구 출력
+                //     }else if(computerDice < yourDice){ // 그렇지 않고 만약 사용자의 주사위 값이 더 크면,
+                //         printWinner(yourName); // 사용자 승리 문구 출력
+                //     }else { // 다 아니라면,
+                //         printDraw(); // 비겼음을 출력
+                //     }
+                // }
+    </script>
+</body>
+</html>

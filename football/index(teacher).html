@@ -1,0 +1,166 @@
+<!doctype html>
+<html lang="ko">
+ <head>
+  <meta charset="UTF-8">
+  <title>Document</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <script>
+	
+  </script>
+  <link rel="stylesheet" href="css/style.css">
+ </head>
+ <body>
+	<div class="bg"></div>
+	<h1><img src="img/logo.png" alt=""></h1>
+	<div class="topmenu">
+		<ul>
+			<li><a href="#">Home</a></li>
+			<li><a href="#">Info</a></li>
+			<li><a href="#">About</a></li>
+			<li><a href="#">Community</a></li>
+			<li><a href="#">Contact</a></li>
+		</ul>
+		<ul>
+			<li><a href="#"><i class="fa fa-twitter"></i></a></li>
+			<li><a href="#"><i class="fa fa-facebook"></i></a></li>
+			<li><a href="#"><i class="fa fa-envelope"></i></a></li>
+		</ul>
+	</div>
+	<ul class="leftnav">
+		<li><a href="#"><span></span><strong>Player 1</strong></a></li>
+		<li><a href="#"><span></span><strong>Player 2</strong></a></li>
+		<li><a href="#"><span></span><strong>Player 3</strong></a></li>
+		<li><a href="#"><span></span><strong>Player 4</strong></a></li>
+		<li><a href="#"><span></span><strong>Player 5</strong></a></li>
+	</ul>	
+	<section>
+
+	<!-- 첫번째 컨텐츠 -->
+		<article>
+			<img src="img/pic11.png" alt="" class="obj11">
+			<img src="img/pic12.png" alt="" class="obj12">
+			<img src="img/player1.png" alt="" class="obj13">
+			<div>
+				<h3>Lorem Ipsum</h3>
+				<p>Lorem Ipsum is simply dummy text of the printing and typesetting industry.
+				</p>
+			</div>
+		</article>
+
+	<!-- 두번째 컨텐츠 -->
+		<article>
+			<img src="img/pic21.png" alt="" class="obj21">
+			<img src="img/player2.png" alt="" class="obj22">
+			<div>
+				<h3>Lorem Ipsum</h3>
+				<p>Lorem Ipsum is simply dummy text of the printing and typesetting industry.
+				</p>
+			</div>
+		</article>
+
+	<!-- 세번째 컨텐츠 -->
+		<article>
+			<img src="img/pic31.png" alt="" class="obj31">
+			<img src="img/player3.png" alt="" class="obj32">
+			<div>
+				<h3>Lorem Ipsum</h3>
+				<p>Lorem Ipsum is simply dummy text of the printing and typesetting industry.
+				</p>
+			</div>
+		</article>
+
+	<!-- 네번째 컨텐츠 -->
+		<article>
+			<img src="img/pic41.png" alt="" class="obj41">
+			<img src="img/pic42.png" alt="" class="obj42">
+			<img src="img/player4.png" alt="" class="obj43">
+			<div>
+				<h3>Lorem Ipsum</h3>
+				<p>Lorem Ipsum is simply dummy text of the printing and typesetting industry.
+				</p>
+			</div>
+		</article>
+
+	<!-- 다섯번째 컨텐츠 -->
+		<article>
+			<img src="img/pic51.png" alt="" class="obj51">
+			<img src="img/pic52.png" alt="" class="obj52">
+			<img src="img/player5.png" alt="" class="obj53">
+			<div>
+				<h3>Lorem Ipsum</h3>
+				<p>Lorem Ipsum is simply dummy text of the printing and typesetting industry.
+				</p>
+			</div>
+		</article>
+	</section>
+    <script>
+        let arts = document.querySelectorAll('article');
+        let lis = document.querySelectorAll('.leftnav li');
+        lis.forEach((li,index)=>{
+            li.addEventListener('click',function(e){
+                //기존에 연결된 이벤트를 제거
+                e.preventDefault(); //li안에 a태그가 있음 --> a태그가 자체적으로 연결하는 이벤트가 있기 때문에! 이걸 제거해 줘야함!!
+                window.scrollTo({top:index*5000-1000, behavior:'smooth'});
+            })
+        })
+        document.addEventListener('scroll',function(){
+            let sct = document.documentElement.scrollTop;
+            console.log(sct);
+            arts.forEach((art,index) => {
+                art.style.transform = `translateZ(${index*-5000+sct}px)`;
+            })
+            // if(sct>=0 && sct<5000){
+            //     arts.forEach(art=>art.classList.remove('on'));
+            //     arts[0].classList.add('on');
+            // }
+            // if(sct>=5000 && sct<10000){
+            //     arts.forEach(art=>art.classList.remove('on'));
+            //     arts[1].classList.add('on');
+            // }
+            // if(sct>=10000 && sct<15000){
+            //     arts.forEach(art=>art.classList.remove('on'));
+            //     arts[2].classList.add('on');
+            // }
+            // if(sct>=15000 && sct<20000){
+            //     arts.forEach(art=>art.classList.remove('on'));
+            //     arts[3].classList.add('on');
+            // }
+            // if(sct>=20000 && sct<25000){
+            //     arts.forEach(art=>art.classList.remove('on'));
+            //     arts[4].classList.add('on');
+            // }
+            //빠르게 바뀌게 값을 바꿔보기
+            // if(sct>=-1000 && sct<4000){
+            //     arts.forEach(art=>art.classList.remove('on'));
+            //     arts[0].classList.add('on');
+            // }
+            // if(sct>=4000 && sct<9000){
+            //     arts.forEach(art=>art.classList.remove('on'));
+            //     arts[1].classList.add('on');
+            // }
+            // if(sct>=9000 && sct<14000){
+            //     arts.forEach(art=>art.classList.remove('on'));
+            //     arts[2].classList.add('on');
+            // }
+            // if(sct>=14000 && sct<19000){
+            //     arts.forEach(art=>art.classList.remove('on'));
+            //     arts[3].classList.add('on');
+            // }
+            // if(sct>=19000 && sct<24000){
+            //     arts.forEach(art=>art.classList.remove('on'));
+            //     arts[4].classList.add('on');
+            // }
+            //반복문이라 for써보기(빠르게 바뀌게 한 버전)
+            for(let i=0; i<arts.length; i++){
+                if(sct>=i*5000-1000 && sct<(i+1)*5000-1000){
+                    arts.forEach(art=>art.classList.remove('on'));
+                    arts[i].classList.add('on');
+                    // 인덱스 순서가 같기 때문에 이렇게 같이 써주면 됨!
+                    lis.forEach(li=>li.classList.remove('on'));
+                    lis[i].classList.add('on');
+                }
+            }
+        })
+    </script>
+ </body>
+</html>

@@ -1,0 +1,50 @@
+javascript
+<!-- script는 body나 head 다 됨 -->
+    <script>
+        // 자바스크립트 출력
+        // 1.경고창에 출력 alert('내용')
+        alert('안녕하세요');
+        // 한 문장이 끝날 때 습관적으로 세미콜론 꼭 찍어주기!!
+        // 경고창을 확인 눌러줘야 다른 것들이 뜸 (alert 경고창은 확인 누를때까지 다른 작업을 할 수 없음)
+        // 2.콘솔에 출력 console.log('내용')        -> 화면에 보여지는게 아니라 F12개발자도구에 뜨는거! 브라우저에 제공해주는거
+        console.log('그린컴퓨터');
+        // 3.html body에 출력하기
+        document.write('<h1>재미있는 자바스크립트</h1>');
+        document.write('<h2>화면에 출력하기</h2>');
+        // 4.html DOM 요소 안 내용으로 출력하기 (Documnet Object Model)
+        document.getElementById('test').innerHTML = '내일은 화요일 입니다.';
+        // css에서 위에 div를 선택할 때는 -> #test 이런식을 자바스크립트는 document.getElementById('test')이렇게 요소를 표현한거임
+    </script>
+
+
+---------
+<Dom 요소 선택>
+ 1. 단수 선택
+01)document.getElementById('id명')
+02)document.querySelector('css선택자 그대로')
+	ex>document.querySelector('.divbox').innerHTML = "태그명으로 선택했습니다.";
+                  ()괄호 안에 css선택자 처럼 그대로 적어주면 됨 -> 클래스는 .divbox / 아이디라면 #box1
+
+
+ 2. 복수 선택
+01)document.getElementsByClassName('class명') - html 컬렉션(유사배열)
+02)document.getElementsByTagName('tag명') - html 컬렉션(유사배열)
+03)document.querySelectorAll('css선택자 그대로') -노드리스트(유사배열)
+
+★
+ ex>
+console.log(document.getElementsByClassName("divbox")[1]);
+           document.getElementsByClassName("divbox")
+ 		css선택자 적음 안되고 . 적어서 하면 안됨
+           getElementsByClassName : 클래스 이름을 가져오겠다 
+           *Elements 's'라고 복수형임 -> 요소가 하나만 있어도 배열형태로 데이터들을 선택해야함 []이렇게 안에 넣어서
+            				하나밖에 없더라도 배열에 번호를 적어줘야 생성됨
+                     	                          - [0]번은 div box1 
+                                                     - [1]번은 div box2
+console.log(document.getElementById("box1"));
+        document.getElementById : Element 단수 -> 하나의 요소를 택하는 거
+        태그명이나 클래스명은 html collection 이 됨 -> 묶음으로 선택됨(복수선택)
+                                                      	       클래스, 태그가 하나뿐이더라도 묶음으로 선택되기 때문에
+                                                                          찾으려면 순번 배열을 써야함 ([대괄호] 사용)
+        <<모든 프로그래밍은 zero카운팅 -> 0번 부터가 시작임!! (1부터 아님)>>
+        *아이디명은 하나만(단수선택)

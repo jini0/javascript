@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        //내가 한거
+        // https://programmers.co.kr/learn/courses/30/lessons/12937
+        function solution(num) {
+            let answer = num%2 == 0 ? "Even" : "Odd";
+            return answer;
+        }
+        console.log(solution(3));
+        console.log(solution(4));
+
+        // 다른 풀이
+        function solution(num) {
+            return num%2 ? "Odd" : "Even";
+        }
+    </script>
+</body>
+</html>

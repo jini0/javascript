@@ -1,0 +1,4 @@
+scroll
+
+scrollTop 스크롤한 값
+window.scrollTo({ top: 100px }) 스크롤 100px의 위치로 이동

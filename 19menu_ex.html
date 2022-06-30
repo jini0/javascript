@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        li { list-style: none; }
+        body, html {
+            width: 100%;
+            height: 100%;
+            font-family: "맑은 고딕";
+            font-size: 14px;
+            line-height: 1.6;
+        }
+        #sitemap-view {
+            width: 20px;
+            height: 20px;
+            position: absolute;
+            top: 80px;
+            right: 20px;
+            transition: 0.5s;
+        }
+        /* 자바스크립트 전에 css를 먼저 해본다!!!-> hover로 할 수 있는 건 해보고 자바스크립트로 준다! */
+        /* #sitemap-view:hover {
+            transform: rotate(360deg);
+        }
+        #sitemap-view:hover span:nth-child(1) {
+            transform: rotate(45deg) translate(4px, -7px);
+        }
+        #sitemap-view:hover span:nth-child(2) {
+            opacity: 0;
+        }
+        #sitemap-view:hover span:nth-child(3) {
+            transform: rotate(-45deg) translate(-4px, -7px);
+        } */
+
+        /* 자바스크립트로 줄거니까 클릭하면 sitemap-view에 on클래스를 주려고 */
+        #sitemap-view.on {
+            transform: rotate(360deg);
+        }
+        #sitemap-view.on span:nth-child(1) {
+            transform: rotate(45deg) translate(4px, -7px);
+        }
+        #sitemap-view.on span:nth-child(2) {
+            opacity: 0;
+        }
+        #sitemap-view.on span:nth-child(3) {
+            transform: rotate(-45deg) translate(-4px, -7px);
+        }
+        #sitemap-view span {
+            position: absolute;
+            left: 0;
+            top: 0;
+            height: 100%;
+            background: #333;
+            width: 3px;
+            transition: 0.5s;
+            /* │ | │ 이렇게  세로로 span 햄버거메뉴*/
+        }
+        #sitemap-view span:nth-child(2) {
+            background: #9c2033;
+            left: 8px;
+            height: 10px;
+            top: 5px;
+            /* 원래 크기보다 중간꺼는 좀 크기를 줄임 */
+        }
+        #sitemap-view span:nth-child(3) {
+            left: 16px;
+            /* 첫번째 애랑 크기는 같고 위치만 옆으로 이동시킨거임 */
+        }
+        #sitemap {
+            position: absolute;
+            left: 0;
+            right: 60px;
+            height: 100%;
+            opacity: 0;
+            transition: 0.5s;
+        }
+        #sitemap.on {
+            opacity: 1;
+        }
+        #sitemap > ul {
+            width: 100%;
+            display: flex;
+            height: 100%;
+        }
+        #sitemap > ul > li {
+            width: 20%;
+            border-right: 1px solid #ccc;
+            padding-top: 60px;
+            padding-left: 40px;
+            position: relative;
+            overflow: hidden;
+        }
+        #sitemap > ul > li h2,#sitemap > ul > li ul {
+            margin-left: -100%;
+            /* 이렇게 해도 되고 position: absolute; 주고 left: -100%; 주면 됨 */
+            transition: 0.5s;
+        }
+        #sitemap.on > ul > li h2,#sitemap.on > ul > li ul {
+            margin-left: 0;
+        }
+        .bg {
+            width: 100%;
+            height: 100%;
+            position: absolute;
+            top: 0;
+            right: 0;
+            /* 오른쪽으로 사라져야하니까 left 말고 right를 0 줘야함 */
+            background: #9c2033;
+            transition: 0.5s;
+            /* on붙었을 때 얘는 크기가 줄어들어들면서 사라짐 */
+        }
+        .on .bg {
+            width: 0;
+        }
+    </style>
+</head>
+<body>
+    <div id="sitemap-view">
+        <!-- sitemap-view를 클릭했을 때, sitemap-view에 클래스 on을 줄 거임 -->
+        <span></span>
+        <span></span>
+        <span></span>
+    </div>
+    <div id="sitemap">
+        <!-- 여기에 class="on"을 먼저 줘서 개발자메뉴탭에서 on클래스를 붙였다가 지웠을 때 
+        css를 먼저 확인하고 지우고 자바스크립트에 준다 -->
+        <ul>
+            <li>
+                <div class="bg"></div>
+                <h2>회사소개</h2>
+                <ul>
+                    <li>서브메뉴1</li>
+                    <li>서브메뉴2</li>
+                    <li>서브메뉴3</li>
+                    <li>서브메뉴4</li>
+                </ul>
+            </li>
+            <li>
+                <div class="bg"></div>
+                <h2>사업분야</h2>
+                <ul>
+                    <li>서브메뉴1</li>
+                    <li>서브메뉴2</li>
+                    <li>서브메뉴3</li>
+                    <li>서브메뉴4</li>
+                </ul>
+            </li>
+            <li>
+                <div class="bg"></div>
+                <h2>투자정보</h2>
+                <ul>
+                    <li>서브메뉴1</li>
+                    <li>서브메뉴2</li>
+                    <li>서브메뉴3</li>
+                    <li>서브메뉴4</li>
+                </ul>
+            </li>
+            <li>
+                <div class="bg"></div>
+                <h2>인재경영</h2>
+                <ul>
+                    <li>서브메뉴1</li>
+                    <li>서브메뉴2</li>
+                    <li>서브메뉴3</li>
+                    <li>서브메뉴4</li>
+                </ul>
+            </li>
+            <li>
+                <div class="bg"></div>
+                <h2>미디어센터</h2>
+                <ul>
+                    <li>서브메뉴1</li>
+                    <li>서브메뉴2</li>
+                    <li>서브메뉴3</li>
+                    <li>서브메뉴4</li>
+                </ul>
+            </li>
+        </ul>
+    </div>
+    <script>
+        let viewdiv = document.querySelector('#sitemap-view');
+        viewdiv.addEventListener('click', function(){
+                                 // 클릭할 때, 뒤에 function을 실행시켜~!
+            // toggle은 on클래스가 있으면 제거 / 없으면 붙여줌
+            viewdiv.classList.toggle('on');
+            // sitemap에 on이라는 클래스를 붙여주는 거임
+            document.querySelector('#sitemap').classList.toggle('on');
+        })
+    </script>
+</body>
+</html>

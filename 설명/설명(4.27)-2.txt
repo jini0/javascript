@@ -1,0 +1,71 @@
+if(표현식){
+	실행되는 코드
+}
+
+-----조건이 아닐 때도 만들 수 있음 
+
+if(표현식1){
+	표현식1이 true일 때 실행하는 코드
+}else if(표현식2){
+	표현식1이 false이고 표현식2가 true일 때 실행되는 코드
+}else {
+	표현식1과 표현식2가 둘 다 false일 때 실행되는 코드
+}
+
+--
+ex>
+let num = 10
+if( num > 10 ){                                                     -->값이 크지 않음 같음!!  num=10으로!  
+	console.log("num은 10보다 큽니다.");
+}else if( num === 10) {                                          -->처음 if조건 아닐 때
+	console.log("num은 10보다 같습니다.");
+}else { 					       -->조건 1/2가 다 아닐 때
+	console.log("num은 10보다 같지않습니다.");
+}
+
+
+ex>
+if(5>1) {                                                     --->값이 맞을 때
+	console.log("5는 1보다 큽니다.")
+}else {                                                        --->값이 아닐 때 실행하는 else
+ 	console.log("5는 1보다 크지않습니다.")
+}
+
+
+-----
+
+input에는 value라는 속성이 있음
+
+--------
+
+<자바스크립트 기초구문>
+산술연산자, 논리연산자, 비교연산자, 조건문
+
+<자바스크립트 DOM>
+*이벤트
+-onclick             클릭이벤트
+-onmouseenter   마우스를 올렸을 때
+-onmouseleave   마우스가 떠났을 때
+-onmousemove   마우스가 움직일 때   --> 따라다니는 마우스 커서 만들 수 있음
+-resize               창의 크기가 조절될 때(윈도우가 줄어드는 거라서 
+				선택대상을 윈도우로!)
+
+
+
+1.html 요소 태그 안의 속성
+<button onclick="myFunc()">
+2.이벤트 리스너
+addEventListener() 메서드를 사용
+document.querySelector('button').addEventListener("이벤트", myFunc);
+						 myFunc 라는 함수명 등을 입력
+						(함수가 이미 있다면 이렇게 넣어도 됨)
+document.querySelector('button').addEventListener("이벤트", function(){
+						//이렇게 바로 함수를 넣을 수도 있음	
+		~~~	
+});
+							
+
+
+
+
+

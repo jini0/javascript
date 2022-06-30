@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        //if문 윤년 연습문제
+        //prompt창에 년도를 묻고~
+        let year = Number(prompt("년도를 작성하시오."));
+        let year1 = year%4;
+        let year2 = year1%100;
+        let year3 = year2%400;
+        if( year1 == 0, year3 == 0 ) {
+            console.log("윤년");
+        }else if( year2 == 0 ) {
+            console.log("평년");
+        }else {
+            console.log("윤년, 평년이 아닙니다.")
+        }
+
+        // if( year%4 == 0 ) {
+        //     console.log("윤년");
+        // }else if( (year%4 == 0)%100 == 0 ) {
+        //     console.log("평년");
+        // }else if( (year%4%100 == 0)%400 == 0 ) {
+        //     console.log("윤년");
+        // }else {
+        //     console.log("윤년, 평년이 아닙니다.")
+        // }
+    </script>
+</body>
+</html>

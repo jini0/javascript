@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        div { text-align: center; }
+        #header { 
+            background: pink;
+            color: #fff;
+            line-height: 80px;
+            /* line-height말고 그냥 height로 줘도 됨 */
+            font-size: 36px;
+        }
+        #text {
+            color: pink;
+            font-size: 62px;
+            padding: 30px;
+        }
+        p {
+            padding: 20px;
+        }
+        input {
+            line-height: 40px;
+            width: 200px;
+        }
+        button {
+            line-height: 40px;
+            width: 200px;
+        }
+
+    </style>
+</head>
+<body>
+    <!-- 타자게임 -->
+    <div id="header">
+        타자게임
+    </div>
+    <div>
+        <div id="text">
+            display
+        </div>
+        <p><input type="text" id="inputText"></p>
+        <p>남은시간 : <span id="time">0</span>초  
+            점수 : <span id="score">0</span>점</p>
+        <p><button id="gameBtn">게임시작</button></p>
+    </div>
+    <script>
+        let displayText = document.querySelector('#text'); 
+        let inputWord = document.querySelector('#inputText');
+        let scoreDisplay = document.querySelector('#score');
+        let timeDisplay = document.querySelector('#time');
+        let btn = document.querySelector('#gameBtn');
+        let score = 0;
+        let time = 20;
+        let isPlaying;
+        let timeInterval;
+        // 글자배열(임의로 10개 그냥 만들어줌)
+        let texts = ['display','float','background','color','position','clear','flex','textalign','fontweight','top'];
+                    // 0~9까지의 인덱스를 가지고 있음 -- 0~9까지 랜덤한 값 나오게 설정해줘야함
+        let randomNum = Math.floor(Math.random()*10);  // Math.floor(Math.random()*10) -> 0~9까지 나옴!!!
+        displayText.innerHTML = texts[randomNum];
+
+        //게임시작 버튼을 클릭하면
+        //isPlaying값을 true로 할당
+        //버튼의 값을 게임중으로 변경
+        //time인터발을 실행
+        btn.addEventListener('click',function(){
+            if(isPlaying) return;   //얘가없으면 버튼 클릭이 계속됨 Interval이 계속 시작됨
+            btn.innerHTML = '게임중';
+            isPlaying = true;   //게임진행중
+            timeDisplay.innerHTML = time;   //초기타입지정
+            timeInterval = setInterval(timer,1000);  //1초마다 timer함수      // setInterval(함수,시간)
+        })
+        function timer(){
+            time>0 ? time-- : isPlaying = false;
+                    // time이 0보다 크면 time을 계속 빼고! 0이되면 isPlaying이 false값이 되어 
+            timeDisplay.innerHTML = time;
+            if(!isPlaying){                    //!isPlaying 이니까 !-not의미  -->isPlaying이 아닐때! (위에 isPlaying의 값을 true로 할당해서 ->!이게 붙으면 true가 아닐때->false일때 의미)
+                btn.innerHTML = '게임종료';     //isPlaying이 false가 되면 게임종료!!!
+                clearInterval(timeInterval);    //변수값을 clearInterval에 넣으면 setInterval 종료됨!!
+            }
+        }
+        inputWord.addEventListener('input',function(){
+                                //input에 글자를 적는것도 이벤트!(input에 글자 적으면 함수가 실행됨(이벤트))
+            if(!isPlaying) return;
+            //인풋의 값과 화면에 글자가 일치할 때 점수를 1씩 더하기
+            if(displayText.innerHTML === inputWord.value){
+                score += 1;
+                let randomNum = Math.floor(Math.random()*10);
+                displayText.innerHTML = texts[randomNum];
+                inputWord.value = "";
+                scoreDisplay.innerHTML = score;
+            }
+        })
+    </script>
+</body>
+</html>

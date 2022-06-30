@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        //자바스크립트 쪽지시험
+        // let data = 10; 
+        // function outer(){
+        //     this.data = 20;
+        //     data = 30;
+        //     console.log("1. data1 = " + data);
+        //     console.log("2. this.data = " + this.data);
+        //     console.log("3. window.data = " + window.data);
+        // }
+        // outer();
+
+
+        // function animal(){
+        //     this.a1 = 10;
+        // }
+        // function human(){
+        //     this.h1 = 100;
+        // }
+        // animal.prototype.a2 = 1000;
+        // human.prototype.h2 = 200;
+        // human.prototype = new animal();
+        // let h = new human();
+        // console.log(h.a1 +",");
+        // console.log(h.a2 +",");
+        // console.log(h.h1 + ",");
+        // console.log(h.h2);
+
+        let a = 10;
+        function f1(){
+            console.log(a);
+            let a = 20;
+        }
+        f1();  //값이 error가 뜸
+    </script>
+</body>
+</html>

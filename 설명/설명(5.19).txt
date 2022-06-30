@@ -1,0 +1,167 @@
+정규표현식
+문자열에서 특정 문자 조합을 찾기 위한 패턴입니다.
+regexr.com/5mhou   정규표현식 패턴 연습 사이트
+ex>
+/패턴/gm 
+   -여러개를 찾을건지 전체에서 찾을건지 한 문장에서 찾을건지
+
+1. 그룹과 범위
+|    또는
+()   그룹
+[]   문자셋
+[^]  부정문자셋 - []안에 문자가 아닐때
+
+2. 수량
+?   없거나 있거나
+*   없거나 있거나
++  하나 또는 많이
+{}  n번 반복
+{min,}  최소수량
+{min, max}  최소, 그리고 최대
+
+3. 범위
+^      문장의 시작
+$      문장의 끝
+\b    단어 경계
+\B    단어 경계가 아님
+--
+^ 문장의 앞에서 찾음
+[^] 문자가 아닐 때(대괄호가 묶여진 문자셋에서 ^는 아닐 때!)
+$ 문장의 뒤에서 찾음
+
+
+4. 텍스트
+\   특수문자가 아닌 문자	
+.     어떤 글자	
+\d  숫자			
+\D  숫자가 아닌 것
+\w  문자
+\W  문자가 아닌 것
+\s   공백
+\S   공백아님
+
+문자열.replace(정규식, 대체문자)
+문자열.match(정규식)     	     array반환
+문자열.search(정규식)	     index반환
+정규식.test(문자열)		     boolean반환
+
+
+https://programmers.co.kr/learn/courses/30/lessons/72410  코딩테스트 연습 -정규표현식 연습
+
+
+---------------
+새로운 데이터 타입
+
+참조형
+object / array / function
+set / map
+
+
+기본형
+number
+String
+null
+undefined
+boolean
+*Symbol타입    --> Symbol()이라는 데이터 타입 추가됨
+객체의 프로퍼티 키를 고유하게 설정함으로써
+프로퍼티 키의 충돌을 방지하기 위해 사용
+-하나밖에 없는 고유한 애를 하나 만들어줌 --> 객체에 프로퍼티 키를 고유하게 설정할 때
+
+1)생성법 - Symbol함수를 호출함으로써 생성함
+ex>  let sym1 = Symbol('설명문');		-> new라는 키워드 안쓰고! Symbol() 함수를 호출하면서 symbol이 만들어짐					
+let obj = {
+	name: "green",
+	age: 30,
+}
+obj.name = "blue";
+
+2)객체의 키로 사용
+let obj = { name: "green", age: 20, }
+let id = Symbol('id');
+obj[id] = 123;  		-->얘는 유일무이 하니까 하나밖에 없음!!!!
+
+3)객체의 숨김 프로퍼티
+Object.keys(obj)	객체의 프로퍼티의 키를 배열로 반환
+Object.values(obj)	객체의 프로퍼티으 값을 배열로 반환
+Object.entries(obj)	객체의 프로퍼티를 배열로 반환	
+
+?? set - 중복을 허용하지 않는 값을 모아놓은 컬렉션
+·객체 - 키가 있는 컬렉션을 저장
+·배열 - 순서(인덱스)가 있는 컬렉션을 저장
+[1,1,2,3,4,5,6,7,7,8,2,3]
+set으로 이 배열을 해주면 -> 알아서 중복된걸 제거해줌
+
+- new Set(이터러블)
+: 셋을 생성합니다. 이터러블 객체(배열)를 전달받으면 그 안에 값을 복사해 셋에 넣어줍니다.
+·set.add(value)
+값을 추가
+·set.delete(value)
+값을 제거
+·set.has(value)
+set내에 value가 존재하면 true 아니면 false를 반환합니다.
+·set.size
+set에 몇 개의 값이 있는지 반환해줌
+·set.clear()
+셋을 비웁니다.
+
+
+-----------
+Q문제1
+<Set>_ex.html
+function unique(arr){
+	/* 제출 답안 */
+}
+
+let values = ["Hare", "Krishna", "Hare", "Krishna",
+  "Krishna", "Krishna", "Hare", "Hare", ":-O"
+];
+
+alert( unique(values)); // 얼럿창엔 `Hare, Krishna, :-O`만 출력되엉야 합니다.
+
+
+---------
+Q2문제
+프로그래머스>코딩테스트>숫자 문자열과 영단어
+https://programmers.co.kr/learn/courses/30/lessons/81301
+
+---
+
+참조형
+object / array / function
+set / map
+
+
+-----------------------------
+
+set / map
+
+Date 객체
+날짜를 저장할 수 있고, 날짜와 관련된 메서드를 제공해주는 내장객체
+
+1)객체 생성하기
+new Date()를 호출하면 새로운 Date객체가 만들어 집니다.
+new Date() 현재날짜와 시간을 가진 객체
+new Date(년도, 월, 일, 시, 분, 초, 밀리초)
+-> 년도와 월은 필수 입력값, 월은 0~11 입력 (0이 1월입니다) -> 그래서 월을 구하려면 +1을 해줘야함
+ex>let nowmonth = now.getMonth()+1;
+
+new Date(밀리초) : 이렇게 하나만 넣을 수도 있음
+기준 1970년 1월 1일 0시 0분 0초    -- 인데 우리나라는 시차때문에 오전 9:00:01로 됨!!!
+데이터객체를 생성할 때 파라미터를 1개만 지정하면 이 값은 밀리초로 해석됩니다.
+ex>
+1000
+1970년 1월 1일 0시 0분 1초 인 것을 볼 수 있습니다.
+
+2)날짜 구성요소 받기
+getFullYear()	년도(네 자릿수)를 반환합니다.
+getMonth()	월을 반환합니다.(0~11)   -> 해당하는 월을 보려면 +1 해줌
+getDate()		날짜를 반환합니다.
+getDay()		요일을 반환합니다.(0~6)  ->0이 일요일 /1이 월요일 ~~~
+getHours() 	시간을 반환합니다.
+getMinutes()	분을 반환합니다.
+getSeconds()	초를 반환합니다.
+getMilliseconds()	밀리초를 반환합니다.
+
+3)날짜 구성요소 설정
+setDate(현재Date+)

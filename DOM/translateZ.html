@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            width: 100%;
+            height: 23000px;  
+            /* 스크롤할 수 있게 높이 일단 크게 주기 */
+        }
+        section {
+            position: fixed;
+            width: 1200px;
+            height: 700px;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%,-50%);
+            /* 원근감설정 - 자식의 부모에게 원근감을 지정해줘야함!!! */
+            perspective: 2300px;
+        }
+        section div {
+            width: 1200px;
+            height: 700px;
+            position: absolute;
+            top: 0;
+            left: 0;
+            background-color: violet;
+            font-size: 100px;
+            opacity: 0.3;
+        }
+        section div:nth-child(1) {
+            transform: translateZ(0);
+        }
+        section div:nth-child(2) {
+            transform: translateZ(-5000px);
+        }
+        section div:nth-child(3) {
+            transform: translateZ(-10000px);
+        }
+        section div:nth-child(4) {
+            transform: translateZ(-15000px);
+        }
+        section div:nth-child(5) {
+            transform: translateZ(-20000px);
+        }
+        h1 {
+            position: fixed;
+            left: 50px;
+            top: 50px;
+        }
+    </style>
+</head>
+<body>
+    <h1>0</h1>
+    <section>
+        <div>box1</div>
+        <div>box2</div>
+        <div>box3</div>
+        <div>box4</div>
+        <div>box5</div>
+    </section>
+    <script>
+        let divs = document.querySelectorAll('div');
+        console.log(divs);
+        document.addEventListener('scroll',function(){
+            let sct = document.documentElement.scrollTop;
+            document.querySelector('h1').innerHTML = sct;
+            // divs[0].style.transform = `translateZ(${0+sct}px)`;
+            // divs[1].style.transform = `translateZ(${-5000+sct}px)`;
+            // divs[2].style.transform = `translateZ(${-10000+sct}px)`;
+            // divs[3].style.transform = `translateZ(${-15000+sct}px)`;
+            // divs[4].style.transform = `translateZ(${-20000+sct}px)`;
+            //반복문 forEach쓰기
+            divs.forEach((div,index)=>{
+                        //div : forEach의 첫번째 자리-자동으로 배열의 값들이 담기는거! /index: 두번째 자리- 인덱스가 담김
+                div.style.transform = `translateZ(${index*-5000+sct}px)`
+            })
+        })
+        
+    </script>
+</body>
+</html>

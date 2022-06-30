@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        canvas { background-color: lightblue; }
+    </style>
+    <script>
+        // arc(x,y,radius,startAngle,endAngle,anticlockwise)
+        function draw(){
+            let canvas = document.querySelector('canvas');
+            let ctx = canvas.getContext('2d');
+            ctx.beginPath();                //path시작
+            ctx.arc(100,100,100,0,Math.PI*2,true);
+            ctx.moveTo(380,200);            //중간에 moveTo()를 안주면 이어짐! 위에 원 아래원 두개가!
+            ctx.arc(300,200,80,0,Math.PI, true);
+            ctx.stroke();
+        }
+    </script>
+</head>
+<body onload="draw()">
+    <canvas width="1000" height="500"></canvas>
+</body>
+</html>

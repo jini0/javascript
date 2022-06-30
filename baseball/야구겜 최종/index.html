@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Baseball Game</title>
+    <link rel="stylesheet" href="./style.css">
+</head>
+<body>
+    <div id="container">
+        <div id="display">
+            <div id="display_1">
+                <p id="round">1회 초</p>
+                <div id="counts">
+                    <p id="count_strike">S ○○</p>
+                    <p id="count_ball">B ○○○</p>
+                    <p id="count_out">O ○○</p>
+                </div>
+            </div>
+            <div id="display_2">
+                <div>
+                    <p class="display_2_nameH" style="color: blue">Computer</p>
+                    <p id="comScore">0</p>
+                </div>
+                <div>
+                    <p>VS</p>
+                </div>
+                <div>
+                    <p class="display_2_nameA">Player</p>
+                    <p id="playerScore">0</p>
+                </div>
+            </div>
+        </div>
+        <div id="board">
+            <div id="filed"></div>
+            <div id="filed2"></div>
+            <div id="filed3"></div>
+            <div id="Base">Base</div>
+            <div id="firBase">1루</div>
+            <div id="secBase">2루</div>
+            <div id="thrBase">3루</div>
+        </div>
+        <div id="control">
+            <p id="result">즐거운 야구!</p>
+            <div>
+                <button type="button" id="A_btns">스트라이크</button><!--우리턴일때는 친다-->
+                <button type="button" id="B_btns">볼</button><!--기다린다-->
+            </div>
+        </div>
+    </div>
+    <script src="./script.js"></script>
+</body>
+</html>

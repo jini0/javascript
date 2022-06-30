@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        let str = 'green';
+        console.log(str.length);
+        for(let i=0; i<str.length; i++){
+            console.log(str[i]);
+        }
+        //🖤indexOf()🖤 
+        //문자열.indexOf(찾을값)    : 그 값이 어느 위치에 있는지(인덱스)_인덱스반환
+        console.log(str.indexOf('e'));  //있으면 그 인덱스를 반환 / 없으면 -1을 반환
+                                        //e는 2개있어서 -> 먼저 나온 e값을 반환해서 :2를 반환함
+        console.log(str.indexOf('k'));
+
+        //🖤includes()🖤
+        //문자열.includes(찾을값) -> true, false반환
+        console.log(str.includes('n'));
+
+        //문자열 추출
+        //slice() substring() substr()  -> 새로운 문자열을 반환
+        //slice(start, end)   /  substring(start, end)   / substr(start, length)
+        //slice와 substring은 같음!!
+        //let str1 = "안녕하세요"
+            //인덱스   0 1 2 3 4
+        //문자열.slice(0,2)     //0-2번 중 end는 추출되지 않음(인덱스2값인 '하'는 추출X) --> 안녕   추출됨
+        let str2 = "안녕하세요"
+        console.log(str2.slice(0,2));
+        console.log(str2.slice(0,3));
+        //slice substriong substr 위에 마우스올려두면 설명이 보이는데 ?물음표 붙은거는 안적어줘도 되는거
+        //end가 없으면 마지막까지 반환함
+        console.log(str2.slice(0));
+        console.log(str2.substring(0,3));     //substring은 end?니까 end를 안적어줘도 됨!       
+        console.log(str2.substr(0,3));
+
+        //문자열을 배열로 반환
+        //🖤split(구분자,?개수)🖤 기억하기!!
+        let str3 = '오늘은 즐거운 목요일';
+        console.log(str3.split());
+        console.log(str3.split(" "));  //띄어쓰기가 있으면 "구분자"('구분자')에 띄어쓰기 해줘야함
+
+        let str31 = '오늘,은즐,거운,목요,일';
+        console.log(str31.split(","));
+
+        let str32 = '오늘은!즐!거운목!요일';
+        console.log(str32.split('!',1));  
+                                   //limit 이거 안줘도 됨 주면 1번만! -> 오늘은 만 나옴
+        
+        //문자열 결합
+        //🖤문자열.concat('결합할문자열')🖤   => 합쳐진 문자열 반환
+        console.log(str3.concat('곧 점심시간'));
+
+        //대소문자 변환
+        //toUpperCase() -> 대문자로 변환
+        //toLowerCase() -> 소문자로 변환
+        let str4 = 'JavaScript';
+        console.log(str4.toUpperCase());
+        console.log(str4.toLowerCase());
+
+        //문자열 양끝에 공백을 제거
+        //trim();
+        let str5 = '       안녕하세요             ';
+        console.log(str5);          //공백까지 출력됨
+        console.log(str5.length);   //공백도 길이에 포함이 다 됨~!!
+        console.log(str5.trim());   //공백 제거됨
+
+        //문자열로 변환
+        //🖤변수.toString(진법)🖤
+        //0~9까지 쓰는 수 -> 10진수 / 0~1 -> 2진수 / 0~7 -> 8진수 / 0~15 -> 16진수
+        //컴퓨터는 2진수만 아는애들(10진수 못씀)
+        //toString쓰면 진수를 바꿔줄 수 있음
+        let number = 56;
+        console.log(number.toString(8));
+        
+        //해당 문자열을 숫자만큼 반복해서 새로운 문자를 반환
+        //문자열.repeat(n)
+        let str6 ='안녕';
+        console.log(str6.repeat(2));
+    </script>
+</body>
+</html>

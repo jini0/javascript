@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        li { list-style: none; }
+        a { text-decoration: none; color: inherit; }
+        /* 배경 */
+        #back {
+            background-color: #000;
+            width: 100%;
+            height: 100vh;
+        }
+        /* 상단 */
+        header {
+            position: absolute;
+            top: 80px;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+        /* 메뉴 */
+        nav {
+            position: absolute;
+            top: 50%;
+            left: 0;
+            transform: translateY(-50%);
+            display: flex;
+            background-color: rgba(0,0,0,0.5);
+            width: 100%;
+            height: 50px;
+            color: #fff;
+            z-index: 2;
+        }
+        nav > ul {
+            display: flex;
+            width: 1100px;
+            margin: 0 auto;
+        }
+        nav > ul > li {
+            width: 16.6666%;
+            position: relative;
+            text-align: center;
+        }
+        nav > ul > li > a {
+            line-height: 50px;
+        }
+        nav > ul > li > div {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            border: 1px solid #000;
+            background-color: rgba(0,0,0,0.7);
+            text-align: center;
+            padding-bottom: 20px;
+            opacity: 0;
+            transition: 0.5s;
+        }
+        nav > ul > li > div div {
+            height: 100px;
+            padding: 16px;
+            text-align: center;
+            overflow: hidden;
+            width: 100%;
+        }
+        nav > ul > li > div div img {
+            width: 100%;
+        }
+        nav > ul > li > div h2 {
+            font-size: 18px;
+            line-height: 50px;
+        }
+        nav > ul > li li {
+            line-height: 30px;
+        }
+        /* 호버설정 */
+        nav > ul > li:hover > div {
+            opacity: 1;
+            transform: rotateY(360deg) translateY(-100px);
+        }
+        /* 대표 이미지 */
+        section {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%,-50%);
+            width: 100%;
+            height: 60vh;
+            overflow: hidden;
+        }
+        section img {
+            width: 100%;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%,-50%);
+        }
+        /* 하단 */
+        footer {
+            width: 100%;
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            color: #fff;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding-bottom: 20px;
+        }
+        footer ul {
+            width: 1100px;
+            display: flex;
+            line-height: 50px;
+            padding-bottom :20px;
+        }
+        footer ul li {
+           width: 16.6666%;
+        }
+
+    </style>
+</head>
+<body>
+    <div id="back"></div>
+ 	<!-- 상단 제목 -->
+	<header>
+		<h1><img src="img/logo.png" alt=""></h1>
+	</header>
+	<!-- 메뉴 --> 
+	<nav>
+		<ul>
+			<li>
+		    	<a href="">COLLECTION</a>
+				<div>
+					<div><img src="img/thumb1.jpg" alt=""></div>
+					<h2>COLLECTION</h2>
+					<ul>
+						<li><a href="#">menu item</a></li>
+						<li><a href="#">menu item</a></li>
+						<li><a href="#">menu item</a></li>
+						<li><a href="#">menu item</a></li>
+					</ul>
+				</div>
+			</li>
+			<li>
+				<a href="#">STORE LOCATION</a>
+				<div>
+					<div><img src="img/thumb2.jpg" alt=""></div>
+					<h2>STORE LOCATION</h2>
+					<ul>
+						<li><a href="#">menu item</a></li>
+						<li><a href="#">menu item</a></li>
+						<li><a href="#">menu item</a></li>
+						<li><a href="#">menu item</a></li>
+					</ul>
+				</div>
+			</li>
+			<li>
+				<a href="#">ADVERTISEMENT</a>
+				<div>
+					<div><img src="img/thumb3.jpg" alt=""></div>
+					<h2>ADVERTISEMENT</h2>
+					<ul>
+						<li><a href="#">menu item</a></li>
+						<li><a href="#">menu item</a></li>
+						<li><a href="#">menu item</a></li>
+						<li><a href="#">menu item</a></li>
+					</ul>
+				</div>
+			</li>
+			<li>
+				<a href="#">ONLINE STORE</a>
+				<div>
+					<div><img src="img/thumb4.jpg" alt=""></div>
+					<h2>ONLINE STORE</h2>
+					<ul>
+						<li><a href="#">menu item</a></li>
+						<li><a href="#">menu item</a></li>
+						<li><a href="#">menu item</a></li>
+						<li><a href="#">menu item</a></li>
+					</ul>
+				</div>
+			</li>
+			<li>
+				<a href="#">CONTACT</a>
+				<div>
+					<div><img src="img/thumb5.jpg" alt=""></div>
+					<h2>CONTACT</h2>
+					<ul>						
+                        <li><a href="#">menu item</a></li>
+						<li><a href="#">menu item</a></li>
+						<li><a href="#">menu item</a></li>
+						<li><a href="#">menu item</a></li>
+					</ul>
+				</div>
+			</li>
+			<li>
+				<a href="#">CORPORATE</a>
+				<div>
+					<div><img src="img/thumb6.jpg" alt=""></div>
+					<h2>CORPORATE</h2>
+					<ul>
+						<li><a href="#">menu item</a></li>
+						<li><a href="#">menu item</a></li>
+						<li><a href="#">menu item</a></li>
+						<li><a href="#">menu item</a></li>
+					</ul>
+				</div>
+			</li>
+		</ul>
+	</nav>
+	<!-- 이미지 -->
+	<section>
+		<!-- <img src="img/pic50.jpg" alt=""> -->
+	</section>
+	<!-- 하단 -->
+	<footer>
+		<ul>
+			<li><a href="#">Terms of Use</a></li>
+			<li><a href="#">News letter</a></li>
+			<li><a href="#">Sitemap</a></li>
+			<li><a href="#">Careers</a></li>
+			<li><a href="#">Credits</a></li>
+			<li><a href="#">Privacy Notice</a></li>
+		</ul>
+		<span>Copyright (c) 2018 SARAR INT All Rights Reserved.</span>
+	</footer>
+    <script>
+        let sct = document.querySelector('section');
+        let imgStr = "";
+        //section에 이미지 200장 넣어주기
+        for(let i=0; i<=200; i++){
+            imgStr = imgStr+`<img src="img/pic${i}.jpg">`;
+        }
+        sct.innerHTML = imgStr;
+        //마우스 따라 움직이게 하기
+        
+    </script>
+</body>
+</html>

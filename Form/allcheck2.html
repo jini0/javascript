@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <form action="" name="fruitsForm">
+        <p>전체 선택 <input type="checkbox" name="allch"></p>
+        <p>사과 <input type="checkbox" value="사과" name="fafru"></p>
+        <p>수박 <input type="checkbox" value="수박" name="fafru"></p>
+        <p>바나나 <input type="checkbox" value="바나나" name="fafru"></p>
+        <p>오렌지 <input type="checkbox" value="오렌지" name="fafru"></p>
+    </form>
+    <p><button id="btn">확인</button><span id="result"></span></p>
+    <!-- form 태그안에 button이 있으면 submit이라는 이벤트가 실행 되어 자꾸 새로 시작되어 지워져서 따로 빼준다!!(폼태그 바깥으로) -->
+    <script>
+        let form = document.forms.fruitsForm;  //폼의 이름을 적어줘야함
+        let allch = form.allch
+        allch.addEventListener('click',function(){
+            let inputs = document.forms.fruitsForm.fafru;       //네임에 접근할 때도 폼 네임값을 먼저 적어줘야함 
+            if(this.checked){
+                inputs.forEach(input=>{
+                    input.checked = true;
+                })
+            }else {
+                inputs.forEach(input=>{
+                    input.checked = false;
+                })
+            }
+        })
+        let btn = document.querySelector('#btn');
+        btn.addEventListener('click',function(){
+            let inputs = document.forms.fruitsForm.fafru;
+            let str = '';
+            inputs.forEach(input=>{
+                str = input.checked ? str+input.value : str;
+            })
+            document.querySelector('#result').innerHTML = str;
+        })
+    </script>
+</body>
+</html>

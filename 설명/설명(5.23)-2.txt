@@ -1,0 +1,67 @@
+<아파치 다운받기> 
+-웹서버를 설치하는거임
+-내 컴퓨터에 내가 웹서버 설치
+
+내컴퓨터 - 설정 - 정보(디바이스사양) - 시스템 종류확인
+64비트운영체제면  --> Apache 2.4.53 Win64
+->다운받고 압축 풀고
+->Apache24 폴더만 로컬디스크C드라이브에 넣어줌
+
+
+https://blog.naver.com/pink_candy02/222269330550   쌤 블로그 - 아파치, php설치하기
+https://www.apachelounge.com/download/#google_vignette
+
+--
+명령 프롬프트 열어서
+블로그 방법대로 적어주기!!
+
+http://localhost/ 
+주소창에 localhost 했을 때 It works!뜨면 되는거
+--
+Microsoft Windows [Version 10.0.17763.557]
+(c) 2018 Microsoft Corporation. All rights reserved.
+
+C:\Windows\system32>cd c:\Apache24\bin
+
+c:\Apache24\bin>httpd.exe -k install
+Installing the 'Apache2.4' service
+The 'Apache2.4' service is successfully installed.
+Testing httpd.conf....
+Errors reported here must be corrected before the service can be started.
+AH00558: httpd.exe: Could not reliably determine the server's fully qualified domain name, using fe80::f97a:cb1c:82fb:4c1f. Set the 'ServerName' directive globally to suppress this message
+
+c:\Apache24\bin> httpd -n "Apache2.4" -t
+AH00558: httpd: Could not reliably determine the server's fully qualified domain name, using fe80::f97a:cb1c:82fb:4c1f. Set the 'ServerName' directive globally to suppress this message
+Syntax OK
+
+c:\Apache24\bin>httpd -k start
+AH00558: httpd: Could not reliably determine the server's fully qualified domain name, using fe80::f97a:cb1c:82fb:4c1f. Set the 'ServerName' directive globally to suppress this message
+
+
+--
+htdocs 파일에서~!!볼 수 있음
+
+
+
+----- 명령프롬프트 실행- 관리자권한으로
+Microsoft Windows [Version 10.0.17763.557]
+(c) 2018 Microsoft Corporation. All rights reserved.
+
+C:\Windows\system32>ipconfig
+
+Windows IP 구성
+
+
+이더넷 어댑터 이더넷:
+
+   연결별 DNS 접미사. . . . :
+   링크-로컬 IPv6 주소 . . . . : fe80::f97a:cb1c:82fb:4c1f%11
+   IPv4 주소 . . . . . . . . . : 192.168.50.41
+   서브넷 마스크 . . . . . . . : 255.255.255.0
+   기본 게이트웨이 . . . . . . : 192.168.50.1
+
+C:\Windows\system32>
+
+c:\Apache24\bin>
+
+

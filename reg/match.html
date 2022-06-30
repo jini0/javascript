@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        let str = "abccc";
+        console.log(str.match(/c*/));
+        let str2 = "123abc";
+        console.log(str2.match(/(\d+)(\w)/));       //str2.match(/(\d+)/)   -> 123 숫자가 나옴 / str2.match(/(\w)/) -> 문자 하나가 나옴 -> a문자가 나옴
+                    //\d : 숫자 +:여러개 ->\d+:숫자여러개       /   \w:문자
+        
+        //replace - 문자열에서 이 부분을 변경해주거나!!!   -> 많이씀
+        str = str.replace(/ab/,"h1");
+        console.log(str);
+    </script>
+</body>
+</html>

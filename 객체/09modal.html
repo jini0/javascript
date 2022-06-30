@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        #wrap {
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        ul {
+            width: 70%;
+            display: flex;
+        }
+        ul li {
+            width: 25%;
+            list-style: none;
+        }
+        ul li img { 
+            width: 100%;
+        }
+        #imgView {
+            position: absolute;
+            width: 100%;
+            height: 100vh;
+            background: rgba(0,0,0,0.5);
+            top: 0;
+            left: 0;
+            /* display: flex; */
+            display: none;
+            /* 안보이게 하고 클릭할 때 보이게 하려고 */
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+        #imgView span {
+            position: absolute;
+            right: 50px;
+            top: 50px;
+            color: #fff;
+            font-size: 48px;
+        }
+    </style>
+</head>
+<body>
+    <div id="wrap">
+        <ul>
+            <li><img src="../images/img_lights1.jpg" alt="첫번째 이미지 입니다." onclick="viewImg(this)"></li>
+            <li><img src="../images/img_lights2.jpg" alt="두번째 이미지 입니다." onclick="viewImg(this)"></li>
+            <li><img src="../images/img_lights3.jpg" alt="세번째 이미지 입니다." onclick="viewImg(this)"></li>
+            <li><img src="../images/img_lights4.jpg" alt="네번째 이미지 입니다." onclick="viewImg(this)"></li>
+        </ul>
+    </div>
+    <div id="imgView">
+        <span onclick="hideDiv()">X</span>
+        <img src="../images/img_lights1.jpg" alt="" id="bigImg">
+        <p>첫번째 이미지 입니다.</p>
+    </div>
+    <script>
+        function viewImg(img){
+            let imgSrc = img.src;
+            document.querySelector('#imgView').style.display = 'flex';
+            document.querySelector('#bigImg').src = imgSrc;
+            document.querySelector('p').innerHTML = img.alt;
+        }
+        function hideDiv(){
+            document.querySelector('#imgView').style.display = 'none';
+        }
+    </script>
+</body>
+</html>

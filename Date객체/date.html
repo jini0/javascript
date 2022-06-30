@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // new Date(년도,월,일,시,분,초,밀리초)
+        // new Date(0) 1970년 1월 1일 0시 0분 0초
+        // 월을 입력할 때는 0~11로 입력해야 합니다.
+        // 월은 0을 입력하면 1월로 해석됩니다.
+
+        let now = new Date();
+        let nowyear = now.getFullYear();
+        let nowmonth = now.getMonth()+1;        //Month는 +1을 해줘야함 -> 그래야 현재 달이 나옴
+        let nowday = now.getDate();
+        let nowDateString = now.toLocaleDateString();
+        let nowTimeString = now.toLocaleTimeString();
+        console.log(`현재 년도는 ${nowyear}이고 달은 ${nowmonth}이고
+        일은 ${nowday}이다.`);
+        console.log(nowDateString);
+        console.log(nowTimeString);
+        let nowHour = now.getHours();
+        let nowM = now.getMinutes();
+        let nowS = now.getSeconds();
+        console.log(nowHour, nowM, nowS);
+    </script>
+</body>
+</html>

@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="./css/style.css">
+</head>
+<body>
+    <div id="game">
+        <canvas id="canvas" width="1200" height="600"></canvas>
+        <div id="jumpNum" class="hidden">성공 × <span>0</span></div>
+        <div id="gameover" class="hidden">GAME OVER</div>
+        <button id="btn">Start</button>
+        <!-- <div id="character"></div> -->
+        <img src="./img/pacman1.png" alt="" id="character" style="display: none;">
+        <img src="./img/cherries.png" alt="" class="obs" style="display: none;">
+        <img src="./img/lemon.png" alt=""  class="obs" style="display: none;">
+        <img src="./img/tangerine.png" alt=""  class="obs" style="display: none;">
+    </div>
+    <script>
+        const canvas = document.querySelector('#canvas');
+        const contex = canvas.getContext('2d');
+        const game = document.querySelector("#game");
+        const startBtn = document.querySelector('#btn');
+        const gameover = document.querySelector('#gameover');
+        const jumpNum = document.querySelector('#jumpNum');
+        const jumpNumCnt = document.querySelector("#jumpNum span");
+        let stopflag = false;
+        // let character = document.querySelector('#character');
+
+        //canvas 배경
+        // let backImg = new Image();
+        // backImg.src = "img/illustration.png";
+        // backImg.onload = function(){
+        //     contex.drawImage(backImg,0,0,1200,600);
+        // }
+
+
+        // 변수 정의
+        let animation;          
+        let timer = 0;
+        let jump = false;       
+        let jumptimer = 0;
+        let charImg = new Image();
+        charImg.src = "./img/pacman1.png";
+        //장애물이미지 노드리스트
+        let obsImgs = document.querySelectorAll('.obs');
+        
+        // start 버튼 누를 때,        
+        startBtn.addEventListener("click", (e) => {
+                stopflag = false;
+                // bomb.classList.add("move");
+                gameStart();
+                gameover.classList.add("hidden");
+                startBtn.classList.add("hidden");
+                jumpNum.classList.remove("hidden");
+                jumpNumCnt.textContent = 0;
+                // bombMove();
+                // jump();
+        });           
+     
+        
+        //캐릭터 객체 만들기
+        let gameU = {
+            x: 50,
+            y: 440,
+            width: 120,
+            height: 140,
+            draw(){
+                contex.drawImage(charImg,this.x,this.y,this.width,this.height);                  
+            }
+        }
+        // console.log(charImg);
+        gameU.draw();    
+        
+        // 게임화면 누르면
+        game.addEventListener("click", (e) => {
+            if (!stopflag) {
+                // gameU.classList.add("jump");
+                stopflag = true;
+                // jumpNumCnt.textContent++;
+            } else if (stopflag) {
+                return;
+            }
+            //   연속으로 캐릭터가 뛰지 않도록 조절
+            setTimeout(() => {
+            //    gameU.classList.remove("jump");
+                stopflag = false;
+            }, 1000);
+        });
+    
+
+        //장애물 배열
+        let obstacleArr = [];
+        //장애물 만들기
+        class Obstacle {                         
+            constructor(){
+                this.x = 800;                       
+                this.y = 475;                       
+                this.width = 90;
+                this.height = 90;
+                //num은 0,1,2 랜덤값이 지정
+                this.num = Math.floor(Math.random()*3);     //0,1,2만 나오도록!
+            }
+            draw(){
+                contex.drawImage(obsImgs[this.num],this.x, this.y, this.width, this.height);
+                // contex.drawImage(obsImgs[this.num],this.x+300, this.y, this.width, this.height);
+                // contex.drawImage(obsImgs[this.num],this.x+600, this.y, this.width, this.height);
+            }
+        }
+        
+        function gameStart(){           
+            animation = requestAnimationFrame(gameStart);  
+            timer++;
+            // console.log(timer);
+            //캔버스 지우기
+            contex.clearRect(0,0,window.innerWidth,window.innerHeight);
+            //장애물 배열에 넣기 -> push()이용해서!!
+            if(timer % 350  === 0){                  //*장애물의 간격을 주려면 timer를 늘리면 됨!(시간마다 장애물이 생겨나니까!! => 시간이 늘어나면 장애물 간의 간격도 늘어날거임)
+                let obs = new Obstacle();
+                obstacleArr.push(obs);
+                // console.log(obstacleArr);
+            }
+            obstacleArr.forEach((item,index,arr)=>{
+                //왼쪽으로 이동된 장애물 제거하기
+                //x좌표가 0보다 작으면 배열에서 제거 -> 조건문 / splice(순서,제거할개수)메서드 사용 -> forEach라서 index순서가 있어서 splice에 index해주면 됨!
+                if(item.x < 0){
+                    arr.splice(index,1);
+                }
+                item.x--;
+                //그리기
+                item.draw();
+                //충돌하는지 확인
+                crashCheck(gameU, item);
+            })
+            //스페이스 눌렀을 때 올라갔다가 내려오기
+            if(jump){
+                //jump가 true면
+                gameU.y--;
+                jumptimer++;
+            }else {                     //else니까 jump가 false 일 때, 점프 내려가도록
+                if(gameU.y < 440) gameU.y++;          
+            }
+            if(jumptimer > 150){        
+                jump = false;
+                jumptimer = 0;
+            }
+            //주인공 안지워지게 해주기!
+            gameU.draw();
+            // charImg.addEventListener('load',()=>{
+            //         contex.drawImage(charImg,this.x,this.y,this.width,this.height);                  
+            //     })
+        }
+        //gameStart();
+
+        
+        //게임 종료시
+        // function gameEnd(){
+        //     //초기값 설정
+        //     timer = 0;
+        //     if(timer == 0){
+        //         arr.splice(index,1);
+        //     }
+        // }
+
+        //키이벤트
+        window.addEventListener("keydown",function(e){
+            if(e.code == "Space"){
+                jump = true;
+                console.log(jump);
+            }
+        })
+        //충돌 확인하기
+        //사진참고(6.17)
+        function crashCheck(user,item){
+                        //user,item : 게임유저와 장애물을 받아서 비교해줄거임
+            let x차이 = item.x - (user.x+user.width-15);
+            let y차이 = item.y - (user.y+user.height/2);            //user.height/2 는 그냥 임의로 절반이 부딪히면 충돌되게 한거! /4해서 1/4만 부딪히면 충돌이라구 떠도 되구!!
+            if(x차이 <= 0 && y차이 <= 0){                        
+                cancelAnimationFrame(animation);
+                console.log("충돌");
+                stopflag = true;
+                gameover.classList.remove("hidden");
+                startBtn.classList.remove("hidden");
+                startBtn.innerHTML = "Replay";
+                // startClick();
+                gameEnd();
+            }
+        }
+
+        //질문하기
+        //1. replay로 바꿔서 startBtn 다시 누르면 초기화되어 다시 시작 어케하는지..
+        //2. 성공횟수 추가 어케하는지 ㅠㅠ
+        </script>
+</body>
+</html>

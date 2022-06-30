@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // let arr = [1,2,3];
+        // // let arr2 = arr;
+        // let arr2 = [];                     //복사하기 위해서 빈배열 만들어서~
+        // //1. 스프레드 구문이 없었을 때는 이렇게 해줬었음-forEach
+                                              //forEach -배열메서드(배열만 쓸 수 있음ㄴ)
+        // // arr.forEach((val,index)=>{      //이렇게 따로 만들어주면 바라보는 곳의 참조 주소가 달라서(같은거 바라보지 않음)
+        // //     arr2.push(val)              //arr2는 바뀌지 않음   --- ★배열은 할당으로 복사할 수 없음★   / push : 맨마지막에 넣어주는애
+        // // })
+        // //2. concat 이용
+        // arr2 = arr2.concat(arr);           //concat  배열 합치기  - arr2는 빈배열이어서 빈배열+arr의 배열 ->[1,2,3]이 됨
+        // //3. 스프레드구문  - 배열을 풀어헤침
+        // let arr3 = [...arr];    //알아서 그 값의 배열이 복사됨 [1,2,3]!!  forEach안써도 됨
+
+        // console.log(arr);
+        // console.log(arr2);
+        // arr[0] = 10;                //arr의 인덱스0번째 값인 1을 10으로 바꿨는데 -> arr2의 인덱스0번째 값도 바뀜
+        //                             //let arr2 = arr; 이렇게 복사해서 이런 문제가 생김
+        // console.log(arr);
+        // console.log(arr2);
+        // console.log(arr3);
+
+
+
+        let arr = [1,2,3];
+        let arr2 = [...arr];            //바라보는 참조값이 다름
+        let arr3 = arr;                 //바라보는 참조값이 같음  - 얕은복사
+        console.log(arr===arr3);        //같다고 나옴(true)
+        console.log(arr===arr2);        //다르다고 나옴(false)
+
+        let obj = {
+            name: 'green',
+            age: 30,
+        }
+        //1방법 -스프레드 구문
+        let objCopy = {...obj};         //참조가 달라서 기존객체의 값을 바꿔도 복사본은 바뀌지 않음
+        //2방법 -Object
+        let objCopy2 = Object.assign({},obj);   // ...obj 나오기 이전에는 Object를 이용해서 했었음
+                                                //Object.assign(목표대상, 합치는거) -> {}:목표대상 / obj:합치는거
+        console.log(obj===objCopy);     //참조가 다르기 때문에 다르다고 나옴(false)
+        console.log(obj===objCopy2);
+
+        obj.name = 'aaa';
+        console.log(obj);
+        console.log(objCopy);
+        console.log(objCopy2);
+        //같은 키명이 있을때 뒤에꺼가 앞에꺼보다 우선됨
+
+        let target = {
+            a: 10,
+            b: 20,
+        }
+        let source = {
+            b: 50,
+            c: 60,
+            e: 70,
+        }
+        //1방법 - 스프레드구문
+        target = {...target,...source};
+        //2방법
+        // target = Object.assign(target,source);
+        console.log(target);
+    </script>
+</body>
+</html>

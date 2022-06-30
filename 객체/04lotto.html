@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            display: flex;
+            width: 100%;
+            height: 100vh;
+            justify-content: center;
+            align-items: center;
+        }
+        h1 {
+            position: absolute;
+            top: 0;
+            left: 0;
+        }
+        ul {
+            width: 70%;
+            display: flex;
+        }
+        li {
+            width: 180px;
+            height: 180px;
+            border-radius: 50%;
+            background-color: lightblue;
+            list-style: none;
+            line-height: 180px;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <h1>로또번호 출력하기</h1>
+    <ul>
+        <!-- nth-child(1) -->
+        <li>0</li>  
+        <!-- nth-child(2)   등등-->
+        <li>0</li>
+        <li>0</li>
+        <li>0</li>
+        <li>0</li>
+        <li>0</li>
+    </ul>
+    <script>
+        // let arrLotto = [1,2,3,4,5,6,7,8,9~~~,45] 다 적어줘도 되는데 귀찮음 -for이용하기
+                        // 0 1 2 3 4 5 6 7 8 ~~ 44  : 인덱스번호
+        let arrLotto = [];
+        for(let i=1; i<46; i++){
+            arrLotto.push(i);           // 1에서 45까지 / 1씩 증가하면서 마지막 요소에 추가하기-push
+        }
+        //1.arrLotto배열에서 랜덤한 값을 반환
+        // arrLotto[0]~arrLotto[44]
+        //맨처음 인덱스 ~ 마지막 인덱스는 44
+        for(let i=0; i<6; i++){
+            let ranNum = Math.floor(Math.random() * arrLotto.length);
+            // ---> 이렇게 해주면 인덱스를 0~44불러옴!! 
+            //메모장2 콘솔 참고하기
+            //Math.random() * arrLotto.length --> 0~44.99~까지 나옴 
+            //arrLotto.length : 배열의 길이(45임)
+            //이거에 Math.floor() 해주니 소수점 다 자르고 내림하여 0-44가 나옴
+            document.querySelector(`li:nth-child(${i+1})`).innerHTML = arrLotto[ranNum];
+                                    //nth-child는 0부터가 아니라 1부터
+                                    // 그런데 i는 0부터라서 i+1해줘야 nth-child가 1-2-3-4-5-6이 됨
+            //값이 중복될 수 있어서 제외시켜야함-반복안되게! -splice(배열에서 지우기)이용
+            arrLotto.splice(ranNum,1);
+                            //해당하는 인덱스에 한개만 지워!                        
+        }
+
+        // console.log(arrLotto[ranNum]);
+                    // arrLotto 배열의 ranNum값
+        //1~45까지임!!!  --배열에 넣어놓은 값
+        // console.log(ranNum); 이렇게 해주면 0~44가 나옴
+    </script>
+</body>
+</html>

@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            width: 100%;
+            height: 100vh;
+        }
+        @keyframes fadein{
+            0%{ opacity: 0.4 }
+            100%{ opacity: 1; }
+        }
+        .fadeImg {
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%,-50%);
+            animation: fadein 0.5s;
+        }
+    </style>
+</head>
+<body>
+    <!-- 시간이 지나면 다른 이미지로 전환되게 -->
+    <div class="fadeImg"><img src="../images/img_lights1.jpg" alt=""></div>
+    <div class="fadeImg"><img src="../images/img_lights2.jpg" alt=""></div>
+    <div class="fadeImg"><img src="../images/img_lights3.jpg" alt=""></div>
+    <div class="fadeImg"><img src="../images/img_lights4.jpg" alt=""></div>
+    <script>
+        //메모장참고(5.10)
+        let imgDivs = document.querySelectorAll('.fadeImg');
+        // console.log(imgDivs);
+        //querySelectorAll하면 노드가 됨 -> 콘솔창에 배열처럼 노드리스트로 뜸
+        let indexNum = 0;
+        let nextNum;
+        //이미지 4개를 다 안보이게하기  - 같은거 여러번 적는거 별로임 - for문 사용해보기
+        // imgDivs[0].style.display = 'none';
+        // imgDivs[1].style.display = 'none';
+        // imgDivs[2].style.display = 'none';
+        // imgDivs[3].style.display = 'none';
+        //1. 반복문 - for문 사용해서 - 배열길이로 해서 이미지의 갯수가 늘어나도 길이가 늘어나서 잘 적용됨
+        // for(let i=0; i<imgDivs.length; i++){
+        //     imgDivs[i].style.display = 'none';
+        // }
+        //2. 반복문 - for..each문 
+        //imgDivs 안에 있는 값 div의 스타일 display를 none을 변경
+        imgDivs.forEach(div=> div.style.display = 'none');
+        //1번 이미지만 우선 보이게하기
+        imgDivs[0].style.display = 'block';
+        //시간이 지나면 다른 이미지로 바뀌게 하기
+        setInterval(function(){
+            // nextNum = (indexNum+1) % 4; //이렇게 해줘도 됨 - 나머지연산자!(0/1/2/3만 나오도록)
+            nextNum = indexNum === 3? 0: indexNum+1;
+            //0/1/2/3번 까지만 있어서 nextNum이 4가 되면 안됨!!!!
+            //그래서 삼항연산자로 indexNum === 3이면 nextNum은 0이 되고 그게 아니라면 indexNum+1해줘야함
+            // nextNum = indexNum+1;
+            //현재 indexNum이 0이니까 nextnum = 0+1 =1이 됨
+            //nextNum이 1로 2번째 사진이 뜰거임(3줄 block해서) - > 3번째 사진 뜨려면 indexNum을 변경해줘야함
+            imgDivs[indexNum].style.display = 'none';
+            imgDivs[nextNum].style.display = 'block';
+            indexNum = nextNum;
+            //indexNum이 계속해서 0이니까 변경해줘서 값이 오르도록 해줘야함
+            //3초가 지나면 indexNum은 1이됨
+            //또 지나면 2가됨
+        },3000)
+    </script>
+</body>
+</html>

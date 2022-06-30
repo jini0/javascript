@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        //객체는 연관된 속성과 메서드를 묶어서 관리
+        //객체 리터럴 방식   : {중괄호} 열고 닫고 안에 적어주는 거
+        //person1 -> 객체 리터럴방식으로 만듬
+        let person1 = {
+            name: '민영',
+            age: 32,
+            address: '삼산동',
+            // speak() {                                //speak라는 메서드 만들어준거 
+            //     console.log('곧 있으면 점심');
+            // }
+            speak: function(){                       //객체가 가지고 있는 함수 -> 메서드
+                console.log('곧 있으면 점심');     //이렇게 적은걸 위에처럼 간단하게 나타낼 수도 있음
+            }                               
+        } 
+        //객체의 값에 접근하는 방법
+        console.log(person1.name);      //1. .key 해서 그 값 불러오기
+        console.log(person1['age']);    //2. 대괄호 표기법으로 접근
+        person1.speak();
+
+        //생성자 함수  - 대문자로 시작      --> 여러개 만들어야할 때, 생성자함수 간편
+        //this라는 애를 만들어서~!!!
+        //person2 -> 객체 생성자함수로 만듬
+        // function Person(name, age, address){
+        //     // this = {}                // 생략
+        //     this.name = name;
+        //     this.age = age;
+        //     this.address = address;
+        //     this.speak = function(){
+        //         console.log('곧 있으면 점심');
+        //     }
+        //     // return this;              // 생략
+        // }
+        // let person2 = new Person('green',20,'일산동');      // 객체 새로 만들어주기
+        // let person3 = new Person('blue',22,'일산동');
+        // console.log(person1);
+        // console.log(person2);
+
+        let person4 = {};       //빈객체 만듬
+        person4.name = "abc";                    // 빈객체에 키를 계속 추가해줌(key value가 추가 ~)
+        person4.age = 20;
+        person4.address = "달동";
+        person4.speak = function(){
+            console.log('안녕하세요');
+        }
+        console.log(person4);
+
+        //클래스를 선언 - 대문자로 시작
+        class Person {
+            // 생성자 함수 : constructor라는 생성자 함수를 가짐
+            constructor(name, age, address){
+                //fields
+                this.name = name;
+                this.age = age;
+                this.address = address;
+            }
+            //method 메서드
+            speak() {
+                console.log('하하하하하하하하하하하하하');
+            }
+        }
+        let person5 = new Person('minmin',20,'삼산동');
+        console.log(person5);
+        person5.speak();
+    </script>
+</body>
+</html>

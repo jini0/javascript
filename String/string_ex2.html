@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        //메모장 (5.12)-2 Q문제2 풀기
+        //length이용해서 -> 문자의 길이를 재고
+        //나머지 연산자를 이용해서 %2해서 나머지가 0 -> 짝수 / 1 -> 홀수 (방법 많은데 이게 가장 쉬움)
+        function solution2(s){
+            let answer = '';
+            //2로 나눴을 때 값이 0이면 짝수, 1이면 홀수
+            //삼항연산자
+            // s.length % 2 == 0 ? s.slice(s.length/2-1,s.length/2+1) : s.slice(s.length/2,s.length/2+1);
+            // 2로 나눈 나머지가 0 이면 -> 짝수 -> 짝수일 때는 s.slice(s.length/2-1,s.length/2+1)  
+                                        //짝수 qwer에서는  s.length/2-1: s.length= 4 4/2=2-1 =1번 인덱스에서 부터 ~  s.length/2+1: 4/2+1=3번인덱스(end)라서 3번은 포함하지 않고 1-2번 인덱스만 -->we
+            //                        ->  홀수 -> 홀수일 때는 s.slice(s.length/2,s.length/2+1)
+                                        //홀수 abcde에서는 s.length/2: 5/2=2번 인덱스 부터 ~ s.length/2+1: 5/2+1=3번 인덱스(end)라 포함 안하고 ->2번 인덱스만! ->c
+                                //substr(start,length갯수) 써도 됨!   --length는 start에서부터 몇개까지~!
+                                //slice(start,end) end는 포함하지 않음!(end앞에꺼까지만!!!!)
+
+            //if문
+            if(s.length % 2 == 0){
+                answer = s.substr(s.length/2-1, 2);
+                // answer = s.slice(s.length/2-1, s.length/2+1);
+            }else {
+                answer = s.substr(s.length/2, 1);
+                // answer = s.slice(s.length/2, s.length/2+1);
+            }
+            return answer;
+        }
+        console.log(solution2('abcde'));
+                    //인덱스    01234
+        console.log(solution2('qwer'));
+        console.log(solution2('abcdedd'));
+    </script>
+</body>
+</html>

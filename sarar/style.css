@@ -1,0 +1,106 @@
+* { padding: 0; margin: 0; box-sizing: border-box;}
+li { list-style: none;}
+a { text-decoration: none; color: inherit;}
+#back {
+    background-color: #000;
+    width: 100%;
+    height: 100vh;
+}
+header {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    top: 80px;
+}
+nav {
+    background-color: rgba(0,0,0,0.5);
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 100%;
+    height: 50px;
+    color: #fff;
+    z-index: 2;
+}
+nav > ul {
+    width: 1200px;
+    margin: 0 auto;
+    display: flex;
+}
+nav > ul > li {
+    width: 16.6666%;
+    position: relative;
+    text-align: center;
+}
+nav > ul > li > a {
+    line-height: 50px;
+}
+nav > ul > li > div {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    border: 1px solid #000;
+    background-color: rgba(0,0,0,0.7);
+    text-align: center;
+    padding-bottom: 20px;
+    opacity: 0;
+    transition: 0.5s;
+}
+/* 호버설정 */
+nav > ul > li:hover > div {
+    opacity: 1;
+    transform: rotateY(360deg) translateY(-100px);
+}
+nav > ul > li > div div {
+    height: 100px;
+    padding: 16px;
+    text-align: center;
+    overflow: hidden;
+    width: 100%;
+}
+nav > ul > li > div div img {
+    width: 100%;
+}
+nav > ul > li > div h2 {
+    font-size: 18px;
+    line-height: 50px;
+}
+nav > ul > li li {
+    line-height: 30px;
+}
+section {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    width: 100%;
+    height: 60vh;
+    overflow: hidden;
+}
+section img {
+    width: 100%;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+}
+footer {
+    position: absolute;
+    width: 100%;
+    bottom: 0;
+    left: 0;
+    text-align: center;
+    color: #fff;
+    padding-bottom :20px;
+}
+footer ul {
+    width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    line-height: 50px;
+    padding-bottom :20px;
+}
+footer ul li {
+    width: 16.6666%;
+}

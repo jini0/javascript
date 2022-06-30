@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        //https://programmers.co.kr/learn/courses/30/lessons/12948
+        //charAt() - 메모장 참고
+        function solution(phone_number){
+            let answer = "";
+            for(let i=0; i<phone_number.length; i++){
+                answer += i<phone_number.length-4 ? "*" : phone_number.charAt(i);   //삼항연산자
+            }
+            return answer;
+        }
+        console.log(solution("01033334444"));
+
+        
+        //charAt()
+        // let str = "안녕하세요";
+        // undefined
+        // str;
+        // '안녕하세요'
+        // str.length
+        // 5
+        // str.charAt(0)
+        // '안'
+        // str.charAt(1)
+        // '녕'
+        // str.charAt(2)
+        // '하'
+        // str.charAt(3)
+        // '세'
+        // str.charAt(4)
+        // '요'
+    </script>
+</body>
+</html>

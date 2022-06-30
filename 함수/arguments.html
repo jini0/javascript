@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        //arguments는 인수 전체를 얻어내기 위한 객체
+        //인덱스를 사용해 인수에 접근 가능
+        //유사배열 객체 (length등을 사용가능)
+        function myFunc(num1, num2){             //매개변수는 2개뿐
+            console.log(arguments[0]);
+            console.log(arguments[1]);
+            console.log(arguments[2]);
+            // console.log(arguments.length);  //인수로 보내준 것들을 arguments가 가지고 있구나!!
+        }
+        // myFunc(10,20,30);           //2개만 받을건데 값을 3개를 보냈음   -> arguments이용
+        myFunc(10,20,30,40);    
+        
+        //나머지 매개변수  ... (변수명 앞에 ...세개만 붙여주면됨)
+        //함수 정의 방법과 상관없이 함수에 넘겨주는 인수의 개수에 제약을 없앰
+        function sum(num1, num2){
+            return num1 + num2;
+        }
+        let result = sum(1,2,3,4,5);   //result에는 1+2인 3이 담겨있을거임 (함수의 매개변수가 2개고 return이 그 두개를 더한값이니)
+        function sumAll(...numAll){
+                        //인수 1,2,3을 받을 수 있는 하나의 배열이 됨(하나의 값X)(값을 여러개를 넣어주려면 배열이나 객체처럼 넣어주는 애가 필요)
+            let sum = 0;
+            //for문으로
+            // numAll[0]+numAll[1]+numAll[2]       //배열의 인덱스로 값을 접근!!해야함 -for문으로
+            for(let i=0; i<numAll.length; i++){
+                sum = sum + numAll[i];
+            }
+            return sum;
+            //forEach문
+            // numAll.forEach(num=>{               //forEach -for문 써도 되는데 forEach가 적기 편해서!(배열이라 적을 수 있음)
+            //     sum=sum+num;
+            //     return sum;
+            // })
+        }
+        console.log(sumAll(1,2,3,4,5,6,7,8,9));
+
+        function showName(성,이름,...스킬){
+                        //(성...스킬,이름)   이렇게 앞쪽에 적어주면 error가 뜸!!
+            //실제 코드작성시 한글X
+            console.log(성)
+            console.log(이름)
+            console.log(스킬);
+            스킬.forEach(기술=>console.log(기술))
+            //스킬은 배열로 받을거라서 for이나 forEach로
+        }
+        showName('손','민영','html','css','javascript','php','mysql','react','typescript');       //html~typescript는 ...스킬에 배열로 담기는거임
+        showName('김','그린','java','jsp','mysql');                 //java~mysql는 ...스킬에 배열로 담기는 거임
+    </script>
+</body>
+</html>

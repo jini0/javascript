@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        div {
+            text-align: center;
+            padding: 200px 0;
+            font-size: 58px;
+        }
+    </style>
+</head>
+<body>
+    <div>
+        <span id="h"></span> : 
+        <span id="m"></span> : 
+        <span id="s"></span>
+    </div>
+    <script>
+        // 화면에 디지털시계 만들기
+        // setInterval(함수,시간)
+        setInterval(function(){
+            let now = new Date();
+        document.querySelector('#h').innerHTML = now.getHours();
+        document.querySelector('#m').innerHTML = now.getMinutes();
+        document.querySelector('#s').innerHTML = now.getSeconds();
+        },1000)             //1초마다 변하게!!!
+
+
+        //Date객체
+        let de = new Date(1000);
+        console.log(de.toLocaleTimeString());
+        console.log(de.toLocaleDateString());
+
+        let now2 = new Date();
+        //Day 0~6까지 받음 -> 일~토
+        //숫자로 요일이 나와서 -> 이걸 한글로 나오게 하기 (switch문이나 if문 다 가능!!!)
+        let dayString = "";
+        switch(now2.getDay()){
+            case 0 :
+                dayString = "일요일";
+                break;
+            case 1 :
+                dayString = "월요일"  
+                break;
+            case 2 :
+                dayString = "화요일"  
+                break;
+            case 3 :
+                dayString = "수요일"  
+                break;
+            case 4 :
+                dayString = "목요일"  
+                break;
+            case 5 :
+                dayString = "금요일"  
+                break;
+            case 6 :
+                dayString = "토요일"  
+                break;  
+        }
+        console.log(now2.getDay());
+        console.log(dayString);
+    </script>
+</body>
+</html>

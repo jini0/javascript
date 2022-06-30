@@ -1,0 +1,130 @@
+/* reset */
+* {
+    padding: 0;
+    margin: 0;
+  }
+/* 게임 */
+/* #game {
+    background: lightcoral;
+} */
+#game {
+    position: relative;
+    width: 1200px;
+    height: 600px;
+}
+#canvas {
+    /* background: rgba(2, 126, 78, 0.829); */
+    background: url('../img/illustration.png') center center/ cover no-repeat;
+    /* position: relative; */
+}
+/* 게임오버 */
+#gameover {
+    position: absolute;
+    top: 100px;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 3rem;
+    font-weight: bolder;
+    filter: drop-shadow(2px 2px rgb(124, 97, 97));
+    /* opacity: 0; */
+    animation: twinkle 0.5s linear 2;
+}
+@keyframes twinkle {
+    0% {
+      opacity: 0.2;
+    }
+    50% {
+      opacity: 1;
+    }
+    100% {
+      opacity: 0.2;
+    }
+}
+/* 버튼 */
+#btn {
+    position: absolute;
+    top: 190px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 100px;
+    height: 40px;
+    border: none;
+    border-radius: 20px;
+    outline: none;
+    box-shadow: 5px 5px red;
+    font-size: 1.5rem;
+    color: white;
+    font-weight: 700;
+    background: linear-gradient(to bottom, rgb(247, 50, 50) 50%, orange 50%);
+    cursor: pointer;
+}
+#btn:hover {
+    color: rgb(54, 236, 17);
+}
+.hidden {
+    display: none;
+}
+/* 게임캐릭터 */
+/* #character {
+    position: absolute;
+    top: 380px;
+    left: -55px;
+    background: url("../img/pacman1.png") center center/ cover no-repeat;
+    width: 250px;
+    height: 270px;
+    transform: scale(0.45);
+    z-index: 10;
+} */
+.jump {
+    animation: jump 1s ease;
+  }
+@keyframes jump {
+    0% {
+      top: 203px;
+    }
+    50% {
+      top: 110px;
+    }
+    75% {
+      top: 110px;
+    }
+    100% {
+      top: 203px;
+    }
+}
+/* 지뢰 */
+/* #bomb {
+    position: absolute;
+    background: url("../img/cherries.png") center center/ contain no-repeat;
+    top: 470px;
+    right: 1000px;
+    width: 90px;
+    height: 90px; */
+    /* transform: scale(0.05); */
+/* } */
+/* #bomb2 {
+    position: absolute;
+    background: url("../img/lemon.png") center center/ contain no-repeat;
+    top: 470px;
+    right: 800px;
+    width: 90px;
+    height: 90px; */
+    /* transform: scale(0.05); */
+/* } */
+/* #bomb3 {
+    position: absolute;
+    background: url("../img/tangerine.png") center center/ contain no-repeat;
+    top: 470px;
+    right: 600px;
+    width: 100px;
+    height: 100px; */
+    /* transform: scale(0.05); */
+/* } */
+/* 성공횟수(점프 숫자) */
+#jumpNum {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    font-size: 1.3rem;
+    font-weight: bolder;
+  }

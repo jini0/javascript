@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>1. 연산</h1>
+    <form action="" name="myForm1">
+        <p>
+            <input type="text" name="">+<input type="text">=<input type="text">
+        </p>
+    </form>
+    <button id="btn1">연산</button>
+    <form action="" name="myForm2">
+        <h1>2. 총합 구하기</h1>
+        <p>가격 <input type="text"> 
+        x 수량 
+        <select name="num" id="num">
+            <option value="">0</option>
+            <option value="">1</option>
+            <option value="">2</option>
+            <option value="">3</option>
+            <option value="">4</option>
+            <option value="">5</option>
+        </select>
+        총합 : <span id="result"></span>
+    </p>
+    </form>
+    <form action="" name="myForm3">
+        <h1>3. 총합구하기2 (선택된 값만)</h1>
+        <p>바나나(1000원) <input type="checkbox"></p>
+        <p>사과(500원) <input type="checkbox"></p>
+        <p>배(1500원) <input type="checkbox"></p>
+    </form>
+    <button id="btn2">총합구하기</button>
+    <p>선택한 총가격: <span id="result2"></span></p>
+    <script>
+        let form1 = document.forms.myForm1;
+        let form2 = document.forms.myForm2;
+        let form3 = document.forms.myForm3;
+
+    </script>
+</body>
+</html>

@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <p>회원주소
+        <input type="text" name="address" id="address" value="울산시 남구 삼산동">
+    </p>
+    <p>
+        배송지가 같으면 다음을 체크하세요
+        <input type="checkbox" name="chk" id="chk">
+    </p>
+    <p>
+        배송지 주소 
+        <input type="text" name="address2" id="address2">
+    </p>
+    <script>
+        document.querySelector('#chk').addEventListener('click',function(){
+            // 화살표함수는 this를 가지지 못해서 -> this사용할려면 그냥 함수 function 써야함!!!
+            if(this.checked) {
+                document.querySelector('#address2').value = document.querySelector('#address').value;
+            }else {
+                document.querySelector('#address2').value = "";
+            }
+        })
+    </script>
+</body>
+</html>

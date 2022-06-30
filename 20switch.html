@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        let num = prompt('1~5까지 숫자를 입력해주세요');
+        // if와 switch 둘 다 조건문으로 둘 다 사용 가능
+        switch(num){
+            case '1':
+                console.log('1입니다.');
+                break;
+            case '2':
+                console.log('2입니다.');
+                break;
+            case '3':
+                console.log('3입니다.');
+                break;
+            case '4':
+                console.log('4입니다.');
+                break;
+            case '5':
+                console.log('5입니다.');
+                break;
+            default:
+                console.log('1~5까지의 숫자가 아닙니다.');
+        }
+        let today = new Date();
+                    // new라는 키워드를 date해주면 현재시간과 날짜를 다 들고 있는 객체
+        let year = today.getFullYear();
+        let month = today.getMonth()+1;
+                    // 달은 +1을 해줘야 지금 달을 알 수 있음!!!
+        let date = today.getDate();
+        let day = today.getDay();
+                    // 요일은 숫자로 나타남 ( 일:0 월:1 화:2 수:3 목:4 금:5 토:6 )
+                    // 0일 때는 일요일 / 1일 때는 월요일~ 로 뜨게 해줄 수 있음 
+                    // --> 경우의 수가 다 나와있을 때는 if문 보다 switch가 더 편함
+        // switch(day){
+        //     case 0:
+        //     day = '일요일';
+        //     break;
+        //     case 1:
+        //     day = '월요일';
+        //     break;
+        //     case 2:
+        //     day = '화요일';
+        //     break;
+        //     case 3:
+        //     day = '수요일';
+        //     break;
+        //     case 4:
+        //     day = '목요일';
+        //     break;
+        //     case 5:
+        //     day = '금요일';
+        //     break;
+        //     case 6:
+        //     day = '토요일';
+        //     break;
+        // }
+        //if문으로 작성해 보기
+        if(day === 0){
+            day = '일요일';
+        }else if(day === 1){
+            day = '월요일';
+        }else if(day === 2){
+            day = '화요일';
+        }else if(day === 3){
+            day = '수요일';
+        }else if(day === 4){
+            day = '목요일';
+        }else if(day === 5){
+            day = '금요일';
+        }else if(day === 6){
+            day = '토요일';
+        }else {
+            day = '요일이 아닙니다.';
+        }
+        console.log(`년도는 ${year}이고 
+        달은 ${month}이고 
+        일은 ${date}이고 
+        요일은 ${day}이다.`);
+        // 백틱없이 적어보면,
+        // console.log('년도는'+year+'이고 달은'+month+'이고 일은'+date+'이고 요일은'+day+'이다');
+    </script>
+</body>
+</html>

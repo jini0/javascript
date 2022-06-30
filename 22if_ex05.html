@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        #wrap {
+            width: 60%;
+            height: 100vh;
+            margin: 50px auto;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+        #color {
+            width: 300px;
+            height: 300px;
+            background: red;
+            border: 3px solid #333;
+            margin-bottom: 20px;
+        }
+        input {
+            width: 220px;
+            height: 30px;
+            border: 1px solid #ccc;
+            outline: 0;
+        }
+        button {
+            width: 70px;
+            background: violet;
+            color: #fff;
+            height: 30px;
+            border: 0;
+            outline: 0;
+            margin-left: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div id="wrap">
+        <div id="color"></div>
+        <div>
+            <input type="text" id="input"><button>선택</button>
+        </div>
+    </div>
+    <script>
+        // button을 클릭하면
+        // input의 값을 받아옴
+        // input의 값이 red, green, blue일 때만 color아이디를 가진
+        // div의 배경색을 해당하는 값으로 변경
+        // 다른 색일 때는 하얀색 배경색으로 지정
+        document.querySelector('button').addEventListener('click',function(){
+                                         //클릭하면 생기게 event를 붙여줌
+            let inputColor = document.querySelector('input').value;
+            // input이 가지고 있는 값은 value // input의 type은 현재 text / id는 input
+            // if 조건문 사용했을 때,
+            // if(inputColor === "red" || inputColor === "green" || inputColor === "blue"){
+            //     document.querySelector('#color').style.background = inputColor;
+            // }else {
+            //     document.querySelector('#color').style.background = "#fff";
+            //                                                         // 변수는 그냥 따옴표 없이 적고 나머지는 따옴표 안에 적어줘야 오류 안생김
+            // }
+            // switch조건문으로 바꿔보기
+            // switch(inputColor){
+            //     case 'red':
+            //         document.querySelector('#color').style.background = inputColor;
+            //         break;
+            //     case 'green':
+            //         document.querySelector('#color').style.background = inputColor;
+            //         break; 
+            //     case 'blue':
+            //         document.querySelector('#color').style.background = inputColor;
+            //         break;    
+            //     default:
+            //         document.querySelector('#color').style.background = "#fff";   
+            // }
+            //삼항조건식으로 써보기
+            (inputColor === "red" || inputColor === "green" || inputColor === "blue") ?
+            document.querySelector('#color').style.background = inputColor :        
+            document.querySelector('#color').style.background = '#fff' ;
+
+            document.querySelector('input').value = "";
+            // 얘 자체를 선택해서 얘의 value를 빈문자열로~!!
+            // input의 value를 비워주는거 -> 빈문자열 써주면 됨
+            // red를 적고 선택하면 배경색이 red로 되면서 글자red는 지워지게 하는거	   
+        })
+    </script>
+</body>
+</html>

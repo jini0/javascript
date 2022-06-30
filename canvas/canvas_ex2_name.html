@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        canvas {
+            background-color: lightblue;
+        }
+    </style>
+    <script>
+        // 내 이름 만들기 (예진)
+        function draw(){
+            let canvas = document.querySelector('canvas');
+            let ctx = canvas.getContext('2d');
+            ctx.beginPath();
+            ctx.arc(100,100,30,0,Math.PI*2, true);       
+            ctx.moveTo(140,90);
+            ctx.lineTo(160,90);
+            ctx.moveTo(140,110);
+            ctx.lineTo(160,110);
+            ctx.moveTo(160,50);
+            ctx.lineTo(160,150);
+            ctx.moveTo(180,50);
+            ctx.lineTo(180,150);
+            ctx.moveTo(220,70);
+            ctx.lineTo(280,70);
+            ctx.moveTo(280,70);
+            ctx.lineTo(220,110);
+            ctx.moveTo(250,90);
+            ctx.lineTo(285,110);
+            ctx.moveTo(310,50);
+            ctx.lineTo(310,120);
+            ctx.moveTo(255,120);
+            ctx.lineTo(255,150);
+            ctx.moveTo(255,150);
+            ctx.lineTo(315,150);
+
+            // ctx.fillRect(140,85,30,2);
+            // ctx.fillRect(140,105,30,2);
+            // ctx.fillRect(170,55,2,90);
+            // ctx.fillRect(190,55,2,90);
+            // ctx.fillRect()
+            ctx.stroke();
+        }
+    </script>
+</head>
+<body onload="draw()">
+    <canvas width="1000" height="600"></canvas>
+</body>
+</html>

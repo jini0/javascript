@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        canvas { background-color: #eee;}
+        img { display: none;}
+    </style>
+</head>
+<body>
+    <canvas id="canvas"></canvas>
+    <img src="obs1.png" alt="">
+    <img src="obs2.png" alt="">
+    <img src="obs3.png" alt="">
+    <script>
+        //게임만들기!!!
+        //1.화면에 이미지를 그릴수 있어야함
+        //2.프레임마다 코드를 실행
+        //3.충돌체크 하기
+
+        const canvas = document.querySelector('#canvas');
+        const context = canvas.getContext('2d');
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
+
+        //변수선언하기
+        let obstacles = [];
+        let animation;
+        let timer=0;
+        let jump = false;
+        let jumptimer = 0;
+        let catImg = new Image();
+        catImg.src = 'cat.png';
+        let obsImgs = document.querySelectorAll('img');
+        //장애물 만들기
+        class Obstacle {
+            constructor(x=window.innerWidth-200,y=300,width=50,height=50){
+                this.x = x;
+                this.y = y;
+                this.width = width;
+                this.height = height;
+                this.num = Math.floor(Math.random()*3);
+            }
+            draw() {
+                context.drawImage(obsImgs[this.num],this.x,this.y,this.width,this.height);
+                // context.fillStyle = 'red';
+                // context.fillRect(this.x, this.y, this.width, this.height);
+            }
+        }
+        //고양이 객체만들기
+        let cat = {
+            x: 30,
+            y: 300,
+            width: 50,
+            height: 50,
+            draw() {
+                // context.fillStyle = 'green';
+                // context.fillRect(this.x,this.y,this.width,this.height);
+                context.drawImage(catImg,this.x, this.y,this.width,this.height);
+            }
+        }
+        
+        //애니메이션 시작하기
+        function startFrame(){
+            animation = requestAnimationFrame(startFrame);
+            timer++;
+            //캔버스 지우기
+            context.clearRect(0,0,window.innerWidth,window.innerHeight);
+            //장애물은 200프레임이 될때마다 만들기
+            if(timer%200==0){
+                let obstacle = new Obstacle();
+                obstacles.push(obstacle);
+                console.log(obstacles);
+            }
+            obstacles.forEach((item,index,arr)=>{
+                //장애물은 왼쪽으로 이동
+                //장애물 화면에 그리기
+                //장애물의 x좌표가 30보다 작으면 제거하기
+                if(item.x < 30){
+                    arr.splice(index,1);
+                }
+                item.x--;
+                item.draw();
+                //충돌하는지 확인
+                crashCheck(cat,item);
+            })
+            //스페이스 눌렀을때 올라갔다 내려오기 
+            if(jump){
+                cat.y -= 3;
+                jumptimer++;
+            }else{
+                if(cat.y < 300){ cat.y += 3; }
+            }
+            if(jumptimer > 30){
+                jump = false;
+                jumptimer = 0;
+            }
+            cat.draw();
+        }
+        startFrame();
+        //충돌확인하기
+        function crashCheck(cat,item){
+            let x축차이 = item.x - (cat.x+cat.width);
+            let y축차이 = item.y - (cat.y+cat.height/2);
+            if(x축차이<=0 && y축차이 <= 0 ){
+                cancelAnimationFrame(animation);
+                console.log('충돌');
+            }
+        } 
+        //점프이벤트 
+        window.addEventListener('keydown',function(e){
+            if(e.code == 'Space'){
+                jump = true;
+            }
+        })
+    </script>
+</body>
+</html>

@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        canvas {
+            background-color: #eee;
+        }
+        img { display: none;}
+    </style>
+</head>
+<body>
+    <canvas id="canvas"></canvas>
+    <img src="obs1.png"><img src="obs2.png"><img src="obs3.png">
+    <script>    
+        const canvas = document.querySelector('#canvas');
+        const context = canvas.getContext('2d');
+        canvas.width = window.innerWidth - 100;
+        canvas.height = window.innerHeight - 100;
+        let obstacles = [];
+        let animation;
+        let timer=0;
+        let jump = false;
+        let catImg = new Image();
+        let obsImgs = document.querySelectorAll('img');
+        const cat = {
+            x:10,
+            y:300,
+            width:50,
+            height:50,
+            draw(){
+                catImg.src='cat.png';
+                context.drawImage(catImg,this.x,this.y,this.width,this.height);
+                // context.fillStyle = 'pink';
+                // context.fillRect(this.x, this.y, this.width, this.height);
+            }
+        }
+        class Obstacle {
+            constructor(x=900,y=300,width=50,height=50){
+                this.x = x;
+                this.y = y;
+                this.width = width;
+                this.height = height;
+                this.num = Math.floor(Math.random()*3);
+            } 
+            draw(){
+                context.drawImage(obsImgs[this.num],this.x,this.y,this.width,this.height);
+                // context.fillStyle = 'red';
+                // context.fillRect(this.x, this.y, this.width, this.height);
+            }
+        }
+
+        function startFrame(){
+            animation = requestAnimationFrame(startFrame);
+            timer++;
+             //캔버스 지우기
+            context.clearRect(0,0,window.innerWidth, window.innerHeight);
+            if(timer%240  ==0){
+                obstacles.push(new Obstacle());
+                console.log('만들어짐');
+            }
+            obstacles.forEach((obs,index) =>{
+                obs.draw();
+                obs.x--;
+                if(obs.x < 0){
+                    obstacles.splice(index,1);
+                    console.log(obstacles.length);
+                }
+                crashCheck(cat,obs);
+            })
+            if(jump){
+                cat.y--;
+                jump = cat.y<200? false: true;
+            }else{
+                if(cat.y<300){
+                    cat.y++;  
+                }
+            }
+           
+            cat.draw();
+        }
+        startFrame();
+        function crashCheck(cat,obs){
+            let x = obs.x-(cat.x+50);
+            let y =  obs.y -cat.y   ;
+            if( x<0 &&  y<=0 ){
+                console.log('충돌');
+                cancelAnimationFrame(animation);
+            }
+        }
+        //키이벤트
+        window.addEventListener('keydown',function(e){
+            console.log(e);
+            if(e.code == "Space"){
+                jump = true;
+            }
+        })
+    </script>
+</body>
+</html>

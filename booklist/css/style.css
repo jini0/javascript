@@ -1,0 +1,81 @@
+:root {
+    /* size */
+    --base-space: 8px;
+    --size-button: 60px;
+    --font-size: 14px;
+    --size-border: 5px;
+    --size-thumnail: 45px;
+    /* animation */
+    --animation: 0.3s;
+}
+body {
+    /* height: 100vh; */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: 0 auto;
+}
+.logo {
+    text-align: center;
+    cursor: pointer;
+    padding: 50px 0 20px;
+}
+/* .buttonUl {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    background: pink;
+}
+.btn {
+    list-style: none;
+    padding: 0 var(--font-size);
+    width: 25%;
+    background: red;
+}
+.btn button {
+    cursor: pointer;
+    background: #333;
+    border: none;
+    outline: none;
+    color: #fff;
+    border-radius: var(--size-border);
+    padding: var(--base-space) 60px;
+} */
+.buttonDiv {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.btn {
+    cursor: pointer;
+    background: #333;
+    border: none;
+    outline: none;
+    color: #fff;
+    border-radius: var(--size-border);
+    padding: var(--font-size) 80px;
+    margin: 0 var(--font-size);
+    font-size: var(--font-size);
+    margin-bottom: 30px;
+}
+.books {
+    margin: 0 auto;
+    border-top: 2px solid #333;
+    width: 100%;
+    border-collapse: collapse;
+    padding: var(--font-size);
+    text-align: center;
+    overflow-y: scroll;   
+}
+.books tr th {
+    /* width: 33.3333%; */
+    padding: var(--font-size);
+    border-bottom: 1px solid #ccc;
+
+}
+.books td {
+    padding: var(--base-space);
+    border-bottom: 1px solid #ccc;
+}

@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>1. 연산</h1>
+    <p>
+        <input type="text" name="num1" id="num1" value="10">+
+        <input type="text" name="num2" id="num2" value="20">=
+        <input type="text" name="result1" id="result1">
+        <button id="sumbtn">연산</button>
+    </p> 
+    <h1>2. 총합 구하기</h1>
+    <p>
+        가격 <input type="text" name="price" id="price" value="2500">
+        × 수량 
+        <select name="num3" id="num3">
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+            <option value="5">5</option>
+        </select>
+        총합 : <span id="total"></span>
+    </p>
+    <h1>3. 총합구하기2 (선택된 값만)</h1>
+    <p>바나나(1000원) 
+        <input type="checkbox" name="fruit" id="fruit1" value="1000">
+    </p>
+    <p>사과(500원) 
+        <input type="checkbox" name="fruit" id="fruit2" value="500">
+    </p>
+    <p>배(1500원) 
+        <input type="checkbox" name="fruit" id="fruit3" value="1500">
+    </p>
+    <p><button id="totalBtn">총합구하기</button></p>
+    <p>선택한 총가격 : <span id="totalPrice"></span></p>
+    <script>
+        const sumbtn = document.querySelector('#sumbtn');
+        sumbtn.addEventListener('click',function(){
+            let num1 = document.querySelector('#num1').value;
+            let num2 = document.querySelector('#num2').value;
+            let result1 = parseInt(num1) + parseInt(num2);
+            // parseInt() - 문자열을 정수로 바꾸는 함수입니다. // ex> parseInt('12.68') = 12
+            document.querySelector('#result1').value = result1;
+        })
+        //2번째 총합구하기
+        const select = document.querySelector('#num3');
+        const priceO = document.querySelector('#price');
+        priceO.addEventListener('keyup',function(){
+            if(!isNaN(parseInt(priceO.value))){
+                totalSum();
+            }
+        })
+        select.addEventListener('change',function(){
+           totalSum();
+        })
+        function totalSum(){
+            let selectNum = select.value;
+            let price = priceO.value;
+            document.querySelector('#total').innerHTML = price * selectNum;
+        }
+        //3번 총합구하기
+        //checkbox checked가 true인 항목의 value값을 더해서 
+        //span태그의 innerHTML로 지정
+        const totalBtn = document.querySelector('#totalBtn');
+        totalBtn.addEventListener('click',function(){
+            let fruits = document.getElementsByName('fruit');
+            let total = 0;
+            fruits.forEach(fruit=>{
+                if(fruit.checked){
+                    total = total + Number(fruit.value)
+                }
+            })
+            document.querySelector('#totalPrice').innerHTML = total;
+        })
+
+
+        // https://www.codingfactory.net/11026
+        // parseInt() - 문자열을 정수로 바꾸는 함수입니다. // ex> parseInt('12.68') = 12
+        // parseInt( string, n )
+        // -string을 n진법일 때의 값으로 바꿉니다. n은 옵션으로 2부터 36까지 입력할 수 있습니다. 입력하지 않으면 10으로 처리합니다.
+        // -string의 처리는 parseFloat()와 거의 같습니다.
+        // -소수 부분은 버립니다.
+        // -0x로 시작하면 16진법으로 처리합니다.
+    </script> 
+</body>
+</html>
+​

@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div>
+        <ul id="forul">
+
+        </ul>
+    </div>
+    <script>
+        // 2단~9단까지 구구단을 화면에 출력
+        let li = ""; 
+        // 일단 빈문자열 만들어줌 -> 처음 li는 빈문자열
+        for(let i=2; i<10;i++){
+            li = li+`<li><h3>${i}단입니다.</h3><ul>`
+            for(let j=1; j<10; j++){
+                li = li+`<li>${i} * ${j} = ${i*j}</li>`
+            }
+            li = li+`</ul></li>`;
+            // 위에 `<li><h3></h3><ul>`해주고 닫기</ul></li>를 여기서 닫아줌
+        }
+        document.querySelector('#forul').innerHTML = li;
+        let str = "";
+        for(let i=0; i<10; i++){
+            str = str + `안녕 ${i}`;
+                // 원래 있던 str에 새로운 str이 계속해서 추가되는 -->콘솔 확인해보기
+            console.log(str);
+        }
+
+
+        // 2단~9단까지 구구단을 콘솔에 출력
+        // for(let i=2; i<10;i++){
+        //     console.log(`${i}단 입니다.`);
+        //     for(let j=1; j<10; j++){
+        //         console.log(`${i}*${j}=${i*j}`);
+        //     }
+        // }
+
+        // // for문 안에 for 넣을 수 있음(중첩 래스팅)(이중 반복문) --if문도 if문 안에 if문 넣을 수 있었음
+        // for(let i=1; i<10; i++){
+        //     for(let j=0; j<10; j++){
+        //         console.log(`i는 ${i}이고 j는 ${j}이다.`);
+        //     }
+        // }
+
+        // 2번
+        // for(let i=1; i<10; i++){
+        //     console.log(`2 * ${i} = ${2*i}`);
+        //     // 산술식 적어 줄 수도 있다
+        // }
+
+        // 1번
+        // for(let i=0; i<10; i++){
+        //     console.log(`i는 ${i}입니다.`);
+        // }
+    </script>
+</body>
+</html>

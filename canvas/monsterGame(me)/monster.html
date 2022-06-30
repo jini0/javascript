@@ -1,0 +1,383 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Catch the monster</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <div id="wrap">
+        <div id="background">
+            <div class="small-btns">
+                <button class="small-btn top-btn btnStyle">▲</button>
+                <div class="samll-btn left-right-btn">
+                    <button class="small-btn left-btn btnStyle">◀</button>
+                    <button class="small-btn right-btn btnStyle">▶</button>
+                </div>
+                <button class="small-btn bottom-btn btnStyle">▼</button>
+            </div>
+            <div class="roundBtn">
+                <button class="saveBtn">SAVE</button>
+            </div>
+            <canvas id="canvas1" width="1100" height="600"></canvas>
+            <canvas id="canvas" width="1100" height="600" class="hidden"></canvas>
+            <div id="gameover" class="hidden">GAME OVER</div>
+            <button id="btn">Start</button>
+            <input type="text" id="writeId" placeholder="ID를 입력하세요.">
+            <img src="./img/mario1.png" id="maimg" style="display: none;">
+            <img src="./img/mario_mushroom.png" style="display: none;" class="monster">
+            <img src="./img/mario_flower.png" style="display: none;" class="monster">
+            <img src="./img/mario_mushroom_green.png" style="display: none;" class="monster">
+            <img src="./img/present.png" style="display: none;" class="monster">
+            <audio controls autoplay> 
+                <source src="SuperMarioThemeSong.mp3" type="audio/mpeg"> 
+            </audio> 
+            <!-- <iframe src="SuperMarioThemeSong.mp3" allow="autoplay" style="display:none" id="iframeAudio"></iframe> -->
+            <!-- <audio src="SuperMarioThemeSong.mp3" autoplay></audio> -->
+            <div id="main-info" class="hidden">
+                <img src="./img/mario.png" alt="" id="player">
+                <p id="level">Level 01</p>
+                <p id="playerId">ID</p>
+                <progress id="level-gauge" data-label="EXP 0/100" value="0" max="100"></progress>
+            </div>
+        </div>
+    </div>
+</body>
+    <script>
+        let canvas1 = document.querySelector('#canvas1');
+        let canvas = document.querySelector('#canvas');
+        let ctx = canvas.getContext('2d');
+        
+        //변수만들기
+        // let mouseCursor = document.querySelector(".cursor");
+        let startBtn = document.querySelector('#btn');
+        let topBtn = document.querySelector('.top-btn');
+        let leftBtn = document.querySelector('.left-btn');
+        let rightBtn = document.querySelector('.right-btn');
+        let bottomBtn = document.querySelector('.bottom-btn');
+        let gameover = document.querySelector('#gameover');
+        let writeId = document.querySelector('#writeId');
+        let mainInfo = document.querySelector('#main-info');
+        let animation;          
+        let timer = 40;
+        let marioImg = new Image();
+        marioImg.src = "./img/mario1.png";
+        // let mauser = document.querySelector('#maimg');
+        // let playerImg = new Image();
+        // playerImg.src = "./img/mario.png";
+        let player = document.querySelector('#player');
+        let levelUp = document.querySelector('#level-gauge');
+        let monImgs = document.querySelectorAll('.monster');
+        // let monster = {};
+        // let monstersCaught = 0;
+        
+        //canvas 배경
+        // let backImg = new Image();
+        // backImg.src = "img/background.png";
+        // backImg.onload = function(){
+        //     contex.drawImage(backImg,0,0,1100,600);
+        // }
+
+        // 마우스커서
+        //-이미지 설정해서 다시하기..!
+        // window.addEventListener("mousemove", cursor);
+        // function cursor(e) {
+        //     mouseCursor.style.left = e.pageX + "px";
+        //     mouseCursor.style.top = e.pageY + "px";
+        // }
+        
+        // start 버튼 누를 때,        
+        startBtn.addEventListener("click", (e) => {
+                // stopflag = false;
+                // bomb.classList.add("move");
+                gameStart();
+                canvas1.classList.add("hidden");
+                canvas.classList.remove("hidden");
+                gameover.classList.add("hidden");
+                startBtn.classList.add("hidden");
+                player.classList.remove("hidden");
+                mainInfo.classList.remove("hidden");
+                writeId.classList.add("hidden");
+                // jumpNum.classList.remove("hidden");
+                // jumpNumCnt.textContent = 0;
+                // bombMove();
+                // jump();
+                // render();
+        });   
+
+        // *main-info영역
+        //플레이어
+        // let player = {
+        //     x: 800,
+        //     y: 10,
+        //     width: 60,
+        //     height: 100,
+        //     drawP() {
+        //         ctx.drawImage(playerImg, this.x, this.y, this.width, this.height);
+        //     }
+        // }
+        // player.drawP();
+        //경험치
+        function pocketInfoChange() {
+            curObj.exp += (20 - Math.round(this.timeBetweenSteps / 100));  
+            // (대충 랜덤지정되는 this.timeBetweenSteps값에 비례하게 경험치(exp)를 준다는 식)
+            progress.setAttribute('data-label', `EXP ${curObj.exp}/100`);
+            progress.value = curObj.exp;
+            if (curObj.exp >= 100) {    // 경험치가 100이되면 레벨업, 경험치 초기화
+                curObj.level++;
+                levelText.textContent = `Level ${curObj.level}`;
+                curObj.exp -= 100;
+                progress.setAttribute('data-label', `EXP ${curObj.exp}/100`);
+                progress.value = curObj.exp;
+            }
+        }
+
+
+        //캐릭터 객체 만들기
+        let gameU = {
+            x : 500,
+            y : 240,
+            width: 70,
+            height: 90,
+            speed: 2,       // 캐릭터의 이동 속도(초당 픽셀 수)
+            // speed: 256,  // 캐릭터의 이동 속도(초당 픽셀 수)
+            draw() {
+                ctx.drawImage(marioImg, this.x,this.y, this.width,this.height);
+            }
+        }
+        gameU.draw(); 
+        // console.log(gameU);  
+        // ctx.drawImage(mauser,50,50,50,50);
+
+
+        //몬스터 배열
+        let monArr = [];
+        //변수로 주기
+        // Monster image
+        // var monster = {
+        //     x: 0,
+        //     y: 0,
+        //     width: 50,
+        //     height: 50,
+        // };
+        class Monster {
+            constructor(x,y){
+                this.x = x;
+                this.y = y;
+                this.width = 60;
+                this.height = 60;
+                this.num = Math.floor(Math.random()*4);
+            }
+            draw() {
+                ctx.drawImage(monImgs[this.num],this.x, this.y, this.width, this.height);
+            }
+            
+        }
+        
+        let monstersCaught = 0;
+        // var monsterReady = false;
+        // var monsterImage = new Image();
+        // // var monsterImage2 = new Image()
+        // // var monsterImage3 = new Image()
+        // monsterImage.onload = function () {
+        //     monsterReady = true;
+        // };
+        // monsterImage2.onload = function () {
+        //     monsterReady = true;
+        // };
+        // monsterImage3.onload = function () {
+        //     monsterReady = true;
+        // };
+        // monsterImage.src = "./img/super-mario-flow.png";
+        // monsterImage.src = "./img/mario_mushroom.png";
+        // monsterImage2.src = "./img/super-mario-bros.png";
+        // monsterImage3.src = "./img/super-mario-flow.png";
+        
+        
+        //캐릭터 키이벤트
+        // https://devut90.tistory.com/16 참고하기
+        // https://developer.mozilla.org/en-US/docs/Games/Techniques/Control_mechanisms/Desktop_with_mouse_and_keyboard
+        let keysDown = {};
+        window.addEventListener("keydown", function (key) {
+            keysDown[key.keyCode] = true;
+            // console.log(keysDown);
+            keydown(key);
+        }, false);
+        window.addEventListener("keyup", function (key) {
+            delete keysDown[key.keyCode];
+            keyup(key);
+        }, false);
+
+        let keycode;
+        function keydown(e){
+            //눌러진 key의 코드값
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            keycode = e.keyCode;
+            switch(keycode){
+                case 37:        //left
+                gameU.x += -3 * gameU.speed;         
+                leftBtn.classList.remove("btnStyle");           
+                leftBtn.classList.add("click"); 
+                // console.log('keydown');           
+                    break; 
+                case 38:        //up
+                gameU.y += -3 * gameU.speed;
+                topBtn.classList.remove("btnStyle");           
+                topBtn.classList.add("click");  
+                    break; 
+                case 39:        //right
+                gameU.x += 3 * gameU.speed; 
+                rightBtn.classList.remove("btnStyle");           
+                rightBtn.classList.add("click"); 
+                    break; 
+                case 40:        //down
+                gameU.y += 3 * gameU.speed; 
+                bottomBtn.classList.remove("btnStyle");           
+                bottomBtn.classList.add("click"); 
+                    break; 
+            }
+            gameU.draw();
+        }
+        function keyup(e){
+            //떨어진 key의 코드값
+            keycode=e.keyCode;
+            switch(keycode){
+                case 37:            //left
+                leftBtn.classList.remove("click");           
+                leftBtn.classList.add("btnStyle");  
+                // console.log('keyup');      
+                    break;  
+                case 39:            //right
+                rightBtn.classList.remove("click");           
+                rightBtn.classList.add("btnStyle");
+                    break;
+                case 38:            //up
+                topBtn.classList.remove("click");           
+                topBtn.classList.add("btnStyle");
+                    break;
+                case 40:            //down
+                bottomBtn.classList.remove("click");           
+                bottomBtn.classList.add("btnStyle");
+                    break;
+            }
+        }   
+
+        //*게임시작(animation)
+        let monsterCon=true;
+        let mon;
+        function gameStart(){           
+            animation = requestAnimationFrame(gameStart);
+            // contex.clearRect(0,0,window.innerWidth,window.innerHeight);
+            // 몬스터 랜덤하게 위치하게!
+            // render();    
+            if(monsterCon){
+                mon = new Monster( ( 60+(Math.random()*(canvas.width-120))), (60 +(Math.random()*(canvas.height-120))) );
+                console.log(mon);
+                monsterCon=false;
+            }
+            mon.draw();
+            gameU.draw();
+        };
+
+        // 캐릭터가 몬스터 잡으면 캐릭터, 몬스터 위치 reset
+        let reset = function () {
+            //캐릭터 캔버스 중앙에(position to center of canvas)
+            // gameU.this.x = canvas.width / 2;
+            // gameU.this.y = canvas.height / 2;
+            gameU.x = canvas.width / 2;
+            gameU.y = canvas.height / 2;
+            //몬스터 랜덤하게 위치(on the canvas randomly)
+            mon.x = 60 + (Math.random() * (canvas.width - 120));
+            mon.y = 60 + (Math.random() * (canvas.height - 120));
+        };
+        //캐릭터와 몬스터가 만나면(잡으면)
+        //캐릭터 사이즈업!(몬스터이미지4번(인덱스3) 만날 때)
+        // function charSize(){
+        //     gameU.width = 75;
+        //     gameU.height = 95;
+        // }
+        // if (
+        //     gameU.x <= (mon.x + 60)
+        //     && mon.x <= (gameU.x + 70)
+        //     && gameU.y <= (mon.y + 60)
+        //     && mon.y <= (gameU.y + 90)
+        // ) {
+        //     // if(monImgs[3]){
+        //     //     setInterval(charSize(),5000);
+        //     // }
+        //     ++monstersCaught;
+        //     cancelAnimationFrame(animation);
+        //     reset();
+        // }
+        function catchCheck(gameU, mon){
+            let x차이 = mon.x - (gameU.x+gameU.width);
+            let y차이 = mon.y - (gameU.x+gameU.width);
+        }
+
+
+
+
+
+
+
+        // 제한시간
+        // let finished = false;
+        // let counter =function(){
+        // timer=timer-1;          // 1초씩 카운트다운
+        // //0초가 되면 캐릭터, 몬스터 clear! + 게임종료
+        //     if (timer <= 0)
+        //     {
+        //     // timer 멈춤
+        //     clearInterval(timer);
+        //     finished = true;
+        //     count=0;
+        //     // 캐릭터, 몬스터 숨기기
+        //     contex.clearRect(0,0,window.innerWidth,window.innerHeight);
+        //     }
+        // }
+        // setInterval(timer, 1000);
+        // let main = function () {
+        //     requestAnimationFrame(main);
+        // };           
+        // main();
+
+
+
+        // var render = function () {
+        //     if (monsterReady) {
+        //         ctx.drawImage(monsterImage, Monster.x, Monster.y, Monster.width, Monster.height);
+        //         // ctx.drawImage(monsterImage2, monster.x, monster.y);
+        //         // ctx.drawImage(monsterImage3, monster.x, monster.y);
+        //     }
+        //     // Display score and time 
+        //     ctx.fillStyle = "rgb(250, 250, 250)";
+        //     ctx.textAlign = "left";
+        //     ctx.textBaseline = "top";
+        //     ctx.fillText("Monsters caught: " + monstersCaught, 20, 20);
+        //     // ctx.fillText("Time: " + count, 20, 50);
+        //     // Display game over message when timer finished
+        //     // if(finished==true){
+        //     //     ctx.fillText("Game over!", 200, 220);
+        //     // }
+            
+        //     };
+            // render();
+    </script>
+</html>
+
+<!-- *경험치
+경험치에 따라 게이지바가 차오르도록 -> progress라는 html 태그 
+data-label로 내부에 표시될 텍스트를, value로 현재값(작업 진행 정도)을, max로 최대값을 지정. 
+Javascript에서 data-label에 새로운 텍스트를 삽입하고, 
+value값을 증가시켜주는 식으로 경험치에 따라 이 요소의 속성값들이 바뀌게 하기 -->
+
+<!-- *progress bar 색 지정
+https://izen8.tistory.com/323 
+https://archuive.tistory.com/54 -->
+
+<!-- chrome에서 오디오 자동재생 -->
+<!-- https://dev.classmethod.jp/articles/i-tried-the-howler-js-library/ 
+    https://blog.naver.com/websearch/221521356683 
+    https://www.geeksforgeeks.org/how-to-autoplay-audio-on-chrome/-->

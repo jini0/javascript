@@ -1,0 +1,11 @@
+let timer = setInterval(함수,시간)
+clearInterval(timer);                    -->clearInterval를 이용해 멈출 수 있음 
+
+
+<DOM>_slideLeft.html
+//인덱스0123 (이미지가 총 4장일 때)
+현재 보고있는 div가 0일때 이전 3 다음 1
+		//0번 ->1번사진이라서 이전꺼는 3번인덱스(4번째사진)
+현재 보고있는 div가 1일때 이전 0 다음 2
+현재 보고있는 div가 2일때 이전 1 다음 3
+현재 보고있는 div가 3일때 이전 2 다음 0

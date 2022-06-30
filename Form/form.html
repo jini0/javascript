@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        :focus {
+            background: yellow;
+        }
+    </style>
+</head>
+<body>
+    <form action="" name="myForm" id="form1">
+        <input type="text" name="userId" id="userId" value="아이디">
+        <input type="text" name="userPass" id="userPass">
+        <!-- <input type="text" name="userPass" autofocus> -->
+        <!-- autofocus 속성으로 포커스로 지정가능 -> 요기에 focus가 처음 맞춰짐  -->
+        <textarea name="msg" id="myMsg" cols="30" rows="10">
+            안녕하세요안녕하세요
+        </textarea>
+    </form>
+    <form action="" name="myForm2" id="form2">
+        <input type="text" name="userId">
+        <input type="text" name="userPass">
+    </form>
+    <script>
+        // <폼 탐색>
+        //form2 만들기 전에!
+        // let form1 = document.querySelector('form')
+        // let form2 = document.forms.myForm;
+        // let form3 = document.forms[0];
+        // console.log(form1);
+        // console.log(form2);
+        // console.log(form3);
+
+        
+        // 1번째 form
+        let form1 = document.querySelector('#form1')
+        let form2 = document.forms.myForm;
+        let form3 = document.forms[0];
+        console.log(form1);
+        console.log(form2);
+        console.log(form3);
+
+        //2번째 form
+        // let form1 = document.querySelector('#form2')
+        // let form2 = document.forms.myForm2;
+        // let form3 = document.forms[1];
+        // console.log(form1);
+        // console.log(form2);
+        // console.log(form3);
+
+        // <폼 안의 요소 탐색>
+        //form.elements.name        --> 굳이 안외우고 querySelector 쓰면 됨 (이런 애들이 있다 정도 알기!)
+        //짧은 표기법 form.name
+        console.log(form1.elements.userPass);   //name이 userPass인게 선택
+        console.log(form1.elements.userId);     //name이 userId인게 선택
+        console.log(document.querySelector('#userId')); //위에랑 같은 애임
+        console.log(form1.userPass);            //--> 중간에 elements를 안써도 됨 : 짧은 표기법 (위에 elements 적어준고랑 같음)
+        console.log(form1.elements.userPass == form1.userPass);    // -> 두개 같은 거라서 true나옴!!
+        console.log(form1.msg.value);
+
+        // document.querySelector('#userId').focus();  //메서드 이용해서 userId에 포커스 가게!!
+
+        let input1 = form1.userId;
+        let input2 = form1.userPass;
+        console.log(input1, input2);
+        input1.addEventListener('keydown',function(e){
+            if(e.key==='Enter') input2.focus();
+        })
+    </script>
+</body>
+</html>

@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // 왜 안되지..
+        // function solution(n){
+        //     var answer = 0;
+        //     let sum = 0;
+        //     let stringN = String(n).slice(1,n[n.length-1]);
+        //     sum += stringN;
+        //     return answer;
+        // }
+
+        // cf. https://hianna.tistory.com/386 문자열 숫자로 변환하기 parseInt() 메서드
+        // https://www.codingfactory.net/10424  : split()메서드
+        //.split()은 문자열을 분할하는 메서드
+        //string.split( separator, limit )
+        //eparator에는 분할의 기준을 넣습니다. 예를 들어 쉼표를 기준으로 분할할 때는 ','와 같이 합니다.
+        //limit로 최대 분할 개수를 정합니다. 선택 사항으로, 값을 정하지 않으면 전체를 다 분할합니다.
+
+        //String()메서드 : 문자열로 변환 => n값이 숫자니까 문자열로 변환해줘야함!
+        function solution(n){
+            var answer = 0;
+            answer = String(n).split('').reduce((pre,cur)=>{
+                // return Number(pre+cur);    //123 / 987 이 나옴
+                // return pre+cur;            //0123 / 0987 이 나옴(초기값이 0이라 맨 처음 pre에 0이 담겨서)
+                return pre+Number(cur);       //6 / 24 나옴! cur이 문자열이라 숫자로 다시 바꿔줘야함!            
+            },0)
+            return answer;
+        }
+        console.log(solution(123));
+        console.log(solution(987));
+
+
+        //https://blog.naver.com/cmh348/222677519314
+        // 간략하게
+        // function solution(n){
+        //     return String(n).split('').reduce((pre,cur) => pre+ +cur,0);
+        //     //pre는 누산된 값 / cur는 배열을 반복하여 들어오는 값
+        //     //이 cur는 현재 문자인 상태이므로 숫자로 바꿔줘야한다.
+        //     //그래서 앞에 +를 붙여서 숫자로 변환
+        //     //끝에 붙은 0은 초기값으로 이 값을 지정해주지 않으면 문자열이 그대로 더해지게 되므로 반드시 붙여줘야한다.
+        // }
+        // console.log(solution(123));
+        // console.log(solution(987));
+    </script>
+</body>
+</html>

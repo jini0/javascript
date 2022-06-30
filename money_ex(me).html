@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        li { list-style: none; }
+        body {
+            font-size: 18px;
+            line-height: 1.6;
+            font-family: "맑은 고딕";
+            background: #333;
+        }
+        div {
+            width: 100px;
+            margin: 400px auto;
+            text-align: center;
+            padding: 50px 10px;
+            background: #fff;
+        }
+        h2 {
+            font-size: 18px;
+            border-bottom: 1px solid #ccc;
+            padding-bottom: 5px;
+        }
+        ul {
+            padding: 40px 0 10px 0;
+        }
+        button {
+            padding: 0 10px;
+        }
+    </style>
+</head>
+<body>
+    <div>
+        <h2><화면></h2>
+        <ul>
+            <li>A음료수 : 500원</li>
+            <li>B음료수 : 700원</li>
+            <li>C음료수 : 1000원</li>
+        </ul>
+        <button class="click1">100</button>
+        <button class="click2">500</button>
+        <button class="click3">1000</button>
+    </div>
+    <script>
+        let money = 0;
+        document.querySelector('.click1').addEventListener('click',eventOn);
+        function eventOn(){
+            console.log('');
+        }
+
+    </script>
+</body>
+</html>

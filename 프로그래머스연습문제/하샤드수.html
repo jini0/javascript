@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        //https://programmers.co.kr/learn/courses/30/lessons/12947
+        //나머지 구해주는 => 나머지 연산자 %
+        //split()메서드 - 배열로 변경
+        //숫자를 문자로 형변환/ 문자를 숫자로 형변환 가능 -
+        
+        //*숫자입력 10
+        //-> 문자로 형변환 -> 배열로 변환 [1,0] (split() 메서드 사용)
+        //배열의 합을 구하기 : 배열메서드 reduce()사용
+        //입력받은 숫자를 배열의 합으로 나누었을 때 (나머지연산자% 사용)
+        //나머지가 0이면 true
+        //나머지가 0이 아니면 false를 리턴
+        //*숫자입력 12
+        //-> 문자로 형변환 -> 배열로 변환 [1,2]
+        
+        function solution(x){
+            let answer = true;      //불린데이터인 true 일단 넣어줌
+            //입력받은 x의 자리수를 더한 값 sum
+            //x를 문자열로 변경 -> 배열로 변경 -> 배열의 합
+                    //String() : 문자열로 변경
+                    //split()  : 배열로 변경
+                    //reduce() : 합 구해주기 (함수, 초기값)
+                    //체이닝 . 찍어서 계속해서 연결해서 써줄 수 있음
+            let sum = String(x).split("").reduce((pre, cur)=>{
+                return Number(pre)+Number(cur);     //문자열로 변경했으니 문자열 합을 구하면 안돼서 Number를 해줌!(숫자로 변경)
+            },0)
+            // console.log(sum);
+            answer = x%sum == 0 ? true : false;
+            return answer;
+        }
+        console.log(solution(10));
+        console.log(solution(11));
+        console.log(solution(12));
+        console.log(solution(13));
+    </script>
+</body>
+</html>

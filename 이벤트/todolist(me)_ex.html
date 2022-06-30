@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        li { list-style: none; }
+        #wrap {
+            width: 100%;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+        #todoheader {
+            color: #fff;
+            /* height: 100px; */
+            padding: 30px 0;
+            text-align: center;
+            /* css의 gradient */
+            /* 1. linear-gradient(방향, 색상1, 색상2, 색상3,....) */
+            /* 방향 to right/ to left 줄 수도 있고 45deg이렇게 각도도 줄 수 있음 */
+            /* 2. radial-gradient */
+            background-image: linear-gradient(to right, #b465da 0%, #cf6cc9 33%, #ee609c 66%, #ee609c 100%);
+        }
+        #todoheader input {
+            border: none;
+            width: 60%;
+            height: 40px;
+            border-radius: 20px;
+            background: #fff;
+            outline: none;
+            padding-left: 30px;
+            /* input에 마우스를 클릭하면 테두리 생기는거 -> outline -->제거해주기*/
+        }
+        #todoheader button {
+            border: none;
+            outline: none;
+            /* font-size: 40px; */
+            background: transparent; 
+            /* transparent : 배경색 투명하게 */
+            vertical-align: middle;
+        }
+        #todoheader button i {
+            font-size: 40px;
+            color: #fff;
+            /* vertical-align: middle; */
+        }
+        #listUl li {
+            background: #eee;
+            line-height: 40px;
+            padding-left: 20%;
+            padding-right: 20%;
+            /* span을 float로 오른쪽에 보내서 너무 딱 붙어서 오른쪽에 여백주려고 */
+            position: relative;
+        }
+        #listUl li span {
+            float: right;
+        }
+        #listUl li.check {
+            /* check라는 클래스가 붙으면 */
+            text-decoration: line-through;
+            background: #ddd;
+        }
+        #listUl li.check::before{
+            content: "";
+            display: block;
+            width: 30px;
+            height: 15px;
+            border-bottom: 1px solid #333;
+            border-left: 1px solid #333; 
+            /* 왼쪽과 아래쪽에 border줘서 ㄴ자 모양일거임 */
+            transform: rotate(320deg);
+            position: absolute;
+            left: 16%;
+            top: 5px;
+            /* 글자 입력하면 ul에 li가 생김 - 그 li에 콘솔창에서 class="check" 넣어서 화면 확인해보기
+            화면보면서 크기조절 각도조절 해줘도 됨 */
+        }
+    </style>
+    <script defer src="todoScript.js"></script>
+    <!-- defer라는 속성을 써줘야 html 다 그려지고 script가 실행됨
+        html이 다 그려지고 script를 실행해야하는데 script가 마크업보다 위면 
+        script가 먼저 실행되어 오류가 뜸 이걸 방지하기 위해서!! -->
+</head>
+<body>
+    <div id="wrap">
+        <div id="todoheader">
+            <h1>to do list</h1>
+            <div>
+                <input type="text" id="todoInput">
+                <button id="insertBtn"><i class="material-icons">add_circle</i></button>
+            </div>
+        </div>
+        <div id="todolist">
+            <ul id="listUl"></ul>
+        </div>
+    </div>
+</body>
+</html>

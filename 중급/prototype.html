@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        //자바스크립트의 모든 애들은 만들 때 원형이 있음
+        //prototype이 숨겨진 속성인데(prototype 숨김) - 모든 객체는 prototype이 지정되어 있음
+        //프로토타입으로 상속받아 오기 때문에 그래서 사용할 수 있음!
+        //원형이 지정되어 있다!
+
+
+        // let animal = { eats: true };
+        // let rabbit = {
+        //     jumps: true,
+        // }
+        // console.log(rabbit.jumps);
+        // console.log(rabbit.eats);       // 아직 상속받지 않아서 undefined로 나옴
+
+        let animal = { 
+            eats: true,
+            say(){
+                console.log('안녕하세요');
+            }
+        };
+        let rabbit = {
+            jumps: true,
+        }
+        rabbit.__proto__ = animal;      // .__proto__   : 이렇게 프로토 지정해서 상속받게 할 수 있음!!!!
+        console.log(rabbit.jumps);
+        console.log(rabbit.eats);    //animal을 상속받아서 eats가능!
+        console.log(rabbit);
+        console.log(animal.eats);   
+        rabbit.say();
+        animal.say();
+
+        const car = {
+            wheels: 4,
+            drive: function(){
+                console.log('drive...');
+            }
+        }
+        const bmw = {
+            color: "red",
+            navigator: 1,
+        }
+        bmw.__proto__ = car;                  // .__proto__ -> 이렇게  안쓸거임
+        bmw.drive();
+        let keys = Object.keys(bmw);          // 해당객체의 키만 배열로 반환 ->color과 navigator
+        console.log(keys);
+
+        //for in문은 해당객체의 키뿐만아니라
+        //해당객체의 프로토타입의 키까지 포함
+        //Object.keys(obj)
+        //해당객체의 키만 배열로 반환(프로토타입의 키는 포함하지 않음)
+        //obj.hasOwnProperty(key) 해당객체의 키만 true를 반환
+        //프로토타입의 키는 false반환
+        for(let key in bmw){
+            if(bmw.hasOwnProperty(key)){                // hasOwnProperty 객체가 직접 가지고 있는거만 true 아니면 false
+                console.log('o', key);                  // o: color  navigator  --> 객체가 직접 가지고 있어서 o true
+            }else {
+                console.log('x', key);                  // x: wheels drive   --> 프로토 타입이 가진거라 X false(프로토 타입으로 연결된 애들)
+            }
+            // console.log(key);                 //객체의 프로토타입 키까지 포함 ->color, navigator와 wheels와 drive도!
+        }
+
+        // function Car2 (color){                   //생성자함수
+        //     this.color = color;
+        // }
+        const Car2 = function(color) {
+            this.color = color;
+            // this.wheels = 4;    //이렇게 해줘도 됨 각각의 객체에 만들어 주는거
+        }
+        const x1 = new Car2("pink");
+        const x2 = new Car2("blue");
+        console.log(x1);
+        console.log(x2);
+        Car2.prototype.wheels = 4;  //얘는 가끔 씀 
+                                    //프로토 타입 지정해서 주는거- 이 객체는 들고 있지 않지만 상속받아와서 사용가능함
+        console.log(x1);
+        console.log(x2.wheels);
+        console.log(x1 instanceof Car2);
+    </script>
+</body>
+</html>

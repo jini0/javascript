@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        //'인수, 매개변수, 함수, 반환, 리턴, 매개변수 기본값 설정' 용어 기억!
+        //1. 함수선언문
+        function 빵만들기(재료1, 재료2='밀가루'){    
+                        //매개변수-지역변수(함수안에서만 영향미침)
+                        //전달해주고 싶은 값이 있을 때만 매개변수 적어줌 - 기능만 쓰려면 없어도 됨
+                        //재료2='밀가루'  : 기본값 설정  -값이 없을 때 undefined안되게 하기위해
+            let 완성빵 = 재료1 + 재료2 + '빵';
+            return 완성빵;
+            //return을 따로 지정하지 않으면 생략되어있다고 생각함 -undefined를 불러옴
+        }
+        //전역변수
+        // let 재료1 = '밀가루';
+        // let 재료2 = '옥수수';
+        // //함수명을 불러주는게 -> 함수호출 (*함수는 꼭 호출해줘야함!!!)
+        // //빵만들기 라는 함수 호출해준고 
+        // let 빵 = 빵만들기(재료1,재료2);
+        //                 //위에 변수를 불러올거니까 따옴표 적어주면 안됨
+        let 빵 = 빵만들기('딸기');
+        console.log(빵);
+        let 빵2 = 빵만들기('찹쌀','팥');
+        console.log(빵2);
+
+        function myFunc(){
+            console.log(1);
+            console.log(2);
+            return;         //return을 만나면 이 함수는 종료됨 -- > 그래서 콘솔 호출시 1/2까지만 출력됨
+            console.log(3);
+            console.log(4);
+            console.log(5);
+        }
+        myFunc();
+
+        //2. 함수표현식
+        let 안녕 = function(){
+            console.log('안녕');
+            return '함수표현식';
+        }
+        안녕();
+        안녕();
+        console.log(안녕);      //이렇게 하면 그냥 function의 값이 나옴(funtion이 담기는거)
+        console.log(안녕());    //괄호가 있어야 실행이됨
+                                //실행한 결과를 출력하려면-return이 없음 ->undefined가 출력됨 
+                                //                      -안에 return 값으로 함수표현식 有 -> 함수표현식 출력됨            
+
+        //3. 콜백함수★          -이런경우에는 이걸 호출/ 아닌경우에는 이걸 호출 
+        //함수를 값처럼 전달하는 함수
+        // 빵만들기('옥수수','밀가루') 옥수수 밀가루 같은 값이 아닌 함수를 전달할 수 있음~
+        
+        function 대답(질문, 예스, 노){
+            if(confirm(질문)) 예스();
+                            //true면 예스 실행
+            else 노();      //false면 노 실행
+        }
+        function 동의(){
+            alert('동의하셨습니다.');
+        }
+        function 비동의(){
+            alert('동의하지 않았습니다.');
+        }
+        대답('동의하십니까?', 동의, 비동의);
+                            //전달할 때 실행하면 안됨
+                            //동의(), 비동의() -->이렇게 적어주면 실행돼서 이렇게 적음 안됨
+    </script>
+</body>
+</html>

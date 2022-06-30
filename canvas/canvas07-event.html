@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        canvas {
+            background: #eee;
+        }
+    </style>
+</head>
+<body>
+    <canvas id="canvas" width="1000" height="700"></canvas>
+    <div id="btns">
+        <button>red</button>
+        <button>blue</button>
+        <button>pink</button>
+        <button>black</button>
+        <button>이미지</button>
+        <button>지우기</button>
+        <!-- 내가한거 -->
+        <!-- <button onclick="red()">red</button>
+        <button onclick="blue()">blue</button>
+        <button onclick="pink()">pink</button>
+        <button onclick="black()">black</button>
+        <button onclick="img()">이미지</button>
+        <button onclick="reset()">지우기</button> -->
+        <button>이미지저장</button>
+    </div>
+    <script>
+        // https://yoonjong-park.tistory.com/entry/addEventListener-이벤트리스너-종류
+        const canvas = document.querySelector('#canvas');
+        const ctx = canvas.getContext('2d');
+        let brush = 'color';        //이미지로 칠할건지 브러쉬로 칠할건지 구분해주기위해 변수 일단 만들어줌!
+        let imgElem = new Image();
+        imgElem.src = "img/cat1.png";
+        //버튼 지정
+        const btns = document.querySelector('#btns');
+        let drawing;                        //변수 하나 만들어 줌
+        // ★마우스 좌표 받아올 수 있음★       ((-> 팀플 했을 때, 생각해보기!))
+        // console.log(e.pageX, e.pageY); 
+        // canvas.addEventListener('mousemove',function(e){
+        //     console.log(`x좌표는 ${e.pageX}이고 y좌표는 ${e.pageY}이다.`);
+        //     console.log('마우스를 움직였습니다.');
+        // })
+        canvas.addEventListener('mousemove',draw)
+        canvas.addEventListener('mousedown',function(){
+            drawing = true;
+            // console.log('마우스를 눌렀습니다.');
+        })
+        canvas.addEventListener('mouseup',function(){
+            drawing = false;
+            // console.log('마우스를 뗐습니다.');
+        })        
+        
+        //2. 쌤은 btns 버튼 전체에 이벤트를 지정하고 각각의 innerHTML 값으로 구분하여 해주심!
+        //버튼 이벤트 지정하기(쌤)
+        btns.addEventListener('click',function(e){
+            //https://mjmjmj98.tistory.com/32
+            //★ e.target으로! 클릭했을 때 어떤 걸 클릭했는지 알 수 있음! .target!!!
+            // event.target은 이벤트가 발생한 요소를 반환
+            let btnInner = e.target.innerHTML;          //버튼을 클릭할 때마다 btnInner에 담길거임
+            if(btnInner=='지우기'){
+                ctx.clearRect(0,0,canvas.width,canvas.height);
+            }else if(btnInner=='이미지'){
+                brush = "img";
+            }else {
+                brush = "color";
+                ctx.strokeStyle = btnInner;
+            }
+
+        })
+        function draw(e){
+            //선의 두께 지정
+            ctx.lineWidth = 30;
+            //선의 끝부분 지정(butt/round/square)
+            ctx.lineCap = "round";
+            let x = e.pageX;
+            let y = e.pageY;
+            if(!drawing) return;                //!drawing: drawing이 false일 때, return됨 // 함수는 return 해주면 끝남! -> 안그리겠다!
+            if(brush=="color"){                 //brush라는 변수를 써서 기준을 나누어(브러쉬/이미지)!
+                ctx.beginPath();
+                ctx.moveTo(x,y);
+                ctx.lineTo(x,y);
+                ctx.stroke();               
+            }else {                             //else니까 brush가 color가 아니고 img일 때!
+                ctx.drawImage(imgElem,x,y,50,50);
+            }
+        }
+        //1. 내가 한거!
+        // function red(){
+        //     ctx.strokeStyle = "red";
+        // }
+        // function blue(){
+        //     ctx.strokeStyle = "blue";
+        // }
+        // function pink(){
+        //     ctx.strokeStyle = "pink";
+        // }
+        // function black(){
+        //     ctx.strokeStyle = "black";
+        // }
+        // // 지우는거 clearRect();
+        // function reset(){
+        //     ctx.clearRect(0,0,1000,700);
+        // }
+    </script>
+</body>
+</html>

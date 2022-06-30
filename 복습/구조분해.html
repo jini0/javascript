@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        let arr = [1,2,3,4,5];
+        // arr[0] 이렇게 값에 접근(배열의 인덱스로 값에 접근)
+        let a = arr[0];
+        let b = arr[1];
+        //구조분해할당
+        let [c , d] = arr;      //1,2가 순서대로 담김
+        let newobj = {
+            name: 'bella',
+            age: 30,
+        }
+        //값의 키로 접근 가능!
+        let name1 = newobj['name'];
+        let age1 = newobj['age'];
+        //객체구조분해할당
+        // let { name, age } = newobj;         //각각 담김!
+        let { name, age:ag } = newobj;         //age가 아닌 ag로 받겠다!!
+        console.log(name);
+        // console.log(age);
+        console.log(ag);
+    </script>
+</body>
+</html>

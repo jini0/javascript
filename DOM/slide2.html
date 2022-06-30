@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        a { text-decoration: none; color: inherit; }
+        #slide_wrap {
+            width: 100%;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        #slide_group_view {
+            width: 60%;
+            height: 50%;
+            position: relative;
+            overflow: hidden;
+        }
+        #slide_group {
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            position: absolute;
+            background-color: tomato;
+        }
+        .slide_img {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            left: 0;
+            width: 100%;
+        }
+        #nav {
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%,-50%);
+            width: 100%;
+            /* 부모요소인 nav의 크기를 지정해줘야함 */
+        }
+        #nav a {
+            display: block;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background-color: lightsalmon;
+            line-height: 50px;
+            text-align: center;
+            color: #fff;
+            position: absolute;
+            left: 50%;
+            text-decoration: none;
+        }
+        #nav a.prev {
+            margin-left: calc(-30% - 75px);
+        }
+        #nav a.next {
+            margin-left: calc(30% + 25px);
+        }
+    </style>
+</head>
+<body>
+    <div id="slide_wrap">
+        <div id="slide_group_view">
+            <div id="slide_group">
+                <img src="../images/img_lights1.jpg" alt="" class="slide_img">
+                <img src="../images/img_lights2.jpg" alt="" class="slide_img">
+                <img src="../images/img_lights3.jpg" alt="" class="slide_img">
+                <img src="../images/img_lights4.jpg" alt="" class="slide_img">
+            </div>
+        </div>
+        <div id="nav">
+            <a href="#" class="prev">이전</a>
+            <a href="#" class="next">다음</a>
+        </div>
+    </div>
+    <script>
+        //변수준비
+        const slideGroup = document.querySelector('#slide_group');
+        const prevBtn = document.querySelector('.prev');
+        const nextBtn = document.querySelector('.next');
+        //노드의 마지막 자식요소
+        const lastImg = slideGroup.lastElementChild;    //마지막 자식을 선택해줌 slide그룹의 마지막 사진은 img_lights4번임
+        //노드의 첫번째 자식요소
+        const firstImg = slideGroup.firstElementChild;  //첫번째 자식을 선택해줌 slide그룹의 첫번째 사진은 img_lights1번
+        //노드 복사하기
+        let cloneFirst = firstImg.cloneNode(true);
+        let cloneLast = lastImg.cloneNode(true);
+
+        //마지막에 추가하기(마지막 자식으로 추가)
+        slideGroup.append(cloneFirst);      // F12해서 마크업 확인해보기    --> 이미지가 늘어남
+        //맨 앞에 추가하기(제일 첫번째 자식으로 추가)
+        slideGroup.prepend(cloneLast);      // F12해서 마크업 확인해보기    --> 이미지가 늘어남(6장이됨)
+
+        let prev;
+        let next;
+        let current = 1;
+
+        const slideImgs = document.querySelectorAll('.slide_img');
+        //스타일 작성하기
+        //이미지를 감싸는 div의 크기를 이미지갯수 * 100%로 변경      -> 스타일을 자바스크립트로 준거임
+        slideGroup.style.width = (slideImgs.length) * 100 + '%';
+        slideGroup.style.left = -(current*100)+'%';
+        //이미지크기를 100/이미지 갯수 % 로 변경
+        slideImgs.forEach((img,index) => {
+            img.style.width = (100 / slideImgs.length) + '%';       // %로 나타내야해서 단위 꼭 더해주기!
+            img.style.left = (index*(100 /slideImgs.length)) + '%';
+        })        
+
+        //이미지 전환되는 함수
+        function slideMove(imgNum){
+            slideGroup.style.transition = '0.5s';
+            slideGroup.style.left = -(imgNum*100)+'%';
+            current = imgNum;
+            console.log(current);
+            if(imgNum == 4){
+                console.log("마지막 이미지입니다.");
+                firstCurrent();
+            }
+            if(imgNum == 0){
+                console.log('처음 이미지입니다.');
+                lastCurrent();          //0이될 때 lastCurrent되게!!ㄴㄴ
+            }
+        }
+        let timer;  //setInterval를 저장해줄 timer를 일단 만듦
+        function startIt(){
+            if(timer) stopIt();
+            timer = setInterval(function(){
+                slideMove(current+1);
+            },2000)
+        }
+        function stopIt(){
+            clearInterval(timer);
+            console.log('중지');
+        }
+        startIt();
+        function firstCurrent(){
+            //setTimeout : 이 시간이 지났을 때 한번만 이 함수를 실행(한번만 실행)
+            setTimeout(function(){
+                slideGroup.style.transition = "0s";
+                slideGroup.style.left = -(0*100)+'%';
+                current = 0;
+            },500)
+        }
+        function lastCurrent(){
+            setTimeout(function(){
+                slideGroup.style.transition = "0s";     
+                slideGroup.style.left = -(400)+'%';     //-400으로 보내고
+                current = 4;                            //current를 4로 ---> 0이 될 때 이렇게 되게 해주기!(눈속임!)
+            },500)
+        }
+
+        //이전버튼에 이벤트 연결하기
+        prevBtn.addEventListener('mouseenter',stopIt);
+        prevBtn.addEventListener('mouseleave',startIt);
+        prevBtn.addEventListener('click',function(e){
+            e.preventDefault();
+            prev = current - 1;
+            slideMove(prev);        //이전버튼을 누를 때마다 0이 되었을 때 화면이 안보임!!!(-100->0될 때)
+                                    //0이 되었을 때 눈속임 필요
+        })
+        //다음버튼에 이벤트 연결하기
+        nextBtn.addEventListener('mouseenter',stopIt);
+        nextBtn.addEventListener('mouseleave',startIt);
+        nextBtn.addEventListener('click',function(e){
+            e.preventDefault();      //a태그에 동작이 걸리지 않고!!(a태그 자체적으로도 이벤트가 걸려있어서 이를 먼저 제거해줌!)
+            next = current + 1;
+            slideMove(next);        //이렇게만 해주면 무한정으로 가게됨
+        })
+    </script>
+</body>
+</html>

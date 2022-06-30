@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        let key = "likes birds"
+        let minyoung = {
+            name: '민영',
+            age: 32,
+            hasJob: true,
+            [key] : true,
+            //계산된 프로퍼티
+            // likes birds : true, //단어 두개를 띄어쓰면 오류 발생
+            //  -->그래서 key라는 변수를 만들어서 넣어줌
+            // 그냥 key : true, 해주면 key를 스트링으로 인식하여 대괄호를 넣어준거임!!!
+            //name age hasJob 은 스트링 형태만!!(object의 key값)
+        }
+        console.log(minyoung[key]);  //차이점...흐어 몰겟어
+        console.log(minyoung.key);
+        function printValue(obj, key){
+            console.log(obj.key);
+            console.log(obj[key]);
+                        //변수라서 따옴표없이
+        }
+        //키 값은 스트링 타입으로 적어야함
+        printValue(minyoung, 'name');
+        function Person(name, age){
+            this.name = name;
+            this.age = age;
+        }
+        let person1 = new Person('aaaa',30);
+        console.log(person1);
+        console.log('name' in person1); //person1이라는 object에 name이라는 key가 있으면 true, 없으면 false
+        console.log('abc' in person1); //person1이라는 object에 abc라는 key가 있으면 true, 없으면 false
+
+        //객체의 순환
+        for (let key in person1){
+            //key는 그냥 변수 이름 아무거나 지은거 (중요X) -> aaa나 아무거나 적어줘도 상관X
+            // console.log(key);   //key값만 출력
+            console.log(person1[key]);  //key의 value값을 출력
+        }
+
+        //객체의 복사
+
+        let dog1 = {
+            name: '구름',
+            age: 3,
+            color: 'white',
+        }
+        //01 복사방법
+        let dog2 = {};
+        for (let key in dog1){
+            dog2[key] = dog1[key];
+        }
+        // console.log(dog2);
+        // dog1.name = '흰둥이'; // dog1의 name을 흰둥이로 변경해도
+        // console.log(dog2);   // dog2의 name은 구름! 흰둥이로 변경X
+
+        //02 복사방법 - assign이용
+        // let dog3 = Object.assign({},dog1);
+        let dog3 = Object.assign({name: 'abc',weight: 500},dog1);
+                            //assign은 객체끼리 합쳐진다고 생각!!
+                            //이렇게 추가해주면 name은 그대로고 새로 생긴 key값은 추가됨
+                            //객체끼리 합해지는데 ()안에 맨뒤가 dog1이니까 name이 dog1껄로!!
+        console.log(dog3);
+        let fruit1 = { color: 'red' };
+        let fruit2 = { color: 'blue', size: 'big' };
+        let fruit3 = Object.assign({}, fruit1, fruit2); 
+                                    // 이렇게 해주면 fruit3의 색상은 blue!!!-맨 뒤에 위치한 fruit2값으로
+        console.log(fruit3);   
+        
+        // let objkeyarr = Object.keys(dog3);
+        let objkeyarr = Object.entries(dog3);
+        console.log(objkeyarr);
+        //이차원 배열 : 배열 안의 배열 값이 있는
+
+        let arr2 = [ 1, 'name', true, undefined, [0,1], {name: 'min', age:30}];
+                    //객체엔 이런 것들을 넣을 수 있음~~등등
+    </script>
+</body>
+</html>

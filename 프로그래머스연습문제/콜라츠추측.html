@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        //입력된 수가 짝수라면 2로 나눕니다.    --> 짝수인지 홀수인지 : 나머지연산자 %2해서 나머지가 0 이면 짝수/1이면 홀수
+        //홀수라면 3을 곱하고 1을 더합니다.
+        //1이 될 때까지 반복
+        //반복작업횟수를 리턴
+        //반복작업이 500이 넘어가면 -1을 반환
+        function solution(num){
+            let answer = 0;          //얘가 반복작업횟수
+            while(true){
+                if(num===1 || answer == -1){                  //num이 1이거나 answer값이 -1이면 멈춤(500번 이상일 때 -1임)
+                    break;
+                }else if(num%2==0){
+                    num = num/2;
+                }else {
+                    num = (num*3) + 1;
+                }
+                answer = answer >= 500 ? -1 : answer+1;         //500번이상이면 -1 반환 아니면 while문을 돌 때마다 1씩 더해줌
+            }
+            return answer;
+        }
+        console.log(solution(6));
+        console.log(solution(16));
+        console.log(solution(626331));
+    </script>
+</body>
+</html>

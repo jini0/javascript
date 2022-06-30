@@ -1,0 +1,161 @@
+let : 재할당 할 수 있음
+var: 같은 이름은 여러번 선언해도 오류 안남
+---
+<let과 var의 차이>
+   let은 이미 변수를 설정하고나면 다시 설정 불가능 -> F12해서 개발자모드 보면 오류라고 뜸!!
+   마크업 적을 때부터 name1에 빨간색 물결줄이 생김
+   그에 반해 var는 이미 변수를 지정하고 같은걸 지정해도 오류라고 안뜸 
+    -> 여러 개발자가 같이 개발시 오류가 생길 수 있음
+-----
+javascript 예약어 - 변수설정 안됨 
+http://www.w3bai.com/ko/js/js_reserved.html 예약어 참고하기
+
+----
+const apple = 'apple';
+       좌항         우항
+우항의 값을 좌항에 넣어주는 것 -> 할당
+-----------
+let, const, var
+1. 변수선언
+let userName;   -->이렇게만 적은게 선언!
+var userAge;
+const 선언과 동시에 할당해야함
+const apple = 'apple'; (O)
+const apple (X) 이렇게만 선언만 할 수 없음
+const a (X)
+const a = 'b' (O)
+let age, name, hobby;
+ - let은 한번 사용하고 여러개의 변수를 만드는거 -> 쉼표(,)사용해서
+2. 변수할당 : 변수에 값을 넣는거
+let userName = 'green';
+ler userName;
+userName = 'blue';
+userName = 'abc';      --->  다른 값도 넣을 수 있음
+let userAge = 30;	            숫자는 따옴표없이 할당
+		            문자는 따옴표, 쌍따옴표로 감싸고 할당
+
+
+alert('여러분');       -->글자 출력시 따옴표 넣어서 적어줌!!
+alert(userName);    -->변수를 alert로 출력 할 때는 따옴표 없이 그냥 변수를 적어줘야함
+		     alert('userName')이라고 넣으면 userName이라는 글자가 들어가는거임
+		    ★변수 출력은 따옴표X★
+
+
+-------------------------------
+자료형
+1. 숫자형 (number)
+let message = "green";
+message = 123;
+*** 자료의 타입은 있지만 변수에 저장되는 값이 타입은 언제든지 변경될 수 있는 
+동적 타입 언어라고 합니다.
+★자바스크립트는 동적타입의 언어임!!!★
+
+* 정수나 소수점 숫자를 나타냄
+* 숫자형 사칙연산을 할 수 있음
+* NaN (Not a Number) : 숫자가 아니다
+
+2. 문자형 (string)
+문자열은 따옴표로 묶습니다.
+1)큰따옴표 "green" 
+2)작은따옴표 'green' 
+3)역따옴표(백틱) `green` 
+let name = "green";
+console.log("hello"+name)  (O)
+console.log("hello"name) (X) : 그냥 적으면 오류가 뜸
+띄어쓰기 하고싶으면 띄워쓰면 됨 --> 'hello '+name (O) 하면 hello green 이라고 띄워져있음
+cf. 변수는 따옴표로 작성 안함! // 문자열은 "", '', ``로 적어줘야함
+변수를 문자열에 넣고 싶을 때, 더하기를 해줘야함!!!
++ : 문자와 다른 연산자 결합
+hello green !!    이 되게 하고 싶음
+---> "hello" + name + "!!"     
+백틱을 사용하게 되면, 더하기 연산자 없이 사용가능 ((문자열 안에서 변수 넣어주는 방식))
+		    변수는 ${} 달러 중괄호 사용해서 적어주고 문자열은 그냥 백틱 안에 적어주면 됨
+---> `hello ${name} !!` 
+
+숫자인데 ''따옴표에 들어가있으면 이건 그냥 문자임!! ->ex>typeof '123'; (string이라고 뜸)
+
+3. 불린형 (boolean)
+논리타입 true / false
+true : 진실 긍정
+false : 거짓 부정
+let nameFieldCheced = true;
+변수를 선언하고 값을 할당 할 때 불린형을 넣으면 불린형 / 숫자를 넣으면 숫자형 / 문자를 넣으면 문자형
+true/false를 넣으면 불린형
+
+4. null (object)
+존재하지 않는 값/ 비어있는 값/ 알 수 없는 값을 
+나타내는 데 사용
+let age = null;        : 나이를 알 수 없거나 비어있음
+
+5. undefined (undefined)
+값이 할당되지 않은 상태를 나타냄
+변수를 선언했지만 값을 할당하지 않았다면 그 변수에 
+undefined가 자동으로 할당이됩니다.
+
+6. 객체 (object)
+
+typeof 연산자
+: 변수가 어떤 타입인지 알려줌
+1) 연산자 typeof x                --> typeof 123 -> number라고 콘솔에 뜸 적어보면  // typeof '123'  -> string이라고 뜸
+2) 함수 typeof(x)
+자료형을 나타내는 문자를 반환해줌
+
+
+--------------------
+함수???
+프로그램을 작성할 때 반복적으로 하는 일을 함수로 만듬
+서브프로그램이라고도 함
+프로그램 안에서 각각의 작은 기능을 수행
+input을 받아서 잘 처리한 다음 output(return)을 해줌
+
+1. 함수 생성하기
+1) 함수 선언문
+구문 ex>
+function add(a,b){
+	return a + b;
+}
+function : 함수선언(이건 함수야!!!!)
+add : 함수식별자 (함수이름)
+a,b : 매개변수
+return a + b : 반환값
+add(3,4) : 함수호출 => 7
+add(7,9) => 16
+
+---------------
+
+innerHTML 
+선택한 요소의 내용을 반환하거나 변경
+src
+선택한 요소의 src속성값을 반환하거나 변경
+
+자바스크립트를 이용해서 css스타일을 변경하기
+object.style.color = 'red';
+
+<div class='on'></div>
+자바스크립트에서 요소의 클래스를 붙이기/ 삭제하기
+object.classList.add('클래스명')
+object.classList.remove('클래스명')
+object.classList.toggle('클래스명')
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

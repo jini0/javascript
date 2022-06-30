@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // 메모장 Q문제
+        let num;
+        do {
+            num = prompt('100을 초과하는 숫자를 입력하세요');
+            // do 라서 조건 안맞아도 먼저 실행함
+        } while(num <= 100 && num)
+        // 100이하거나 숫자를 입력할 때
+            // --> 100초과나 취소/확인버튼 누른거/글자입력은 조건에 해당X 의미
+
+        // 만약 50을 입력하면 50<=100이니까 true! -> 다시 prompt가 반복됨
+        // prompt창에 취소를 누르면 null이 됨 -불린데이터 false
+        // &&(and)나 ||(or)이 있으면 -> 불린데이터로 전환됨!!! 
+        // null의 값을 입력하면 flase
+    </script>
+</body>
+</html>

@@ -1,0 +1,134 @@
+5/19 복습
+let today = new Date()
+*차이점*
+1. 매개변수로 년 월 일 시간~ 적을 때
+new Date(년, 월, 일, 시간, 분, 초, 밀리초)   --> 월 0~11까지 입력(5월은 4가나옴)  
+				    --> 월일 땐, +1을 해줘야함 !!(4니까 +1)
+2. new Date("2022-05-02")	--> 그냥 현재 월을 적으면 됨(그냥 5)
+new Date(0)
+
+ex>
+let ndate1 = new Date('2022-05-01')
+undefined
+
+ndate1.getMonth()+1
+5
+
+let ndate2 = new Date(2022,4,1)
+undefined
+
+ndate2.getMonth()+1
+5
+
+1970년 1월 1일 0시 0분 0초 --> 시작점
+
+now.getMonth()+1  : 현재 월을 불러옴
+----
+
+밀리초 getTime()
+밀리초로 바꿔서 며칠을 계산 -> 이렇게 바꿔줘야지 비교 가능
+ex>태어난지 며칠이 지났는지~!!!
+24*60*60*1000 
+
+--------------------------------------------------
+5/20
+html 커스텀 속성
+<a href="">
+<img src="">
+   ---> a태그나 img태그는 href, src속성을 가진
+<div>
+	<button data-key='date' data-value='50'>50일</button>
+	<button data-value='100'>100일</button>
+	<button data-value='today'>오늘은</button>
+</div>
+-data-value
+value가 key가 되고 값이되는!!
+
+button.dataset                 //dataset : 객체
+{
+	key: date,
+	value: 50
+}
+
+---
+ex> 
+<div data-color="red" data-size="big"></div>
+-> dataset = {
+	color: "red",
+	size: "big",
+}
+->div.dataset.color	   - red 라는 값에 접근하려면
+->div.dataset.size       - big 이라는 값에 접근하려면
+
+*data- 로 시작하는 속성을 정의  (모든 태그에 가능함)
+-> 자바스크립트에서는 dataset이라는 객체로 만듦
+---> 최근에 나온거라서 하위브라우저에서는 안됨(explore10이하 버전X)
+
+
+---------------
+<Date객체>  eventDay.html
+??정리??
+인풋에 사용자로부터 입력을 받는다
+년, 월, 일
+버튼을 누르면 결과를 text에 보여준다.
+ - 버튼을 클릭했을 때, 년, 월, 일이 빈칸이면
+   날짜를 입력해주세요 - 경고창에!
+- 년, 월, 일이 빈칸이 아니면 숫자가 맞는지 확인
+   숫자가 아닌 문자가 있을 경우
+   숫자만 입력해주세요 - 경고창에!
+- 입력된 값으로 데이트 객체를 생성  
+ex>
+firstDate 
+{
+	year: "2022",
+	month: "05",
+	date: "01",
+}    
+new Date(firstDate.year, firstDate.month-1, firstDate.date)
+		      // 월에는 그냥 5월이 적히니 -> new Date는 5월이 4니까 -> -1해줘야함!!
+
+- 50일은 버튼을 클릭했을 때는
+  입력된 값으로 만든 데이트 객체에서 50일 더해진 데이트 객체를 생성
+- 100일은 버튼을 클릭했을 때는
+  입력된 값으로 만든 데이트 객체에서 100일 더해진 데이트 객체를 생성
+- 오늘은 몇일째를 클릭하면
+  현재날짜의 객체를 생성
+  현재날짜 객체의 밀리초를 반환하여
+  입력한 데이트객체의 밀리초를 빼줌
+  -> 그 값을 하루로 변환(일자단위로 변환)
+      사귄지 몇일 되었습니다를 화면에 출력
+        
+
+cf.
+Number('2022')
+2022
+
+Number('2022d')
+NaN			-->NaN(Not a Number)숫자가 아닐때!
+
+Number('15ddd')
+NaN
+
+let num1 = Number('15ddd')
+undefined
+
+num1
+NaN
+
+num1 == NaN		---> NaN은 동등연산자로 비교X!!!!
+false
+
+isNaN(num1)		-->NaN은 isNaN을 이용해서 해야함!!
+true
+
+isNaN(123456)		-->123456 은 숫자니까 false
+false
+
+isNaN('ddd')		-->ddd는 문자니까 true
+true
+
+
+
+
+
+

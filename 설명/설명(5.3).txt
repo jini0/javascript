@@ -1,0 +1,172 @@
+객체 object
+서로 연관된 배열과 함수를 그룹화하여 정리정돈하기 위한 것이다.
+key와 value의 집합체이다.
+object = { key: value };
+
+let name = "green";
+let age = 30;
+
+function print(name, age,...){		--->변수가 많으면 계속 저 뒤에 적어줘야함
+	console.log(name);
+	console.log(age);
+}
+
+print(name,age,...)
+
+	↓		이렇게 하면 새로운 변수가 생길 때 계속 적어줘야하므로
+			객체를 이용해서 만들기
+
+let user = {
+	name: 'green',
+	age: 30,
+	isJob: true,
+}
+function print(user){		
+	console.log(user.name);
+	console.log(user.age);
+}
+
+print(user)
+
+
+----------
+5/3
+
+01.리터럴방식과 객체생성방식
+-객체생성방식
+let obj1 = {};
+let obj2 = new Object();
+-리터럴방식
+let obj1 = {
+	name:'green',
+	age:4,
+}
+-새로운 키와 벨류를 추가할 수 있다. --->이렇게도 되지만 이런식으로 적지 않음
+obj1.hasJob = true;    
+-프로퍼티 삭제 		--->이렇게도 되지만 이런식으로 적지 않음
+delete obj1.name;
+
+02.계산된 속성 . ['']
+. ['']
+.을 사용할 때는 코딩하는 순간 그 값을 받아오고 싶을 때
+[] 를 사용할 때는 런타임에서 결정하거나 실시간으로 원하는 키값을 받아오고 싶을 때
+function printValue(obj, key) {
+	console.log(obj.key);
+	console.log(obj[key]);
+}
+
+03.단축 프로퍼티
+let person1 = { name: 'bob', age: 2 };		-->계속 name과 age를 반복해서 적음
+let person2 = { name: 'steve', age: 5 };
+let person3 = { name: 'dave', age: 4 };
+let person4 = { name: 'min', age: 4 };
+		
+	        ↓  
+			
+function makePerson(name, age) {		
+	return {
+		//키생략가능
+		//name: name,
+		//age: age,
+		name,		-->키생략하고 값만 적어줘도 됨
+		age,
+	}
+}
+makePerson('blue',5);
+
+04.생성자함수
+function Person(name, age) {
+	// this = {};
+	this.name = name;
+	this.age = age;
+	// return this;
+}
+let person6 = new Person('abc',30);
+
+05.in 연산자 : 오브젝트에 키가 있는지 없는지 확인
+'name' in obj
+
+06.객체의 순환
+for ...in문
+ex>
+let user = {
+	name: 'min',
+	age: 30,
+}
+for (let a in user){			-->a에 key값이 출력됨
+	console.log(user[a])		-->object안의 key값을 a에~
+		//a 변수니까 대괄호 안에
+}
+
+forEach  
+let array = [1,2,3,4,5,6]
+for (let li of array){
+
+}
+
+07.객체 복사
+let user = {
+	name: 'a',
+	age: 30,
+let user2 = user; 		-->이렇게 복사하면 안됨!
+			    user값이 변하면 user2값도 변해서 안됨!!!!
+	 ↓
+
+let user2 = {};		-->객체복사는 이런식으로 해줘야함 / 빈 오브젝트를 만들어서~
+for (let key in user){
+	user2[key] = user[key];
+}
+
+	 ↓
+
+★★★★  assign  ★★★★
+let user3 = {};
+Object.assign(user3, user);
+	// 목표대상, 뒤에있는 애는 뒤집어씌우는 애!(user3에 user를 뒤집어 씌움)
+let user4 = Object.assign({}, user);
+		          // 뒤에있는 애가 앞으로 뒤집어 씌움
+
+Object.assign({},obj)
+Object.keys(obj)  객체의 키항목을 배열로 반환해줌
+Object.values(obj) 객체의 값항목을 배열로 반환해줌
+Object.entries(obj) 객체의 키/값을 배열로 반환해줌
+
+
+
+-----------
+배열 04array_method2.html 후,
+문제풀기
+
+Q. if문 윤년 연습문제
+2월은 보통 28일까지 있지만 윤년인 경우 2월을 윤달이라고 하고 29일까지 있습니다. 
+예로, 2020년은 윤년으로 2020년 2월은 윤달이며,
+2020년 2월은 29일까지 있습니다. 
+보통 윤년이 4년마다 돌아온다고 알고 있지만 이는 정확한 것은 아닙니다.
+아래는 위키(https://ko.wikipedia.org/wiki/윤년)에서 가져온 윤년을 구하는 정확한 규칙입니다.
+- 서력 기원 연수가 4로 나누어 떨어지는 해는 윤년으로 한다.(1992년, 1996년, 2004년, 2008년, 2012년, 2016년, 2020년 ...)
+- 이 중에서 100으로 나누어 떨어지는 해는 평년으로 한다.(1900년, 2100년, 2200년, 2300년, 2500년 ...)
+- 그 중에 400으로 나누어 떨어지는 해는 윤년으로 둔다.(1600년, 2000년, 2400년 ...)
+
+이 규칙을 사용하여 입력된 년도가 윤년인지 아닌지를 구하는 함수를 만들어 보세요.
+- 함수는 하나의 양의 정수를 년도로 받습니다.
+- 윤년 규칙에 따라 윤년이면 true, 윤년이 아니면 false를 return합니다.
+- 위 조건을 만족하는 함수를 만들고, 2020(윤년), 1992(윤년), 1900(평년), 1600(윤년) 등의 값을
+   넣어서 제대로 작동하는지 확인해 보세요.
+
+---
+Q2. 함수 만들기
+소수(prime number)는 자신보다 작은 두 개의 자연수를 곱하여 만들 수 없는 1보다 큰 자연수입니다.
+다시 말해서 1과 그 수 자신 이외의 자연수로는 나눌 수 없는 자연수를 소수라고 부르죠.
+5는 2나 3, 4 로 나눌 수 없기 때문에 소수입니다. 5를 이들 숫자로 나누면 나머지가 있기 때문이죠.
+2부터 100까지의 숫자 중 소수만 출력해주는 코드를 작성해봅시다.
+n = 10이라면 결과는 2,3,5,7이 되어야겠죠
+ * 주의 : 작성한 코드는 임의의 숫자 n에 대해 동작해야합니다.
+
+function primeNumber(num){
+	실행문
+	return arr;
+}
+primeNumber(10);
+
+
+

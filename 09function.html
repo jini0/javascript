@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        function add(a,b){
+            return a + b;
+        }
+        function consolePrint(){
+            console.log('함수를 실행했어요');
+            // return undefined
+        }
+        // return이 없는 애는 undefined가 생략되어 있는거임
+        // 함수 만들고 이 값을 출력하기
+        document.write(add(7,9)+'<br>');
+        document.write(add(578,54789));
+        let result = consolePrint();
+        // 소괄호가 있어야 실행됨
+        // let result = consolePrint; 이렇게만 있으면 함수가 실행되는게 아니고 함수 그 자체가 나옴
+        console.log(result);
+        console.log(name);
+        // 선언되지 않은 변수에 내가 출력하려고 하니 ReferenceError가 뜸
+        // 호출 할 name 이 밑에 있어서 순차적으로 내려가는 거라서 콘솔 출력이 위에있어서 선언전에 부른게 됨 
+        let name = 'greenName';
+
+
+        // function consolePrint(name){
+        //     console.log(name);
+        // }
+        // let result = consolePrint(name);
+        // console.log(result);
+    </script>
+</body>
+</html>

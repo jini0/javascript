@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        canvas {
+            background-color: lightgray;
+        }
+    </style>
+</head>
+<body>
+    <canvas width="1000" height="600" id="canvas"></canvas>
+    <script>
+        //메모장(6.16)과 사진 참고
+        // 그림은 script로 그린다
+        let canvas = document.querySelector('#canvas');
+        let ctx = canvas.getContext('2d');      //drawingcontext를 다 받아서 ctx에 담을 건데 2d로 그리겠다!(3d로도 그릴 수 있음)
+        //면색상지정
+        ctx.fillStyle ="green";
+        //사각형그리기
+        //fillRect(x,y,width,height) : 면으로된 사각형
+        //strokeRect(x,y,width,height) : 선으로된 사각형
+        //clearRect(x,y,width,height) : 지워주는애
+        ctx.fillRect(100,50,100,100);              //fillRect(좌표) : Rectangle 만들 수 있음! (괄호) 안에는 좌표임(위치선상)
+        ctx.strokeStyle = "red";
+        ctx.strokeRect(200,200,50,50);
+        ctx.clearRect(100,50,50,50);                //지정된 사각형 영역을 지움
+    </script>
+</body>
+</html>

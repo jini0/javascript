@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        div {
+            width: 200px;
+            height: 200px;
+            position: absolute;
+            left: 100px;
+            top: 100px;
+            background-color: tomato;
+        }
+    </style>
+</head>
+<body>
+    <div></div>
+    <button>정지</button>
+    <script>
+        const div = document.querySelector('div');
+        const btn = document.querySelector('button');
+        let animation;
+        let x = 100;
+        function divMove(){
+            x += 1;
+            div.style.left = x+'px';
+            animation = requestAnimationFrame(divMove);   //재귀함수 - 나 자신을 호출하는 함수      //requestAnimationFrame : 1초당 60frame을 만들어냄
+            //변수에 담아준다!
+        }
+        divMove();              //divMove(); 함수 한 번 호출해주기!
+        //처음에 한 번 함수를 호출해주면 requestAnimationFrame(divMove); 얘가 계속해서 반복해서 호출해줌
+        btn.addEventListener('click',()=>{
+            cancelAnimationFrame(animation);               //cancelAnimationFrame(변수명); 해서 정지시킬 수 있음 
+        })
+    </script>
+</body>
+</html>

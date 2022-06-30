@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        let now = new Date();
+        now.setDate(30);    //그냥 날짜를 30일로 지정
+
+
+        // now.setMonth(now.getMonth() + 2);   //2월이 더해진 7월~
+        // now.setDate(now.getDate() + 10);    //10일이 더해진 5월29일이 됨 (현재 5/19) 
+        console.log(now.toLocaleDateString());
+
+        //Date객체를 숫자로 변경해 시간차 측정하기
+        let start = new Date();  //측정시간
+        for(let i=0; i<100000000; i++){              //i<10000000 여기에 0을 더 줄 수록 시간 더 걸림!
+            let doSomething = i * i * i;
+        }
+        let end = new Date()  //측정종료
+        let time = end - start;
+        console.log(`반복문을 모두 도는데 ${time}밀리초가 걸렸습니다.`);
+
+
+        // getTime 밀리초로 바꾸는거
+        let firstDay = new Date("2000-02-06");
+        let nowDay = new Date();
+        let todayTime = nowDay.getTime();
+        let startTime = firstDay.getTime();
+        let dayday = Math.floor((todayTime - startTime)/(1000*60*60*24));
+        console.log(`2000년 2월 6일 부터 ${dayday} 일이 되었습니다.`);
+        // Math.floor((todayTime - startTime)/(1000*60*60*24))
+        // 소수점?초 다 떼주려고 Math.floor 전체에 해주기
+                                //밀리초 -> 하루
+                                //초로 바꿔주려고 1000 곱함
+                                //분으로 하려고 *60
+                                //시간으로 하려고 *60
+                                //하루를 나타내려고 *24
+        // 하루 24시간
+        // 1시간 60분
+        // 1분 60초
+        // 1초 1000밀리초
+        // 1000밀리초 -> 1초
+        // 10000밀리초 -> 10초
+        console.log(firstDay.toLocaleDateString());
+        //2000-02-06 이때부터 지금까지 며칠이 지났을까 구할 수 있음 --> todayTime - startTime
+    </script>
+</body>
+</html>

@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        //동물 클래스
+        class Animal {
+            constructor(name){
+                this.speed = 0;
+                this.name = name;
+            }
+            run(speed) {                    //run 메서드
+                this.speed = speed;
+                console.log(`${this.name}은 속도 ${this.speed}로 달립니다.`);
+            }
+            stop(){                         //stop 메서드
+                this.speed = 0;
+                console.log(`${this.name}이 멈췄습니다.`);
+            }
+        }
+        //토끼는 동물이므로 동물관련 메서드가 담긴 Animal을 상속받아서 만들기
+        class Rabbit extends Animal {
+            //Rabbit이라는 class는 class Animal의 메서드인 run(speed)과 speed()를 가지고 있음 ((extends Animal ->상속받은 Animal에도 접근 가능!!))
+            //*생성자 오버라이딩
+            constructor(name, earLength){
+                super(name);            //super를 빼면 error가 발생함!!!!
+                this.earLength = earLength;
+            }
+            hide() {
+                console.log(`${this.name}이 숨었습니다.`);
+            }
+            //*메서드 오버라이딩 : 같은 stop이라는 메서드 이름인데 다른 기능을 쓰고 싶을 때  --> 얘가 덮어져서! 그냥 적어주면됨 (오버라이딩)
+            // 상속받은 부모요소의 메서드와 같은 이름으로 재정의
+            // super를 이용하여 부모요소의 메서드도 실행
+            stop() {
+                super.stop();     // super를 이용해서 -> 위에 stop()메서드 기능도 이용할 수 있음 --> 부모요소의 stop도 호출(흰토끼 멈췄습니다.) 
+                this.hide();     //흰토끼 숨었습니다. 라고 나옴!! 변경되어서!(따로 정의한 값도 호출)
+            }
+        }
+        let animal = new Animal("동물");
+        animal.run(10);
+        animal.stop();
+        let rabbit = new Rabbit("흰토끼",10);
+        console.log(rabbit.name);
+        console.log(rabbit.earLength);
+        rabbit.run(5);          //Animal클래스를 상속받아서 -> run 과 stop메서드 가능 
+        rabbit.stop();          
+        console.log(rabbit);    //콘솔에 찍어보면 Prototype : Animal 을 가지고 있음   --> hide도 있고 run / stop 다 있음
+    </script>
+</body>
+</html>

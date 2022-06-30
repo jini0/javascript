@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        //가위바위보 - 5/6(금) 풀이 할 거임
+        let data = prompt('가위, 바위, 보 중 하나를 입력하세요');
+        let computerData = Math.floor(Math.random()*3);
+                                    //Math.random()*3을 해줘야 Math.random()이 0-0.999~값이니까
+                                    //->0~2.99~까지 나옴 --> 이거를 Math.floor해주면(내림:소수점 삭제)
+                                    //Math.floor(Math.random()*3) => 0/1/2의 숫자만 나올 수 있음
+        //컴퓨터값
+        switch(computerData){
+            case '0': 
+                computerData = '가위'
+                break;     
+            case '1': 
+                computerData = '바위'
+                break;  
+            case '2': 
+                computerData = '보'
+                break;      
+        }
+        console.log(computerData);
+        //나의 값
+        switch(data){
+            case '가위': 
+                if(computerData === 0){
+                    console.log('비겼습니다.');
+                }else if(computerData === 1){
+                    console.log('졌습니다.');
+                }else if(computerData === 2){
+                    console.log('이겼습니다.');
+                }
+                break;
+            case '바위':
+                if(computerData === 0){
+                    console.log('이겼습니다.');
+                }else if(computerData === 1){
+                    console.log('비겼습니다.');
+                }else if(computerData === 2){
+                    console.log('졌습니다.');
+                }   
+                break;
+            case '보':
+                if(computerData === 0){
+                    console.log('졌습니다.');
+                }else if(computerData === 1){
+                    console.log('이겼습니다.');
+                }else if(computerData === 2){
+                    console.log('비겼습니다.');
+                }   
+                break;
+            default:
+                console.log('올바르게 입력하시오');
+        }
+
+        //https://blog.naver.com/home124/222628333382 풀이
+        // const data = prompt("가위,바위,보 중 하나를 입력하세요");
+        // let computerData = Math.floor(Math.random()*3);
+
+        // switch(computerData) {
+        //     case 0 : {
+        //         computerData = '가위'  
+        //         break;
+        //     }
+        //     case 1: {
+        //         computerData = '바위'
+        //         break;
+        //     }
+        //     case 2: {
+        //         computerData = '보'
+        //         break;
+        //     }
+        // }
+        // console.log(computerData);
+
+        // switch(data) {
+        //     case '가위' : {
+        //         if(computerData == '가위') {
+        //             document.write("컴퓨터: 가위, 사용자가 비겼습니다")
+        //         }else if(computerData == '바위') {
+        //             document.write("컴퓨터: 바위, 사용자가 졌습니다")
+        //         }else if(computerData == '보') {
+        //             document.write("컴퓨터: 보, 사용자가 이겼습니다.")
+        //         }
+        //         break;
+        //     }
+        //     case '바위' : {
+        //         if(computerData == '가위') {
+        //             document.write("컴퓨터: 가위, 사용자가 졌습니다")
+        //         }else if(computerData == '바위') {
+        //             document.write("컴퓨터: 바위, 사용자가 비겼습니다")
+        //         }else if(computerData == '보') {
+        //             document.write("컴퓨터: 보, 사용자가 이겼습니다.")
+        //         }
+        //     }
+        //     break;
+        //     case '보' : {
+        //         if(computerData == '가위') {
+        //             document.write("컴퓨터: 가위, 사용자가 졌습니다")
+        //         }else if(computerData == '바위') {
+        //             document.write("컴퓨터: 바위, 사용자가 이겼습니다")
+        //         }else if(computerData == '보') {
+        //             document.write("컴퓨터: 보, 사용자가 비겼습니다.")
+        //         }
+        //     }
+        //     break;
+        //     default : document.write("올바른 문자 입력 바랍니다");
+        //     break;
+        // }
+
+    </script>
+</body>
+</html>

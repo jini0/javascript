@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        //Q2. 함수 만들기 -소수(1과 그 수 자신 이외의 자연수로는 나눌 수 없는 자연수)
+        function primeNumber(num){
+            let arr = [];
+            //결과를 담아줄 빈 배열을 하나 만들어줌
+            for(let i=2; i<=num; i++){
+                //i 2부터니까!!
+                for(let j=2; j<=i; j++){
+                    if(i%j==0 && i>j){
+                        break;
+                        //소수가 아닐때 break해줌!!! ->소수는 나보다 작은 수로 나눌 수 없음
+                        //ex>i=4 j=2  4%2==0(나머지=0)이지만 4>2니까 break 멈춤!
+                        //  -->4는 1,2,4로 나눌 수 있으니 소수X  -->그래서 나눠주는 j가 i보다 작으면 안됨~!!break되게해줌!!
+                    }else if(i==j){
+                        arr.push(j);
+                    }
+                }
+            }
+            return arr;
+        }
+        let result = primeNumber(20);
+                                //여기에 넣어주는 값까지 소수를 찾아줌
+        console.log(result);
+    </script>
+</body>
+</html>

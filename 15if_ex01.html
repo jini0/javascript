@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <p>안녕하세요</p>
+    <p>아이디 <input type="text" id="userId"></p>
+    <p>패스워드 <input type="password" id="userPw"></p>
+    <p><button onclick="idpwCheck()">확인</button></p>
+    <script>
+        let userid = 'bella';
+        let userpw = '1234';
+        //2. 이렇게 나눠서 적어도 됨(복잡해보임)
+        function idpwCheck(){
+            let inputid = document.querySelector('#userId').value;
+            let inputpw = document.querySelector('#userPw').value;
+            if(userid === inputid){
+                if(userpw === inputpw){
+                    alert('로그인 되었습니다.');
+                }else {
+                    alert('패스워드가 틀렸습니다.');
+                }
+            }else {
+                alert('아이디가 틀렸습니다.');
+            }
+        }
+                
+        //1. 이렇게 하나로 적어도 되고!!
+        // let userid = 'bella';
+        // let userpw = '1234';
+        // function idpwCheck(){
+        //     if(userid === document.querySelector('#userId').value && 
+        //     userpw === document.querySelector('#userPw').value){
+        //         alert('로그인 되었습니다.');
+        //     }else {
+        //     alert('로그인 되지 않았습니다.');
+        //     }
+        // }    
+    </script>
+</body>
+</html>

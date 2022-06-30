@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        li { list-style: none; }
+        body > div {
+            width: 70%;
+            margin: 100px auto;
+            background: #eee;
+            border-radius: 10px;
+            text-align: center;
+            padding: 80px;
+            line-height: 1.6;
+        }
+        h2 {
+            padding: 30px;
+            border-bottom: 1px solid #ccc;
+            margin-bottom: 30px;
+        }
+        #moneyView {
+            line-height: 50px;
+            font-weight: bold;
+        }
+        button {
+            border: 0;
+            outline: 0;
+            background-color: blueviolet;
+            color: #fff;
+            padding: 10px 20px;
+            border-radius: 4px;
+        }
+    </style>
+</head>
+<body>
+    <div>
+        <h2><화면></h2>
+        <ul>
+            <li>A음료수 : 500원</li>
+            <li>B음료수 : 700원</li>
+            <li>C음료수 : 1000원</li>
+        </ul>
+        <div id="moneyView">현재금액: 0원</div>
+        <p>
+            <button id="btn100">100</button>
+            <button id="btn500">500</button>
+            <button id="btn1000">1000</button>
+        </p>
+    </div>
+    <script>
+        //버튼을 변수에 담기
+        let btn100 = document.querySelector('#btn100');
+        let btn500 = document.querySelector('#btn500');
+        let btn1000 = document.querySelector('#btn1000');
+        let moneyView =document.querySelector('#moneyView');
+        let money = 0;
+        //버튼을 클릭하면 1. money 증가
+        //2. 잔액을 표시
+        //3. 살 수 있는 음료수는 경고창에 표시
+        btn100.addEventListener('click',function(){
+               //이벤트 추가하는거// 이벤트가 오고 함수를 적어줌
+            money = money + 100;
+            // money +=100    이거랑 같은거임!!!
+            moneyView.innerHTML = `현재금액: ${money}원`;
+                    //moneyView의 내용을 변경할 거라서 innerHTML 하고 = 값을 할당
+            // 500원 이하 ->A만 살 수 있음
+            // 700원 이하 ->B랑 A 살 수 있음
+            // 1000원 이하 -> A,B,C 다 살 수 있음
+            comparison();
+            // 3번 다 적어주기 그러니 함수를 만들어서 넣어주기!
+            // if (money >= 1000){
+            //     alert('A,B,C음료수 선택가능!');
+            // } else if(money >= 700){
+            //     alert('A,B음료수 선택가능!');
+            // } else if(money >= 500){
+            //     alert('A음료수 선택가능!');
+            // } else {
+            //     alert('선택가능한 음료수가 없음!');
+            // }
+        })
+        btn500.addEventListener('click',function(){
+            money = money + 500;
+            moneyView.innerHTML = `현재금액: ${money}원`;
+            comparison();
+            // if (money >= 1000){
+            //     alert('A,B,C음료수 선택가능!');
+            // } else if(money >= 700){
+            //     alert('A,B음료수 선택가능!');
+            // } else if(money >= 500){
+            //     alert('A음료수 선택가능!');
+            // } else {
+            //     alert('선택가능한 음료수가 없음!');
+            // }
+        })
+        btn1000.addEventListener('click',function(){
+            money = money + 1000;
+            moneyView.innerHTML = `현재금액: ${money}원`;
+            comparison();
+            // if (money >= 1000){
+            //     alert('A,B,C음료수 선택가능!');
+            // } else if(money >= 700){
+            //     alert('A,B음료수 선택가능!');
+            // } else if(money >= 500){
+            //     alert('A음료수 선택가능!');
+            // } else {
+            //     alert('선택가능한 음료수가 없음!');
+            // }
+        })
+
+        function comparison(){
+            if (money >= 1000){
+                alert('A,B,C음료수 선택가능!');
+            } else if(money >= 700){
+                alert('A,B음료수 선택가능!');
+            } else if(money >= 500){
+                alert('A음료수 선택가능!');
+            } else {
+                alert('선택가능한 음료수가 없음!');
+            }
+        }
+    </script>
+</body>
+</html>

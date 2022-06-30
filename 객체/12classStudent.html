@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        //name, age, score1, score2 값을 가진 객체를 여러개 만들고 싶음
+        //생성자 함수 만들기 -보통 대문자로 시작함
+        // function Student(name, age, score1, score2){
+        //     // this = {}      //-->생략되어 있음
+        //     this.name = name;
+        //     this.age = age;
+        //     this.score1 = score1;
+        //     this.score2 = score2;
+        //     // return this;    // -->생략되어있음
+        // }
+
+        //class를 사용해서 만들어보기(class라는 키워드로 선언하고~)
+        class Student {
+            constructor(name, age, score1, score2){
+                this.name = name;
+                this.age = age;
+                this.score1 = score1;
+                this.score2 = score2;
+            }
+        }
+        const students = [
+            //배열과 객체 같이 쓰는 경우 多  -- 배열 안에 객체를 넣은거!!
+            new Student('A',29,45,50),
+            new Student('B',30,60,70),
+            new Student('C',28,90,80),
+            new Student('D',27,85,65),
+            new Student('E',32,80,90),
+        ];
+
+
+
+        //내가 한거
+        // // 위에꺼를 class 이용해서 바꿔보기
+        // class Student1{
+        //     constructor(name, age, score1, score2){
+        //         this.name = name;
+        //         this.age = age;
+        //         this.score1 = score1;
+        //         this.score2 = score2;
+        //     }
+        // }
+        // let student1 = new Student1('A',29,45,50);
+        // let student2 = new Student1('B',30,60,70);
+        // let student3 = new Student1('C',28,90,80);
+        // let student4 = new Student1('D',27,85,65);
+        // let student5 = new Student1('E',32,80,90);
+
+        // console.log(student1);
+        // console.log(student2);
+        // console.log(student3);
+        // console.log(student4);
+        // console.log(student5);
+    </script>
+</body>
+</html>

@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        div {
+            width: 500px;
+            height: 500px;
+            background: pink;
+        }
+        #a {
+            width: 50px;
+            height: 50px;
+            background: tomato;
+            position: absolute;
+            top: 0;
+            left: 0;
+            /* 마우스를 움직일 때마다 얘의 좌표값을 바꿀 수 있음 */
+            border-radius: 50%;
+            transition: 0.3s;
+            /* 부드럽게 움직이게  */
+        }
+    </style>
+</head>
+<body>
+    <!-- 마우스 커서가 움직일 때마다 좌표값 찾기 -->
+    <!-- 좌표를 따라다니는 동그라미를 만들 수 있음 -->
+    <button id="btn">클릭하세요</button>
+    <div id="box"></div>
+    <div id="a"></div>
+    <script>
+        document.querySelector('#btn').addEventListener('mouseenter',eventOn);
+        document.querySelector('#box').addEventListener('mousemove',function(e){
+                                                                    //e 라는 그냥 이름을 붙여준거임 (abc 등등 다른 것도 상관X)
+            document.querySelector('#a').style.left = `${e.pageX}px`;
+                                        // 아이디 a의 스타일을 바꾸겠다 ->left의 스타일을!(좌표값으로!)
+                                        // 단위를 꼭 붙여줘야함!! px!!
+            document.querySelector('#a').style.top = `${e.pageY}px`;
+                                        // 아이디 a의 스타일을 바꾸겠다 ->top의 스타일을!(좌표값으로!)
+            console.log(`x좌표는 ${e.pageX}이고, y좌표는 ${e.pageY}이다.`);
+            // pageX와 pageY를 알면 좌표값을 알 수 있음
+        })
+        function eventOn(){
+            console.log('이벤트가 발생했습니다.');
+        }
+        window.addEventListener('resize',function(e){
+                                // resize : 창의 크기가 바뀔 때
+            console.log(e);
+            // 1. 윈도우가 가지고 있는 속성이라서 이렇게 줘도 됨  -> 이렇게 하면 윈도우의 크기를 바로 구할 수 있음
+            let wwid = window.innerWidth;
+            let whei = window.innerHeight;
+            document.querySelector('#box').style.width = `${wwid}px`;
+            document.querySelector('#box').style.height = `${whei}px`;
+
+            // 2. 그냥 e.innerWidth / e.innerHeight 하면 값이 안뜸... 콘솔에 확인해보기!
+            // console.log(e.target.innerWidth);
+            // console.log(e.target.innerHeight);
+            // document.querySelector('#box').style.width = `${e.target.innerWidth}px`;
+            // document.querySelector('#box').style.height = `${e.target.innerHeight}px`;
+        })
+    </script>
+
+
+    <!-- 3. 방법
+    <button id="btn">클릭하세요</button>
+    <div id="box"></div>
+    <script>
+        document.querySelector('#btn').addEventListener('mouseenter',eventOn);
+        document.querySelector('div').addEventListener('mousemove',function(){
+            console.log('마우스를 움직였습니다.');
+        });
+        // document.querySelector('#btn').addEventListener('mouseenter',eventOn);
+                                                        // mouseenter : 마우스 올렸을 때
+        // document.querySelector('#btn').addEventListener('click',eventOn);
+                                                        // click : 클릭했을 때
+                                                        // clickOn(X) 
+                                                        // eventOn()  (X) : 함수가 들어오는 자리라서 괄호 넣지 않음
+        function eventOn(){
+            console.log('이벤트가 발생했습니다.');
+        }
+    </script> -->
+
+    <!-- 2. 방법 -->
+    <!-- <button id="btn">클릭하세요</button>
+    <script>
+        document.querySelector('#btn').onclick = eventOn;
+        function eventOn(){
+            console.log('이벤트가 발생했습니다.');
+        }
+    </script> -->
+
+    <!-- 1. 이렇게 해도 되고~ -->
+    <!-- <button id="btn" onclick="eventOn()">클릭하세요</button>
+    <script>
+        function eventOn(){
+            console.log('이벤트가 발생했습니다.');
+        }
+    </script> -->
+</body>
+</html>

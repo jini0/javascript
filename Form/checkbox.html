@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <p>좋아하는 과일 선택하기</p>
+    <p>🍎 <input type="checkbox" name="fruits" value="apple" checked></p>
+    <!-- input에 checked라는 속성을 주면 => check되어있음 / boolean이라서 넣어주기만 하면 true 없으면 false-->
+    <p>🍊 <input type="checkbox" name="fruits" value="orange"></p>
+    <p>🍌 <input type="checkbox" name="fruits" value="banana"></p>
+    <p><button id="btn">결과보기</button></p>
+    <p id="result"></p>
+    <script>
+        const btn = document.querySelector('#btn');
+        btn.addEventListener('click',function(){
+            let fruitsInputs = document.querySelectorAll('input');
+            let str = '';
+            fruitsInputs.forEach(input=>{
+                str = input.checked ? str+input.value : str;
+                        //input을 체크한게 있으면~str+input.value :빈요소인 str+input의 value값이 나올거임!
+            })
+            document.querySelector('#result').innerHTML = str;
+        })
+    </script>
+</body>
+</html>

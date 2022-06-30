@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        div { width: 1000px; height: 500px; background: yellow; }
+    </style>
+</head>
+<body>
+    <!-- <div style="background: yellow"></div> 이렇게 style을 요소에 적어준 것만 인식해서
+    이렇게 해주면 처음 경고창에도 yellow가 뜸 / (위에 스타일의 background는 지우고) -->
+    <div></div>
+    <button onclick="chBackground('rgb(255,0,0)')">pink색상</button>
+    <button onclick="chBackground('rgb(0,255,0)')">red색상</button>
+    <button onclick="chBackground('rgb(0,0,255)')">blue색상</button>
+    <button onclick="chBackground('rgb(255,0,255)')">green색상</button>
+    <button onclick="bgColorView()">배경색상 알기</button>
+    <!-- 여러개를 만들고 싶을 때 -> 함수에 매개변수 만들어줌 -->
+    <script>
+        //선택한 요소의 css속성값을 반환하기
+        //1.style.속성명 (인라인 스타일로 작성된 값만 반환)
+        //2.window.getComputedStyle(선택한요소).getPropertyValue('스타일속성명')
+        //(내부 스타일 속성값을 반환)
+
+        // div의 배경색을 pink로 변경-버튼 눌렀을 때
+        function chBackground(bgcolor){
+            document.querySelector('div').style.background = bgcolor;
+            document.querySelector('div').innerHTML = `${bgcolor}입니다.`;
+            console.log(document.querySelector('div').style.background);
+        }
+        function bgColorView(){
+            let div = document.querySelector('div');
+            let style = window.getComputedStyle(div);
+            alert(style.getPropertyValue('width'));
+            // alert(style.getPropertyValue('height'));
+            // 한번에 적어줘도 됨  -> .찍고!!
+            // let style = window.getComputedStyle(div).getPropertyValue('background-color');
+            // alert(style);
+
+            // console.log(style);
+            // alert(style.getPropertyValue('background-color'));
+            // 처음에 css 코드로 style을 이용해서 yellow를 줘서 처음 경고창에는 아무런 내용이 없음
+            // 요소에 style을 쓴 것만 받음
+        }
+    </script>
+
+
+
+    <!-- 2번 -->
+    <!-- 
+    <div></div>
+    <button onclick="chBackground('pink')">pink색상</button>
+    <button onclick="chBackground('red')">red색상</button>
+    <button onclick="chBackground('blue')">blue색상</button>
+    <button onclick="chBackground('green')">green색상</button>
+    여러개를 만들고 싶을 때 -> 함수에 매개변수 만들어줌
+    <script>
+        // div의 배경색을 pink로 변경-버튼 눌렀을 때
+        function chBackground(bgcolor){
+            document.querySelector('div').style.background = bgcolor;
+            document.querySelector('div').innerHTML = `${bgcolor}입니다.`;
+            console.log(document.querySelector('div').style.background);
+        }
+    </script> --> 
+
+    <!-- 1번 -->
+    <!-- 
+    <div></div>
+    <button onclick="chBackground()">색상을 변경</button>
+    <script>
+        // div의 배경색을 pink로 변경-버튼 눌렀을 때
+        function chBackground(){
+            document.querySelector('div').style.background = 'pink';
+        }
+    </script> -->
+</body>
+</html>

@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // cf. 배열은 index로 값에 접근 / 객체는 key로 값에 접근
+
+        //객체 복사
+        let user = {
+            name: 'green',          //:(콜론)의 왼쪽 - key / 오른쪽 - 값
+            age: 30,
+        }
+        let clone = {};     
+        // clone.name = user.name;     //clone의 이름을 user의 이름과 같게 복사!
+        // clone.age = user.age;       //clone의 나이를 user의 나이와 같게 복사!
+        //이렇게 해준거를 한번에 해주기 위해 for-in문 쓴거
+        for (let key in user){
+            clone[key] = user[key]       //위에 두번 적어준거랑 같음!!! (clone의 key값을 user의 key값으로!)
+        }
+        console.log(clone);         
+        user.name = 'blue';
+        console.log(clone.name);      //이렇게 하면 clone의 이름은 blue가 아닌 green 그대로!! 유지됨
+        // let user2 = user;   //객체의 얕은 복사 : 참조하는 주소의 값만 복사하기 때문에 값이 변화하면 참조된 애도 값이 변화함!
+                               //   -->이렇게 해주면 안됨
+    </script>
+</body>
+</html>

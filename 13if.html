@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        //3보다 작으면 '아기야 안녕'
+        //18보다 작으면 '안녕'
+        //100보다 작으면 '환영합니다.'
+        //다 아닐때는 '나이가 아주 많거나, 나이가 아닌 값을 입력하셨군요'
+        let age = Number(prompt("당신의 나이를 입력하세요"));
+        if( age < 3 ) {
+            console.log("아기야 안녕");
+        }else if( age < 18 ) {
+            console.log("안녕");
+        }else if( age < 100 ) {
+            console.log("환영합니다.");
+        }else {
+            console.log("나이가 아주 많거나, 나이가 아닌 값을 입력하셨군요.")
+        }
+
+
+
+
+        // let age = Number(prompt("당신의 나이를 입력하세요"));
+        // // prompt로 받는건 문자열임 -> 그래서 숫자로 바꿔줘야함
+        // //                         -> Number로 감싸줘야함!
+        // if( age >= 20 ) {
+        //     console.log("성인입니다.");
+        // }else {
+        //     console.log("성인이 아닙니다.");
+        // }
+
+
+        // let num1 = 10;
+        // if( num1 === 10 ) {
+        //     console.log("10입니다.");
+        // }else {
+        //     console.log("10이 아닙니다.");
+        // }
+    </script>
+</body>
+</html>

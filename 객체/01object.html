@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        //객체 리터럴방식 
+        //객체 : 한번에 묶어서 관리할 수 있는거
+        // <객체의 종류>
+        //배열
+        //함수
+        //날짜(date)
+        //수학(math)
+        //*기본데이터 유형은 객체가 아닌데 new라는 키워드로 객체가 될 수 있음((new라는 키워드 사용하면 object타입))       
+        //불린(Boolean)은 객체일 수 있음(new라는 키워드로 정의된 경우)
+        //숫자도 객체일 수 있음(new라는 키워드로 정의된 경우)
+        //문자열도 객체일 수 있음(new라는 키워드로 정의된 경우)
+        //   ---->원시값을 제외한 모든 javascript의 값은 객체라고 생각하면 됨!!!
+
+        let num = new String('abc');
+        console.log(typeof num);
+        let str = 'abc';
+        console.log(typeof str);
+
+        let user = {
+            name: 'green',     // -> 다른 항목에 갈 때는 , 쉼표 적어주기
+            age: 32,            //    마지막 프로퍼티는 ,쉼표로 끝내도 되고 안적어줘도 됨(그래도 담에 추가할 사항 있을 수 있으니 쉼표 적어주자!!)
+        }
+        // let name = 'green';   이 두개를 객체로 묶어서~~한번에!
+        // let age = 32;
+        user['hobby'] = '독서';     // : 추가하기
+        console.log(user.name);     //.으로 바로 부르기
+        console.log(user['age']);   //대괄호 표기법
+        console.log(user);
+        delete user.age;
+        console.log(user);
+        //for-in반복문
+        for(let key in user){  
+            console.log(user[key]);  //--->변수 user의 요소 값이 나옴
+            // console.log(key);    //---> 객체가 갖고있는 key가 나옴 name/age가 key // 'green'/32가 value값
+        }
+
+        //객체의 프로퍼티와 메서드
+        let cat = {
+            name: 'naby',
+            age: 3,
+            weight: 4,
+            sleep: function(){
+                console.log('잠을 잔다');
+            },
+            eat: function(){
+                console.log('음식을 먹는다');
+            }
+        }
+        console.log(cat.name);
+        cat.sleep();
+
+        //객체 복사
+        let student1 = {
+            name: 'green',
+        };   //객체를 하나 만들고
+        let student2 = student1;  // 변수를 만들어 그 studen1값으로 하여 복사(참조하는 주소를 복사한거..!)
+        student1.name = 'blue';   // 그렇지만 이렇게 하면 student1만 변경하고 싶은데 student2도 같이 변경됨(object값이라서)
+                                  // ---> 객체는 참조에 의해 복사하면 안됨(이렇게 할당해서 하면 안됨!!)
+        console.log(student2);
+        let num1 = 10;
+        let num2 = num1;   //참조로 복사가 가능
+        num1 = 20;
+        console.log(num2); //num1값을 변경한다 해도 num2값이 변경되지 않음
+                            // object가 아닌 원시형데이터는 참조를 이용해 복사해도 복사한 값이 변경되지 않음
+                            //원시형데이터는 이렇게 복사해도 됨  / object를 이렇게 복사하면 X
+        console.log(student1 == student2);      //같은 객체를 쓰고 있으므로 동일
+        console.log(student1 === student2);     //                        일치
+        let a = {};
+        let b = {};
+        console.log(a == b);
+
+        let clone = {};                     //객체를 복사할 때는 이 방법처럼 빈요소를 만들어주고
+        for(let key in student1){           //한번에 해주기 위해 for-in문 사용
+            clone[key] = student1[key];     //새로 복사한 객체의 key에 복사!
+        }
+        console.log(clone===student1);  //이렇게 해줘야 같지않다가 나옴!!
+    </script>
+</body>
+</html>

@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="test">
+        오늘은 월요일 입니다.
+    </div>
+    <!-- script는 body나 head 다 됨 -->
+    <script>
+        // 자바스크립트 출력
+        // 한 문장이 끝날 때 습관적으로 세미콜론 꼭 찍어주기!!
+        // 1.경고창에 출력 alert('내용')
+        alert('안녕하세요');
+        // 경고창을 확인 눌러줘야 다른 것들이 뜸 (alert 경고창은 확인 누를때까지 다른 작업을 할 수 없음)
+        // 2.콘솔에 출력 console.log('내용')        -> 화면에 보여지는게 아니라 F12개발자도구에 뜨는거! 브라우저에 제공해주는거
+        console.log('그린컴퓨터');
+        // 3.html body에 출력하기    
+        document.write('<h1>재미있는 자바스크립트</h1>');
+        document.write('<h2>화면에 출력하기</h2>');
+        // 4.html DOM 요소 안 내용으로 출력하기 (Documnet Object Model)
+        document.getElementById('test').innerHTML = '내일은 화요일 입니다.';
+        // css에서 위에 div를 선택할 때는 -> #test 이런식을 자바스크립트는 document.getElementById('test')이렇게 요소를 표현한거임
+    </script>
+</body>
+</html>

@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        #wrap {
+            width: 50%;
+            margin: 200px auto;
+            border: 3px solid pink;
+            border-radius: 30px;
+            overflow: hidden;
+        }
+        #eventDay {
+            width: 100%;
+            height: 150px;
+            background: pink;
+            color: #fff;
+            padding: 50px 30px;
+        }
+        #eventDay h1 {
+            font-size: 26px;
+        }
+        #text {
+            width: 100%;
+            height: 300px;
+            text-align: center;
+            padding-top: 60px;
+            display: flex;
+            flex-direction: column;
+        }
+        #text input {
+            outline: none;
+            border: none;
+            border-bottom: 2px dotted pink;
+            margin: 0 20px;
+            width: 160px;
+            font-size: 22px;
+        }
+        #text button {
+            outline: none;
+            border: none;
+            background: pink;
+            width: 150px;
+            height: 40px;
+            border-radius: 5px;
+            margin-top: 40px;
+        }
+        #result {
+            color: pink;
+            font-size: 33px;
+            margin-top: 30px;
+        }
+    </style>
+</head>
+<body>
+    <div id="wrap">
+        <div id="eventDay">
+            <h1>기념일</h1>
+            <p>사귄 날짜를 입력하세요~</p>
+        </div>
+        <div id="text">
+            <div>
+                <input type="text" name="year" id="year" value="2022"><input type="text" name="month" id="month" value="05"><input type="text" name="date" id="date" value="19">
+            </div>
+            <div>
+                <button id="btn50">50일은?</button>
+                <button id="btn100">100일은?</button>
+                <button id="btnDay">오늘은 몇일째?</button>
+            </div>
+            <span id="result">기념일</span>
+        </div>
+    </div>
+    <script>
+        let nowDay = new Date();
+        let todayTime = nowDay.getTime();
+        let btn50Day = document.querySelector('#btn50');
+        let btn100Day = document.querySelector('#btn100');
+        let btnDay = document.querySelector('#btnDay');
+        let year = document.querySelector('#year');
+        let month = document.querySelector('#month');
+        let date = document.querySelector('#date');
+        let result = document.querySelector('#result');
+        // let day = 
+
+        //50일 후
+        // let datedate = new Date();
+        // console.log(datedate.toLocaleDateString());
+        // datedate.setDate(datedate.getDate() + 50);
+        // console.log(datedate.toLocaleDateString());
+        btn50Day.addEventListener('click',function(){
+            let datedate = new Date();
+            // console.log(datedate.toLocaleDateString());
+            datedate.setDate(datedate.getDate() + 50);
+            let after50 = datedate.toLocaleDateString();
+            // console.log(datedate.toLocaleDateString());
+            result.innerHTML = `50일 후는 ${after50}입니다.`;
+        })
+
+        //100일 후
+        btn100Day.addEventListener('click',function(){
+            let datedate = new Date();
+            // console.log(datedate.toLocaleDateString());
+            datedate.setDate(datedate.getDate() + 100);
+            let after100 = datedate.toLocaleDateString();
+            // console.log(datedate.toLocaleDateString());
+            result.innerHTML = `100일 후는 ${after100}입니다.`;
+        })
+
+
+        //만난지 몇 일째
+        // let startTime = day.getTime();
+        // let dayday = Math.floor((todayTime - startTime)/(1000*60*60*24));
+        // console.log(dayday);
+    </script>
+</body>
+</html>

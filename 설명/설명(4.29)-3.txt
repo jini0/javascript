@@ -1,0 +1,67 @@
+let arr = ['»ç°ú','µþ±â','¿À·»Áö']
+undefined
+let arr2 = new Array('»ç°ú','µþ±â','¿À·»Áö')
+undefined
+arr
+(3)?['»ç°ú', 'µþ±â', '¿À·»Áö']
+arr2
+(3)?['»ç°ú', 'µþ±â', '¿À·»Áö']
+let arr3 = [];
+undefined
+
+let arr4 = new Array();
+undefined
+
+arr3
+[]
+
+arr4
+[]
+
+Boolean(arr3)   --> ºó¹®ÀÚ¿­Àº true
+true
+
+Boolean(arr4)
+true
+
+let str1 = "";   
+undefined
+
+Boolean(str1)    -->ºó¿ä¼Ò´Â false
+false
+
+arr3 =[1, 2, 3, 4, 5]
+(5)?[1, 2, 3, 4, 5]
+
+arr[0]
+'»ç°ú'
+
+arr[1]
+'µþ±â'
+
+arr[2]
+'¿À·»Áö'
+
+arr[3]
+undefined
+
+arr
+(3)?['»ç°ú', 'µþ±â', '¿À·»Áö']
+
+arr[0] = '±Ö'
+'±Ö'
+
+arr
+(3)?['±Ö', 'µþ±â', '¿À·»Áö']
+
+arr[arr.length] = 'Å°À§'
+'Å°À§'
+
+arr
+(4)?['±Ö', 'µþ±â', '¿À·»Áö', 'Å°À§']
+
+arr[4] = '¸Á°í'
+'¸Á°í'
+
+arr
+(5)?['±Ö', 'µþ±â', '¿À·»Áö', 'Å°À§', '¸Á°í']

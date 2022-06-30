@@ -1,0 +1,61 @@
+* { margin: 0; padding: 0; box-sizing: border-box; }
+#wrap {
+    width: 70%;
+    margin: 50px auto;
+    background: tomato;
+    padding: 2px;
+}
+.div-scoreboard.inner {
+    background: coral;
+    text-align: center;
+    color: #fff;
+    border: 2px solid #fff;
+}
+.div-short-left {
+    padding-top: 20px;
+    line-height: 40px;   
+}
+
+#shorts-left {
+    background: #000;
+    width: 80px;
+    display: inline-block;
+}
+
+.div-score {
+    display: flex;
+    justify-content: center;
+}
+.div-score-list {
+    border: 1px solid #fff;
+    width: 30%;
+    margin: 20px;
+    padding: 40px;
+}
+.div-score-number {
+    background: #000;
+    line-height: 50px;
+    margin-top: 10px;
+}
+#text {
+    padding: 30px;
+}
+.div-control-panel {
+    background: tomato;
+    display: flex;
+    justify-content: center;
+}
+.div-panel {
+    padding: 30px;
+    margin: 30px;
+    width: 30%;
+    text-align: center;
+    color: #fff;
+}
+.div-panel div {
+    padding-bottom: 10px;
+}
+button {
+    padding: 10px 20px;
+    font-size: 14px;
+}

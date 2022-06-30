@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // 메모장(5.13) Q4문제
+        // 문자열을 받아서 p의 개수가 몇 개인지? y의 개수가 몇 개인지?
+        // 갯수를 비교해서 일치하면 true반환, 일치하지 않으면 false반환
+        // 1)방법
+        // function solution(s){
+        //     let answer = true;
+        //     //대소문자 구별없이라서 하나로 통일시켜주기 위해 toUpperCase()나 toLowerCase()해서 전체를 대문자 or 소문자로 바꿔줌
+        //     s = s.toUpperCase().split('');              //split() : 배열로 바꿔주는 애
+        //     // console.log(s);
+        //     let parr =  s.filter(str=> str == 'P').length;         //let parr =  s.filter(str=> str == 'P')얘의 length가 p와 y의 갯수가 될거임!!!
+        //     let yarr =  s.filter(str=> str == 'Y').length;         //let yarr =  s.filter(str=> str == 'Y')얘의 length가 p와 y의 갯수가 될거임!!!
+        //     // console.log(parr, yarr);   
+        //     answer = parr === yarr ? true : false;
+        //     return answer;
+        // }
+
+        // 2)방법
+        function solution(s){
+            let answer = true;
+            let pnum = 0, ynum = 0;                 //변수 여러개 설정할때 let 생략하고 ,쉼표쓰면됨
+            s = s.toUpperCase();
+            for (let i of s){                           //반복-if문 두개
+                pnum = i === 'P' ? pnum + 1 : pnum;
+                ynum = i === 'Y' ? ynum + 1 : ynum;
+            }
+            answer = pnum == ynum;
+            return answer;
+        }
+        let result = solution("pPabsfYsayp");       //p: 3개 y:2개 -> false담기도록 해야함 (문자열이라 ''에 담아줌)
+        let result2 = solution("Ppy");
+        let result3 = solution("pPppUYYyy");
+        let result4 = solution('ppyyy');
+        console.log(result);
+        console.log(result2);
+        console.log(result3);
+        console.log(result4);
+    </script>
+</body>
+</html>

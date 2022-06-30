@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        :focus {
+            background: pink;
+        }
+    </style>
+</head>
+<body>
+    <form action="" name="myForm" id="form">
+        주민번호 <input type="text" name="front" id="frontNum"> - <input type="text" name="back" id="backNum">
+    </form>
+    <script>
+        let front = document.querySelector('#frontNum');
+        let back = document.querySelector('#backNum');
+        console.log(front,back);
+        front.addEventListener('keydown',function(e){
+            if(front.value.length === 6) back.focus();
+        })
+    </script>
+</body>
+</html>

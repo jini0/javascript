@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <select name="num" id="num">
+    <!-- <select name="num" id="num" onchange="console.log(this.value)"> -->
+        <!-- 이렇게 onchange에 콘솔로 해서 this.value값을 가져올 수 있음 -->
+        <option value="가">10</option>
+        <option value="나">20</option>
+        <option value="다">30</option>
+        <option value="라">40</option>
+    </select>
+    <script>
+        document.querySelector('#num').addEventListener('change',function(){
+            console.log(this.value);      // 이렇게 적어줄 수도 있음
+        })
+    </script>
+</body>
+</html>

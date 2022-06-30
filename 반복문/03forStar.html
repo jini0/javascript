@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div>
+
+    </div>
+    <script>
+        let inner = "";
+        for(let i=0; i<5; i++){
+            inner = inner + '<p>';
+            for(let j=0; j<5-i; j++){
+            //for(let j=5; j>i; j--)해줘도 됨 :5부터 시작하고 조건이 j가 1보다 큰지~ j= 5 4 3 2 1 i= 0 1 2 3 4 이라서~
+            //메모장 참고
+                inner = inner + '*';
+            }
+            inner = inner + '</p>';
+        }
+        document.querySelector('div').innerHTML = inner;
+
+
+
+
+
+        
+        // let inner = "";
+        // for(let i=0; i<5; i++){
+        //     inner = inner + '<p>';
+        //     inner = inner = '</p>';
+        //     // 이렇게 해주면 p요소가 5개 생기는 거임 -->p와 p사이에 *별표들 넣어줘야함
+        //     // <p></p>
+        //     // <p></p>
+        //     // <p></p>
+        //     // <p></p>
+        //     // <p></p>
+        // }
+    </script>
+</body>
+</html>

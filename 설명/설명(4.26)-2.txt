@@ -1,0 +1,118 @@
+1.변수
+var -> 함수 스코프
+var userAge = 30;
+var userAge;
+userAge = 50;
+userAge = 60;
+let
+let name = 'green';
+let name;
+name = 'green';
+name = 'pink';
+const
+
+let name;
+name = 'green';
+.
+.
+.
+name = 'pink';
+
+const는 한번 값을 담으면 변할 수 없음(잠김)
+절대 변하지않는 값을 저장할 때 사용
+-상수 라고도 함
+상수 만들 때는 대문자로 주로 씀!
+다른값을 넣지 않도록
+변수 선언시 할당도 같이 해야함!!!
+const a; (X)
+const a = 'b' (O)
+
+-------
+자료형
+·숫자형 (number)
+let num = 12;
+따옴표 안쓰고 바로 적어야함 
+·문자형 (string)
+let str = "abc";
+let str2 = "123";    ->이렇게 따옴표 안에 숫자 적으면 숫자아니고 문자임!
+"" 쌍따옴표 / '' 정따옴표 / `` 역따옴표(백틱) 사용하고 적어야함
+·불린형 (boolean)
+·null
+·undefined 값을 넣지 않았을 때(=할당 되지않았다)
+·object
+
+------
+typeof 123;
+typeof '123';
+
+Number()
+Number()
+NaN
+
+
+-----
+함수
+1.함수선언문
+②add(5,6);    --> 이렇게 선언도 되기전에 호출을 해도 함수는 호이스팅 되기때문에 가능함!
+	        함수가 자동적으로 위로 끌어올라간다구 여겨짐
+function add(a,b){                             --->이렇게 함수 선언만 하면 실행 안됨 ①/②처럼 호출을 해줘야
+	let result = a + b;		      사용이 된다!!
+	return result;
+}
+
+①원래는 함수 선언을 하고 밑에 호출을 해야함!!!
+add(5,6);
+-
+function:함수
+add:함수의 이름(라벨)
+-
+ex2>
+function 빵만들기(재료1, 재료2){
+	재료1과 2를 섞어서 빵을 만들어
+	return 빵;
+}
+빵만들기(밀가루, 초코);
+-
+ex3>
+
+안녕하세요여러분화요일입니다.
+안녕하세요여러분화요일입니다.
+안녕하세요여러분화요일입니다.
+
+function print(){
+	document.write('안녕하세요여러분화요일입니다.');
+	//return(결과값)을 따로 명시하지 않으면
+	//return undefined로 되어있음
+}
+let result2 = print();
+
+2.함수표현식
+let myFunction = function () {
+	alert('abc');
+}
+myFunction();
+
+3.화살표 함수
+let myFunction = () => alert('abc');       or {alert('abc'); }
+		     실행문이 한 줄 일 때는 중괄호 생략가능
+function printMsg(from, message = '안녕'){
+	console.log('메세지를 보낸 사람은'+from+'이고 내용은'+message+'입니다.');
+}
+printMsg('영희','여러분');
+-->메세지를 보낸 사람은영희이고 내용은여러분입니다.  라고 뜰것임
+만약,
+printMsg('영희');  로만 되어있고 message에 대한 값이 없으면
+기본값으로 설정한 '안녕'이 뜸(message = '안녕')
+-->메세지를 보낸 사람은영희이고 내용은안녕입니다.
+
+* 호이스팅, 스코프, 매개변수, 변수, 함수, 지역변수, 전역변수, 함수선언문, 함수표현식,
+리턴, undefined, NaN, Number('10'), typeof x
+
+----------------
+innerHTML 
+선택한 요소의 내용을 반환하거나 변경
+src
+선택한 요소의 src속성값을 반환하거나 변경
+
+자바스크립트를 이용해서 css스타일을 변경하기
+object.style.color = 'red';

@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        let nDiv = document.createElement('div');
+        nDiv.innerHTML = '<strong>안녕하세요</strong>중요메시지를 확인하셨습니다.';
+        document.body.append(nDiv);
+
+        // *요소 삭제하기
+        // elem.remove()
+        // setTimeout(함수,시간)
+        setTimeout(()=> nDiv.remove() ,3000)   //3초뒤에 지워지게하기(remove와 setTimeout이용)
+    </script>
+</body>
+</html>

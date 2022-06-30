@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        a { text-decoration: none; color: inherit; }
+        li { list-style: none; }
+        #wrap {
+            width: 100%;
+            height: 100vh;
+        }
+        #header {
+            width: 100%;
+            /* height: 150px; */
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: relative;
+        }
+        #header > h1 {
+            position: fixed;
+            top: 50px;
+            left: 30px;
+            height: 150px;
+            width: 10%;
+            background: url('./img/logo.png')top left / contain no-repeat;
+            z-index: 10;
+        }
+        /* #header > ul {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        } */
+        #container > div {
+            width: 100%;
+            height: 100vh;
+        }
+        #container > ul {
+            position: fixed;
+            z-index: 5;
+            top: 50%;
+            transform: translateY(-50%);
+            font-size: 14px;
+            width: 200px;
+        }
+        #container > ul > li {
+            padding: 10px 0;
+            border-top: 1px solid #111;
+            text-align: right;
+        }
+        #container > ul > li:nth-child(1).on {
+            font-size: 20px;
+            color: rgb(212, 23, 23);
+            border-top: 1px solid rgb(212, 23, 23);
+        }
+        #container > ul > li:nth-child(2).on {
+            font-size: 20px;
+            color: #fff;
+            border-top: 1px solid #fff;
+        }
+        #container > ul > li:nth-child(3).on {
+            font-size: 20px;
+            color: #ffec6a;
+            border-top: 1px solid #ffec6a;
+        }
+        #fstbg {
+            background: url('./img/bg1.jpg')top left / cover no-repeat;
+            position: relative;
+        }
+        .text > div {
+            position: absolute;
+            top: 50%;
+            left: 250px;
+            transform: translateY(-50%);
+            z-index: 8;
+        }
+        #fstbg h2 {
+            color: rgb(212, 23, 23);
+            font-size: 40px;
+        }
+        #sndbg {
+            background: url('./img/bg2.jpg')top left / cover no-repeat;
+            position: relative;
+        }
+        #sndbg h2 {
+            color: #fff;
+            font-size: 40px;
+        }
+        #sndbg p {
+            color: #fff;
+        }
+        #trdbg {
+            background: url('./img/bg3.jpg')top left / cover no-repeat;
+            position: relative;
+        }
+        #trdbg h2 {
+            color: #ffec6a;
+            font-size: 40px;
+        }
+        #trdbg p {
+            color: #fff;
+        }
+        #fthbg {
+            background: url('./img/bg4.jpg')top left / cover no-repeat;
+            position: relative;
+        }
+        #fthbg h2 {
+            color: #005a89;
+            font-size: 40px;
+        }
+        #fthbg p {
+            color: #111;
+        }
+    </style>
+</head>
+<body>
+    <div id="wrap">
+        <div id="header">
+            <h1></h1>
+            <ul>
+                <li></li>
+                <li></li>
+                <li></li>
+            </ul>
+        </div>
+        <div id="container">
+            <ul>
+                <li><a href="#">Full Blossom</a></li>
+                <li><a href="#">Be colorful</a></li>
+                <li><a href="#">Time on Board</a></li>
+                <li><a href="#">Shiny Addict</a></li>
+            </ul>
+            <div id="fstbg" class="text">
+                <div>
+                    <h2>Full Blossom</h2>
+				    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+                </div>
+            </div>
+            <div id="sndbg"  class="text">
+                <div>
+                    <h2>Be Colorful</h2>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+                </div>
+            </div>
+            <div id="trdbg"  class="text">
+                <div>
+                    <h2>Time on Board</h2>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+                </div>
+            </div>
+            <div id="fthbg"  class="text">
+                <div>
+                    <h2>Shiny Addict</h2>
+				    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script>
+        let lis = document.querySelectorAll('li');
+        let wh = window.innerHeight;
+        lis.forEach((li,index) => {
+            li.addEventListener('click',function(){
+                window.scrollTo({top:index*wh, behavior: 'smooth'});
+            })
+        })
+    </script>
+</body>
+</html>
